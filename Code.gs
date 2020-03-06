@@ -3,7 +3,6 @@ function doGet() {
   var tmp = HtmlService.createTemplateFromFile('dashboard');
   return tmp.evaluate();
 }
-
 function userAddEntry(aname, duedate, milestones, email, apemail) {
 
   Logger.log ("Called addEntery with " + duedate + " " + aname + " " + milestones);
