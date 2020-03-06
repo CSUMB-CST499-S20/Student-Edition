@@ -1,106 +1,111 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <base target="_top">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <?!= include ("home-css"); ?>
-    <?!= include ("dash-css"); ?>
 
-  </head>
-  <body>
-    <div class="card-panel">
-    <img class="logo" src="https://i.ibb.co/SnKKXwJ/a00e07a8-7536-4427-916f-3f679651775d-200x200.png"> 
-         <span class="blue-text text-darken-2"><h3> Google App for Attention Management </h3></span>
-         <span class="info"> 
-           <div> 
-             <p> For every minute spent organizing, an hour is earned.  </p> 
-           </div> 
-         </span>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <base target="_top">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="dash-css.html">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
+  <?!= include ("dash-css"); ?>
+
+</head>
+<body>
+
+<nav class="navbar navbar-inverse visible-xs">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#"><img class="logoSmall" src="https://i.ibb.co/xGrDqYd/a00e07a8-7536-4427-916f-3f679651775d-200x200.png" alt="Logo" ></a>
     </div>
-    <div class="container">      
-     
-      <div class="content"> 
-         <div class="row">
-            <div class="column">
-              <div class="tooltip">Export iLearn Calendar
-                 <img class="csumb-logo" src="https://edit.csumb.edu/sites/default/files/styles/profile_large/public/photo_1.jpg">
-                <span class="tooltiptext">
-                <h7> Follow these steps: </h7><br>
-                1. Go to iLearn Dashboard (Must be logged in)<br>
-                2. Select calendar from the left menu bar<br>
-                3. Scroll down and click <b> Export Calendar</b> <br>
-                4. Select your preference and click <b> Get Calendar URL </b><br>
-                5. Copy the URL and paste it down below. <br>
-               </span>
-              </div>
-              <p>Please add your URL to export your iLearn calendar.</p>
-              <span>
-               <input type="text" id="url" name="iLearn"><br>
-              </span>
-              <button class="btn-Submit-ilearn"> Submit </button>  
-            </div>
-            <div class="column">
-              <h4>Add a new task</h4>
-              <p>Some text..</p>
-            </div>
-            <div class="column" >
-              <h4>{Some Feature}</h4>
-              <p>Some text..</p>
-            </div>
-           
-        </div>
-     
-      </div><!-- Content end here --> 
-      
-      
-     
-  
-    </div> 
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Dashboard</a></li>
+        <li><a href="#">To Do Lists</a></li>
+        <li><a href="#">Courses</a></li>
+        <li><a href="export.html">Export iLearn Calendar</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav hidden-xs">
+      <img class="logo" src="https://i.ibb.co/xGrDqYd/a00e07a8-7536-4427-916f-3f679651775d-200x200.png" alt="Logo" >
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="#section1">Dashboard</a></li>
+        <li><a href="#section2">To Do Lists</a></li>
+        <li><a href="#section3">Courses</a></li>
+        <li><a href="export.html">Export iLearn Calendar</a></li>
+      </ul><br>
+    </div>
+    <br>
+       
+    <div class="col-sm-9"> 
+      <div class="topNav" class="well"> 
+      <button class="btn btn-primary btn-s pull-right">Logout</button><br>
+       <ul>
+          <li> <img class="userImage" src="https://www.openroadreview.com/wp-content/uploads/2016/01/User-Icon-PNG-03589.png"></li>
+          <li><a href="#news">Username</a></li>
+        </ul>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <?!= include ("home-js"); ?> 
-    <?!= include ("dash-js"); ?>
-  </body>
-</html>
-
-
-
-
-
- <!-- <div class="row">
- 
-   
-      <!-- 
-        <ul id="list">
-         <!--  <li class="item"> 
-          <!--  <i class="fas fa-circle"></i> -->
-           <!-- <i class="fa fa-trash-o delete" ></i> -->
-        <!-- </li> -->
-        <!--
-         </ul>
-        <div class="add-item"> 
-            <!-- <i class="fa fa-plus-circle"> </i> -->
-           <!-- <input type="text" id="input" placeholder="Add a to-do">
-        
-        </div> 
       </div>
-         <button id="btn" class="waves-effect waves-light btn-large"><i class="material-icons left">chevron_right</i>Let us plan! </button>
-       </div> <!-- CLOSE row -->
       
+      <div class="title">
+        <h4>Export iLearn Calendar</h4>
+      </div>
+      <div class="exportContent">
+          <img class = "img-responsive" src="https://i.ibb.co/Kqf4YQ6/Step.png" alt="Step" >
+          <div class="form-group">
+              <label for="usr">Paste URL here: </label>
+              <input type="text" class="form-control" id="usr">
+          </div>
+          <button type="button" class="btn btn-primary">Export Calendar</button>
+      
+      </div>
+      
+      <div class="row">
+          <div class="column">
+              <h2>Attention</h2>
+              <p style="color: red; font-weight:bold;">Approaching Deadlines: </p>
+                <ul class="list-group">
+                   <li class="list-group-item" style="text-align:left; font-size: 14px;">CST336: Lab 3</li>
+                   <li class="list-group-item" style="text-align:left; font-size: 14px;">CST328: Assignment 4</li>
+                   <li class="list-group-item" style="text-align:left; font-size: 14px;">CST300: Reading Reflection 2</li>
+                </ul>
+          </div>
+          <div class="column">
+              <h2>Important Notes</h2>
+              <p style="color: #337ab7; font-weight:bold;">Must do this week: </p>
+               <ul class="list-group">
+                   <li class="list-group-item" style="text-align:left; font-size: 14px;">Must do taxes</li>
+                   <li class="list-group-item" style="text-align:left; font-size: 14px;">Must buy pens and paper</li>
+                   <li class="list-group-item" style="text-align:left; font-size: 14px;">Must call parents</li>
+                  
+              </ul>
+          </div>
+          <div class="column">
+              <h2>Your Progress</h2>
+              <img class = "img-responsive" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ6L0Ep0KWddZ26EgoAStYg1a1pM5TgXbWvVmr8igHdl9WAWdCuybz0KT2UVrLsB1MtvJEhES-t6qbi/pubchart?oid=1105146076&format=image">
+          </div>
+      </div>
+     
+     
+     
+    </div>
+  </div>
+</div>
 
-
-      <!-- <div class="row"></div>
-       
-       
-    <!-- <div class="row">
-       <button id="calendar" class="waves-effect waves-light btn-large"><i class="material-icons left">chevron_right</i>This is good - put in my calendar! </button>
-       </div> <!-- CLOSE row -->
-    <!-- </div> <!-- CLOSE CONTAINER -->
-
-
-
-
+</body>
+</html>
 
