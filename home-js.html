@@ -1,0 +1,72 @@
+    <script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+       var elems = document.querySelectorAll('select');
+       var instances = M.FormSelect.init(elems);
+       var elems1 = document.querySelectorAll('.datepicker');
+       var datePicker = document.getElementById("duedate").value;
+       var today = new Date();
+       var instances1 = M.Datepicker.init(elems1);
+//       datePicker, {
+//                    disableDayFn: function(day) {
+//                          return (day.valueOf() - today.valueOf()) < 5); 
+//                    }
+//       });
+    
+    });
+
+    document.getElementById("btn").addEventListener("click", doPlan);
+    document.getElementById("calendar").addEventListener("click", doAddEntries);
+
+    
+    function doAddEntries() {
+        var email = document.getElementById("email").value;
+        var apemail = document.getElementById("apemail").value;
+        var aname = document.getElementById("assignment_name").value;
+        var duedate = document.getElementById("duedate").value;
+        var m1date = document.getElementById("m1date").value;
+        var m1d = document.getElementById("m1d").value;
+        var m2date = document.getElementById("m2date").value;
+        var m2d = document.getElementById("m2d").value;
+        var m3date = document.getElementById("m3date").value;
+        var m3d = document.getElementById("m3d").value;
+        var m4date = document.getElementById("m4date").value;
+        var m4d = document.getElementById("m4d").value;
+        var m5date = document.getElementById("m5date").value;
+        var m5d = document.getElementById("m5d").value;
+  
+        console.log (duedate);
+        google.script.run.withSuccessHandler(updateDone).userAddEntry(aname, duedate,[m1d, m1date, m2d, m2date, m3d, m3date, m4d, m4date, m5d, m5date], email, apemail);
+    }
+    
+    function updateDone(num) {
+        document.getElementById("assignment_name").value = 'Calendar entry have been added. Please edit them to block particular times as needed';
+        M.updateTextFields();
+    }
+    
+    function doPlan() {
+        var duedate = document.getElementById("duedate").value;
+  
+        console.log (duedate);
+        var due = new Date(duedate);
+        var today = new Date();
+        var millinDay = 24 * 60 * 60 * 1000;
+        var diffDays = (due - today)/5;
+        
+        document.getElementById("m1date").value = new Date(due-(5*diffDays));
+        document.getElementById("m2date").value = new Date(due-(4*diffDays));
+        document.getElementById("m3date").value = new Date(due-(3*diffDays));
+        document.getElementById("m4date").value = new Date(due-(2*diffDays));
+        document.getElementById("m5date").value = new Date(due-(1*diffDays));
+        
+        document.getElementById("m1d").value = 'Read & understand the assignment';
+        document.getElementById("m2d").value = 'Complete minimum goal and verify';
+        document.getElementById("m3d").value = 'Verify work with faculty/TA/Accountability Partner';
+        document.getElementById("m4d").value = 'Complete assignment requirements';
+        document.getElementById("m5d").value = 'Review work against grading requirement';
+
+        M.updateTextFields();
+    }
+    
+</script>
+
