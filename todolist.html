@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>GAAME</title>
   <base target="_top">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,10 +9,14 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
-  <?!= include ("dash-css"); ?>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
+  <?!= include ("dash-css"); ?>
+  <?!= include ("todo-css"); ?>
+<script src="js/jquery.min.js"></script>
 </head>
 <body>
+
 
 <nav class="navbar navbar-inverse visible-xs">
   <div class="container-fluid">
@@ -26,10 +30,9 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><a href="#">Dashboard</a></li>
-        <li><a href="#">To Do Lists</a></li>
-        <li><a href="#">Courses</a></li>
-        <li class="active"><a href="#">Export iLearn Calendar</a></li>
+        <li class="dashboard"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=dashboard">Dashboard</a></li>
+        <li class="active" class="todoList"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=assignments">Assignments</a></li>
+        <li class="courses"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=courses">Courses</a></li>
       </ul>
     </div>
   </div>
@@ -40,64 +43,129 @@
     <div class="col-sm-3 sidenav hidden-xs">
       <img class="logo" src="https://i.ibb.co/xGrDqYd/a00e07a8-7536-4427-916f-3f679651775d-200x200.png" alt="Logo" >
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#section1">Dashboard</a></li>
-        <li><a href="#section2">To Do Lists</a></li>
-        <li><a href="#section3">Courses</a></li>
-        <li class="active"><a href="#section3">Export iLearn Calendar</a></li>
+        <li class="dashboard"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=dashboard">Dashboard</a></li>
+        <li class="active" class="todoList"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=assignments">Assignments</a></li>
+        <li class="courses"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=courses">Courses</a></li>
       </ul><br>
     </div>
     <br>
     
     <div class="col-sm-9">
       <div class="well">
-        <h4>Dashboard</h4>
-        <p>Some text..</p>
-      </div>
+        <h2 class="title">Assignments & Taks</h2>
+        <p>Add you assignments here and check them off when completed to see your progress</p>
+      </div>   
+   <!-- MODAL - create a new assingment -->
       <div class="row">
-        <div class="col-sm-4">
-            <div class="todolist not-done">
-             <h1>Todos</h1>
-                <input type="text" class="form-control add-todo" placeholder="Add todo">
-                    <button id="checkAll" class="btn btn-primary btn-xs">Mark all as done</button>
-                    
-                    <hr>
-                    <ul id="sortable" class="list-unstyled">
-                    <li class="ui-state-default">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" value="" />Do Assignment 1 : CST438 </label>
-                        </div>
-                    </li>
-                    <li class="ui-state-default">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" value="" />Buy bread</label>
-                        </div>
-                    </li>
-                    <li class="ui-state-default">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" value="" />Teach penguins to fly</label>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+        <div class="col-sm-12">
+            <!-- Trigger the modal with a button -->
+            <button type="button" class="btn btn-primary openBtn pull-right">Add Assignment</button>
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" role="dialog">
+              <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Create your assignment</h4>
+                  </div>
+                  <div class="modal-body">
+                       <form>
+                         <div class="form-group">
+                           <label for="exampleInputEmail1">Title of the assignment</label>
+                           <input type="text" class="form-control" id="title" placeholder="Enter title">
+                         </div>
+                         <div class="form-group">
+                            <label for="exampleInputPassword1">Course</label>
+                            <input type="text" class="form-control" id="courseName" placeholder="Enter course name">
+                         </div>
+                         <div class="form-group">
+                            <label for="exampleInputPassword1">URL to the assignment</label>
+                            <input type="text" class="form-control" id="courseName" placeholder="Enter URL to assignment">
+                         </div>
+                         
+                         <div class="form-group ">
+                             <label for="datepicker"> Select the due date </label>
+                             <input id="duedate" type="text">
+                             <i class="fa fa-calendar" aria-hidden="true"></i>
+                           
+                         </div>
+                         
+                        <div class="form-group ">
+                             <label for="datepicker"> Milestone 1 </label><br>
+                             <input type="text" class="col-sm-8" class="form-control" id="milstones" placeholder="Read Ch.1">
+                             <input type="text" id="datetimepicker" class="col-sm-2"  >
+                             <i class="fa fa-calendar" aria-hidden="true"></i>
+            
+                         </div>
+                         
+                          <div class="form-group ">
+                             <label for="datepicker"> Milestone 2 </label><br>
+                             <input type="text" class="col-sm-8" class="form-control" id="milstones" placeholder="Complete first three exercises">
+                             <input type="text" id="datetimepicker" class="col-sm-2"  >
+                             <i class="fa fa-calendar" aria-hidden="true"></i>
+            
+                         </div>
+                         
+                          <div class="form-group ">
+                             <label for="datepicker"> Milestone 3 </label><br>
+                             <input type="text" class="col-sm-8" class="form-control" id="milstones" placeholder="Read Ch.4">
+                             <input type="text" id="datetimepicker" class="col-sm-2"  >
+                             <i class="fa fa-calendar" aria-hidden="true"></i>
+            
+                         </div>
+                         
+                         <br>
 
+                         <button type="button" class="btn btn-primary" id="save">Add Assignment</button>
+                       </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
       
       
+       </div>
+      </div>     
+      <!-- MODAL ENDS HERE -->
       
+      <br>
+      
+    <div class="col-sm-12">
+    
+      <div class="row">
+      
+        <div class="col-sm-8">
+        <div class="title"> <b>Upcoming assignments: </b></div>
+          <div class="well">
+              <ul id="dynamic-list"> 
+              
+              </ul>
+          </div>
+        </div>
+        
+        <div class="col-sm-4">
+        <div class="title"> <b>Important taks: </b> </div>
+          <div class="well">
+            <p></p>
+          </div>
+        </div>
       </div>
-        
-      
-        
-        
-      </div>
+    </div>
+  </div>
+</div>
      
     </div>
   </div>
 </div>
-
+<?!= include ("todo-js"); ?>
 </body>
+<link rel="stylesheet" type="text/css" href="css/jquery.datetimepicker.min.css"/>
+<script src="js/jquery.datetimepicker.js"></script>
 </html>
 
 
