@@ -1,0 +1,47 @@
+<script>
+
+$(document).ready(function(){
+   
+    $('.openBtn').on('click',function(){
+          $('#myModal').modal({show:true});
+    });
+    
+    
+    $(".btn btn-primary#save").on('click', '#save', function(){
+          $('#myModal').modal({show:false});
+          
+    });
+    
+    $("#save").click(function(){
+        var assignment = $("#title").val();
+        var course = $("#courseName").val();
+        var duedate = $("#duedate").val();
+        console.log(assignment, course, duedate);
+        
+        $('#dynamic-list').append("<li>" + "<p class='assgn'>" + assignment + "</p>" + "<p class='cor'>" + course + "</p>" + "<p class='date'>" + duedate + "</p>" +"</li>");
+        
+    });
+    
+   
+    
+    
+//$('#datetimepicker').datetimepicker();
+
+
+
+
+
+
+
+
+});
+
+
+
+
+
+
+
+
+</script>
+

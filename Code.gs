@@ -1,8 +1,21 @@
-function doGet() {  
+function doGet(e) {  
   
-  var tmp = HtmlService.createTemplateFromFile('dashboard');
-  return tmp.evaluate();
+  if(e.parameters.v == "dashboard"){
+    var tmp = HtmlService.createTemplateFromFile('dashboard.html');
+    return tmp.evaluate();
+  }else if(e.parameters.v == "assignments"){
+    var tmp = HtmlService.createTemplateFromFile('todolist.html');
+    return tmp.evaluate();
+  }else if(e.parameters.v == "courses"){
+    var tmp = HtmlService.createTemplateFromFile('courses.html');
+    return tmp.evaluate();
+  }else {
+    return HtmlService.createHtmlOutput("<h1> Error </h1>");
+  }
+  
+  
 }
+
 function userAddEntry(aname, duedate, milestones, email, apemail) {
 
   Logger.log ("Called addEntery with " + duedate + " " + aname + " " + milestones);
