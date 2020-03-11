@@ -7,7 +7,28 @@
 
 $(document).ready(function(){
     
+    // Display courses 
+    function loadData(){
+       var courses = JSON.parse(localStorage.getItem("courses")) || [];
+       $('.coursesList').empty();
+       courses.forEach(function(course){
+           $('.coursesList').append("<li>" + "<div class='cors'>" + course.course + ": " + course.assignment + "</li>");
 
+       })
+    
+    }
+    loadData();
+    
+    function loadTasks(){
+       var tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+       $('.taksList').empty();
+       tasks.forEach(function(task){
+           $('.taksList').append("<li class='taskDash'>" + task.taskName + "</li>");
+       })
+    
+    }
+    
+    loadTasks();
 
 });
 

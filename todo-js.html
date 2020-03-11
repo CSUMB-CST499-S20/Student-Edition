@@ -1,15 +1,11 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
 <script>
 
 $(document).ready(function(){
    
     $('.openBtn').on('click',function(){
           $('#myModal').modal({show:true});
-    });
-    
-    
-    $(".btn btn-primary#save").on('click', '#save', function(){
-          $('#myModal').modal({show:false});
-          
     });
     
     // Save form 
@@ -28,6 +24,7 @@ $(document).ready(function(){
         courses.push(newCourses);
         localStorage.setItem("courses", JSON.stringify(courses))
         loadData();
+        $('#myModal').modal('hide');
                
     });
     
@@ -36,14 +33,54 @@ $(document).ready(function(){
        var courses = JSON.parse(localStorage.getItem("courses")) || [];
        $('#dynamic-list').empty();
        courses.forEach(function(course){
-           $('#dynamic-list').append("<li>" + "<div class='assgn'>" + course.assignment + "</div>" + "<div class='cor'>" + course.course + "</div>" + "<div class='date'>" + course.duedate + "</div>" +"</li>");
+           $('#dynamic-list').append("<li>" + "<div class='assgn'>" + course.assignment + '<span class="deleteCourse"> <i class="fas fa-trash"></i> </span>' + "</div>" + "<div class='cor'>" + course.course + "</div>" + "<div class='date'>" + course.duedate + "</div>" + "</li>");
 
        })
     
     }
-
     loadData();
+    
+    function removeCourse(){
+        $(".deleteCourse").click(function(){
+            var tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+        
+        });
+    
+    
+    }
+    
+     // ToDoList 
+     $("#btn").click(function(){
+        var task = $("#newTask").val();
+        console.log(task);
+        
+        var tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+        var newTask = {
+           "taskName" : task
+        }
+        tasks.push(newTask);
+        localStorage.setItem("tasks", JSON.stringify(tasks))
+        loadTasks();    
+    });
+    
+    function loadTasks(){
+       var tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+       $('#taskUL').empty();
+       tasks.forEach(function(task){
+           $('#taskUL').append("<li class='task'>" + task.taskName + '<span class="deleteTask"> <i class="fas fa-trash"></i> </span>' + "</li>");
+       })
+    
+    }
+    
+    loadTasks();
+    
+    
+    
    
+    
+   
+    
+  
     
     
 //$('#datetimepicker').datetimepicker();

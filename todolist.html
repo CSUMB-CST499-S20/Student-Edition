@@ -9,7 +9,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="screen" />
+
 
   <?!= include ("dash-css"); ?>
   <?!= include ("todo-css"); ?>
@@ -151,7 +152,15 @@
         <div class="col-sm-4">
         <div class="title"> <b>Important taks: </b> </div>
           <div class="well">
-            <p></p>
+            <div>
+               <form name="toDoList">
+                  <input type="text" id="newTask" name="ListItem" placeholder="Add new taks">
+                  <button type="button" class="btn btn-sm btn-primary" id="btn"> Add </button>
+               </form>
+               
+            </div>
+            <ul id="taskUL" class="a">
+            </ul>
           </div>
         </div>
       </div>
