@@ -12,16 +12,37 @@ $(document).ready(function(){
           
     });
     
+    // Save form 
     $("#save").click(function(){
         var assignment = $("#title").val();
         var course = $("#courseName").val();
         var duedate = $("#duedate").val();
         console.log(assignment, course, duedate);
         
-        $('#dynamic-list').append("<li>" + "<p class='assgn'>" + assignment + "</p>" + "<p class='cor'>" + course + "</p>" + "<p class='date'>" + duedate + "</p>" +"</li>");
-        
+        var courses = JSON.parse(localStorage.getItem("courses")) || [];
+        var newCourses = {
+           "assignment" : assignment, 
+           "course": course, 
+           "duedate": duedate
+        }
+        courses.push(newCourses);
+        localStorage.setItem("courses", JSON.stringify(courses))
+        loadData();
+               
     });
     
+    // Display courses 
+    function loadData(){
+       var courses = JSON.parse(localStorage.getItem("courses")) || [];
+       $('#dynamic-list').empty();
+       courses.forEach(function(course){
+           $('#dynamic-list').append("<li>" + "<div class='assgn'>" + course.assignment + "</div>" + "<div class='cor'>" + course.course + "</div>" + "<div class='date'>" + course.duedate + "</div>" +"</li>");
+
+       })
+    
+    }
+
+    loadData();
    
     
     
