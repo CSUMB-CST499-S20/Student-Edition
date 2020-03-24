@@ -9,6 +9,12 @@ function doGet(e) {
   }else if(e.parameters.v == "courses"){
     var tmp = HtmlService.createTemplateFromFile('courses.html');
     return tmp.evaluate();
+  }else  if((e.parameters.v == "calendar")){
+    var tmp = HtmlService.createTemplateFromFile('calendar.html');
+    return tmp.evaluate();
+  }else if(e.parameters.v == "email") {
+    var tmp = HtmlService.createTemplateFromFile('email.html');
+    return tmp.evaluate();
   }else {
     return HtmlService.createHtmlOutput("<h1> Error </h1>");
   }

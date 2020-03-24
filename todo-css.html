@@ -1,18 +1,64 @@
 <style>
 
+/* --- IMPORTANT TASKS  CSS RULES --- */
+#newTask{
+    width: 200px;
+    height: 34px;
+    font-size: 14px;
+    line-height: 1.42857;
+    color: rgb(85, 85, 85);
+    background-color: rgb(255, 255, 255);
+    background-image: none;
+    box-shadow: rgba(0, 0, 0, 0.075) 0px 1px 1px inset;
+    padding: 6px 12px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(204, 204, 204);
+    border-image: initial;
+    border-radius: 4px;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s, -webkit-box-shadow 0.15s ease-in-out 0s;
+}
+
+.task{
+font-size: 16px;
+
+}
+
+ul.a li {
+  display: list-item;
+  list-style-type: circle;
+  margin-left: 5%;
+  padding-bottom: 3px;
+} 
+.deleteTask, .deleteCourse{
+float:right;
+}
+
+.well{
+overflow:auto;
+}
+#btn{
+display:inline-block;
+}
+
+
+
+
+
 /* --- Todo LIST  CSS RULES --- */
 
 .assgn, .cor, .date{
-  font-size: 14px;
+  font-size: 16px;
+  padding-bottom: 3px;
 }
 .assgn {
 font-weight: bold; 
 }
 .date{
 color: red;
+padding-bottom: 3%;
+border-bottom: 2px solid white; 
 }
-
-
 
  /* --- MODAL CSS RULES --- */
 
@@ -73,7 +119,7 @@ color: red;
     transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s, -webkit-box-shadow 0.15s ease-in-out 0s;
 }
 
-
+    
 
 </style>
 
