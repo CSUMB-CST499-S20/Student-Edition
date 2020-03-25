@@ -50,3 +50,15 @@ function userAddEntry(aname, duedate, milestones, email, apemail) {
 function include(filename) {
   return HtmlService.createHtmlOutputFromFile(filename).getContent();
 }
+
+function getEmail() {
+  return Session.getActiveUser().getEmail();
+}
+
+function getProfilePic() {
+  var profile = People.People.get('people/me', {
+    personFields: 'photos'
+  });
+  
+  return profile["photos"][0]["url"]; 
+}
