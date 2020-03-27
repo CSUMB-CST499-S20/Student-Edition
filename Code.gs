@@ -52,17 +52,15 @@ function include(filename) {
 }
 
 function getEmail() {
-  return Session.getEffectiveUser().getEmail();
+  return Session.getActiveUser().getEmail();
 }
 
 function getProfilePic() {
-  var email = getEmail(); 
-  
   var profile = People.People.get('people/me', {
     personFields: 'photos'
   });
   
-  Logger.log(profile); 
+  Logger.log(profile["photos"][0]["url"]); 
   
   return profile["photos"][0]["url"]; 
 }
