@@ -60,5 +60,7 @@ function getProfilePic() {
     personFields: 'photos'
   });
   
+  Logger.log(profile["photos"][0]["url"]); 
+  
   return profile["photos"][0]["url"]; 
 }
