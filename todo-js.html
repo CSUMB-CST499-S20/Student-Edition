@@ -6,15 +6,22 @@ $(document).ready(function(){
    
     $('.openBtn').on('click',function(){
           $('#myModal').modal({show:true});
-          console.log("clicked button"); 
+          //console.log("clicked button"); 
     });
     
     // Save form 
     $("#save").click(function(){
+        var values = {};
+        $.each($('#assignment-form').serializeArray(), function(i, field) {
+          values[field.name] = field.value;
+        });
+        
         var assignment = $("#title").val();
         var course = $("#courseName").val();
         var duedate = $("#duedate").val();
         console.log(assignment, course, duedate);
+        
+        google.script.run.getValuesFromForm(values);
         
         var courses = JSON.parse(localStorage.getItem("courses")) || [];
         var newCourses = {
@@ -25,6 +32,7 @@ $(document).ready(function(){
         courses.push(newCourses);
         localStorage.setItem("courses", JSON.stringify(courses))
         loadData();
+        document.getElementById("assignment-form").reset();
         $('#myModal').modal('hide');
                
     });
@@ -61,8 +69,7 @@ $(document).ready(function(){
         }
         tasks.push(newTask);
         localStorage.setItem("tasks", JSON.stringify(tasks))
-        loadTasks(); 
-        $("#newTask").val('Add new task');
+        loadTasks();    
     });
     
     function loadTasks(){
