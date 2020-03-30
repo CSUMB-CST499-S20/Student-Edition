@@ -1,3 +1,4 @@
+// @OnlyCurrentDoc
 function doGet(e) {  
   
   if(e.parameters.v == "dashboard"){
@@ -60,8 +61,15 @@ function getProfilePic() {
     personFields: 'photos'
   });
   
-
+  Logger.log(profile["photos"][0]["url"]); 
   
-
   return profile["photos"][0]["url"]; 
+}
+
+function getValuesFromForm(form){
+  var id = "1rOvnjC0Rwk2sC0BMaFMDTXWprUOYZ2NXQAzVjFs5BIg";
+  var ss = SpreadsheetApp.openById(id);
+  var ws = ss.getSheetByName("Assignments");
+  ws.appendRow([getEmail(), form["title"], form["course"], form["url"], form["duedate"], form["milestone1"], form["date1"],
+                form["milestone2"], form["date2"], form["milestone3"], form["date3"]]);
 }
