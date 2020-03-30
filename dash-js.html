@@ -28,6 +28,7 @@ $(document).ready(function(){
     }
     
     loadTasks();
+
     
     function printEmail(email) {
        var username = document.getElementById('username'); 
@@ -42,6 +43,7 @@ $(document).ready(function(){
     }
     
     google.script.run.withSuccessHandler(printProfile).getProfilePic(); 
+
 });
 
 </script>
