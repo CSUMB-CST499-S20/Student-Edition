@@ -84,40 +84,40 @@
                     <h4 class="modal-title">Create your assignment</h4>
                   </div>
                   <div class="modal-body">
-                       <form>
+                       <form id="assignment-form">
                          <div class="form-group">
                            <label for="exampleInputEmail1">Title of the assignment</label>
-                           <input type="text" class="form-control" id="title" placeholder="Enter title">
+                           <input type="text" class="form-control" id="title" name="title" placeholder="Enter title">
                          </div>
                          <div class="form-group">
                             <label for="exampleInputPassword1">Course</label>
-                            <input type="text" class="form-control" id="courseName" placeholder="Enter course name">
+                            <input type="text" class="form-control" id="courseName" name="course" placeholder="Enter course name">
                          </div>
                          <div class="form-group">
                             <label for="exampleInputPassword1">URL to the assignment</label>
-                            <input type="text" class="form-control" id="courseName" placeholder="Enter URL to assignment">
+                            <input type="text" class="form-control" id="courseName" name="url" placeholder="Enter URL to assignment">
                          </div>
                          <div class="form-group ">
                              <label for="datepicker"> Select the due date </label>
-                             <input type="text" class="datepicker" id="duedate">
+                             <input type="text" class="datepicker" id="duedate" name="duedate">
                              <i class="fa fa-calendar" aria-hidden="true"></i>
                          </div>
                          <div class="form-group ">
                              <label for="datepicker"> Milestone 1 </label><br>
-                             <input type="text" class="col-sm-8" class="form-control" id="milstones" placeholder="Read Ch.1">
-                             <input type="text" class="datepicker datetimepicker" id="milestoneDate1">
+                             <input type="text" class="col-sm-8" class="form-control" id="milstones" name="milestone1" placeholder="Read Ch.1">
+                             <input type="text" class="datepicker datetimepicker" id="milestoneDate1" name="date1">
                              <i class="fa fa-calendar" aria-hidden="true"></i>
                          </div>
                          <div class="form-group ">
                              <label for="datepicker"> Milestone 2 </label><br>
-                             <input type="text" class="col-sm-8" class="form-control" id="milstones" placeholder="Complete first three exercises">
-                             <input type="text" class="datepicker datetimepicker" id="milestoneDate2">
+                             <input type="text" class="col-sm-8" class="form-control" id="milstones" name="milestone2"placeholder="Complete first three exercises">
+                             <input type="text" class="datepicker datetimepicker" id="milestoneDate2" name="date2">
                              <i class="fa fa-calendar" aria-hidden="true"></i>
                          </div>
                          <div class="form-group ">
                              <label for="datepicker"> Milestone 3 </label><br>
-                             <input type="text" class="col-sm-8" class="form-control" id="milstones" placeholder="Read Ch.4">
-                             <input type="text" class="datepicker datetimepicker" id="milestoneDate3">
+                             <input type="text" class="col-sm-8" class="form-control" id="milstones" name="milestone3" placeholder="Read Ch.4">
+                             <input type="text" class="datepicker datetimepicker" id="milestoneDate3" name="date3">
                              <i class="fa fa-calendar" aria-hidden="true"></i>
                          </div><br>
                          <button type="button" class="btn btn-primary" id="save">Add Assignment</button>

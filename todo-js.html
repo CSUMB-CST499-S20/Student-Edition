@@ -6,15 +6,22 @@ $(document).ready(function(){
    
     $('.openBtn').on('click',function(){
           $('#myModal').modal({show:true});
-          console.log("clicked button"); 
+          //console.log("clicked button"); 
     });
     
     // Save form 
     $("#save").click(function(){
+        var values = {};
+        $.each($('#assignment-form').serializeArray(), function(i, field) {
+          values[field.name] = field.value;
+        });
+        
         var assignment = $("#title").val();
         var course = $("#courseName").val();
         var duedate = $("#duedate").val();
         console.log(assignment, course, duedate);
+        
+        google.script.run.getValuesFromForm(values);
         
         var courses = JSON.parse(localStorage.getItem("courses")) || [];
         var newCourses = {
@@ -25,6 +32,7 @@ $(document).ready(function(){
         courses.push(newCourses);
         localStorage.setItem("courses", JSON.stringify(courses))
         loadData();
+        document.getElementById("assignment-form").reset();
         $('#myModal').modal('hide');
                
     });
@@ -34,7 +42,7 @@ $(document).ready(function(){
        var courses = JSON.parse(localStorage.getItem("courses")) || [];
        $('#dynamic-list').empty();
        courses.forEach(function(course){
-           $('#dynamic-list').append("<li>" + "<div class='assgn'>" + course.assignment + '<span class="deleteCourse"> <i class="fas fa-trash"></i> </span>' + "</div>" + "<div class='cor'>" + course.course + "</div>" + "<div class='date'>" + course.duedate + "</div>" + "</li>");
+           $('#dynamic-list').append("<li>" + "<div class='assgn'>" + course.assignment  + '<span class="deleteCourse"> <i class="far fa-trash-alt"></i> </span>'+ '<span class="editAssignment"> <i class="far fa-edit"></i> </span>' + "</div>" + "<div class='cor'>" + course.course + "</div>" + "<div class='date'>" + course.duedate + "</div>" + "</li>");
 
        })
     
@@ -61,17 +69,14 @@ $(document).ready(function(){
         }
         tasks.push(newTask);
         localStorage.setItem("tasks", JSON.stringify(tasks))
-
-        loadTasks(); 
-        $("#newTask").val('Add new task');
-
+        loadTasks();    
     });
     
     function loadTasks(){
        var tasks = JSON.parse(localStorage.getItem("tasks")) || [];
        $('#taskUL').empty();
        tasks.forEach(function(task){
-           $('#taskUL').append("<li class='task'>" + task.taskName + '<span class="deleteTask"> <i class="fas fa-trash"></i> </span>' + "</li>");
+           $('#taskUL').append("<li class='task'>" + task.taskName  + '<span class="deleteTask"> <i class="far fa-trash-alt"></i> </span>' + '<span class="editAssignment"> <i class="far fa-edit"></i> </span>' + "</li>");
        })
     
     }
