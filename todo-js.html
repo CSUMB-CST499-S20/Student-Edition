@@ -61,8 +61,10 @@ $(document).ready(function(){
         }
         tasks.push(newTask);
         localStorage.setItem("tasks", JSON.stringify(tasks))
+
         loadTasks(); 
         $("#newTask").val('Add new task');
+
     });
     
     function loadTasks(){

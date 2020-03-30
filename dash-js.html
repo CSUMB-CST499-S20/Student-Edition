@@ -28,6 +28,22 @@ $(document).ready(function(){
     }
     
     loadTasks();
+
+    
+    function printEmail(email) {
+       var username = document.getElementById('username'); 
+       username.innerHTML = email; 
+    }
+    
+    google.script.run.withSuccessHandler(printEmail).getEmail(); 
+    
+    function printProfile(profile) { 
+      document.getElementById("profileImage").src = profile + "-cc-rg";
+      console.log(profile); 
+    }
+    
+    google.script.run.withSuccessHandler(printProfile).getProfilePic(); 
+
 });
 
 </script>
