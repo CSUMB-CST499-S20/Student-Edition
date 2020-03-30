@@ -66,13 +66,23 @@
     </div>
     <br>
      <!-- CONTENT - CALENDAR SHOULD BE DISPLAYED HERE -->
+         <!-- USER  - username and photo -->
+    <div class="topNav" class="well"> 
+       <ul>
+          <li> <img class="userImage" id="profileImage" src="https://www.openroadreview.com/wp-content/uploads/2016/01/User-Icon-PNG-03589.png"></li>
+          <li style="font-size: 18px;"id="username"></li>
+
+        </ul>
+      </div>
+      <!-- USER END  -->
+      
     <div class="responsiveCal">
     <iframe src="https://calendar.google.com/calendar/b/0/embed?height=700&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FLos_Angeles&amp;src=cGRhaGxAY3N1bWIuZWR1&amp;color=%23E67C73&amp;showPrint=0" style="border:solid 0px #777; padding:0 2% 0 2%;" width="1000" height="700" frameborder="0" scrolling="no"></iframe>
     </div>
 
   </div>
 </div>
-
+<?!= include ("username-js"); ?>
 </body>
 </html>
 
