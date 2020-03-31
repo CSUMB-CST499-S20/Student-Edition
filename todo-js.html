@@ -30,11 +30,11 @@ $(document).ready(function(){
            "duedate": duedate
         }
         courses.push(newCourses);
-        localStorage.setItem("courses", JSON.stringify(courses))
-        loadData();
+        localStorage.setItem("courses", JSON.stringify(courses));
+       
         document.getElementById("assignment-form").reset();
         $('#myModal').modal('hide');
-               
+        google.script.run.withSuccessHandler(loadData).getColumnsFromSheet();
     });
     
     google.script.run.withSuccessHandler(loadData).getColumnsFromSheet();
@@ -46,8 +46,8 @@ $(document).ready(function(){
     
     // Display courses 
     function loadData(data){
+    if (typeof data !== 'undefined') {
        var courses = JSON.parse(data) || [];
-       //var courses = JSON.parse(localStorage.getItem("courses")) || [];
        $('#dynamic-list').empty();
        courses.forEach(function(course){
            if (course[0] === window.email) {
@@ -59,21 +59,21 @@ $(document).ready(function(){
           
            $('#dynamic-list').append("<li>" + "<div class='assgn'>" + course[1]  + '<span class="deleteCourse"> <i class="far fa-trash-alt"></i> </span>'+ '<span class="editAssignment"> <i class="far fa-edit"></i> </span>' + "</div>" + "<div class='cor'>" + course[2] + "</div>" + "<div class='date'>" + newDate + "</div>" + "</li>");
            }
-       }) 
+       })
+       
     }
-    loadData();
+    }
+    //loadData();
     
     function removeCourse(){
         $(".deleteCourse").click(function(){
-            var tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-        
+            var tasks = JSON.parse(localStorage.getItem("tasks")) || [];     
         });
-    
-    
     }
     
      // ToDoList 
      $("#btn").click(function(){
+        console.log("button clicked");
         var task = $("#newTask").val();
         console.log(task);
         
