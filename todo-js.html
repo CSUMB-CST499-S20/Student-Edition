@@ -37,15 +37,29 @@ $(document).ready(function(){
                
     });
     
+    google.script.run.withSuccessHandler(loadData).getColumnsFromSheet();
+    google.script.run.withSuccessHandler(getEmail).getEmailString();
+    
+    function getEmail(data) {
+       window.email = JSON.parse(data);
+    }
+    
     // Display courses 
-    function loadData(){
-       var courses = JSON.parse(localStorage.getItem("courses")) || [];
+    function loadData(data){
+    var courses = JSON.parse(data) || [];
+       //var courses = JSON.parse(localStorage.getItem("courses")) || [];
        $('#dynamic-list').empty();
        courses.forEach(function(course){
-           $('#dynamic-list').append("<li>" + "<div class='assgn'>" + course.assignment + '<span class="deleteCourse"> <i class="fas fa-trash"></i> </span>' + "</div>" + "<div class='cor'>" + course.course + "</div>" + "<div class='date'>" + course.duedate + "</div>" + "</li>");
-
-       })
-    
+           if (course[0] === window.email) {
+           var newDate = "";
+           if (course[4] !== "") {
+              var date = new Date(course[4]);
+              newDate = date.toLocaleString("en-US").split(",")[0]
+           }
+          
+           $('#dynamic-list').append("<li>" + "<div class='assgn'>" + course[1]  + '<span class="deleteCourse"> <i class="far fa-trash-alt"></i> </span>'+ '<span class="editAssignment"> <i class="far fa-edit"></i> </span>' + "</div>" + "<div class='cor'>" + course[2] + "</div>" + "<div class='date'>" + newDate + "</div>" + "</li>");
+           }
+       }) 
     }
     loadData();
     
@@ -76,7 +90,7 @@ $(document).ready(function(){
        var tasks = JSON.parse(localStorage.getItem("tasks")) || [];
        $('#taskUL').empty();
        tasks.forEach(function(task){
-           $('#taskUL').append("<li class='task'>" + task.taskName + '<span class="deleteTask"> <i class="fas fa-trash"></i> </span>' + "</li>");
+           $('#taskUL').append("<li class='task'>" + task.taskName  + '<span class="deleteTask"> <i class="far fa-trash-alt"></i> </span>' + '<span class="editAssignment"> <i class="far fa-edit"></i> </span>' + "</li>");
        })
     
     }
