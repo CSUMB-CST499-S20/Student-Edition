@@ -46,15 +46,15 @@ $(document).ready(function(){
     
     // Display courses 
     function loadData(data){
-    var courses = JSON.parse(data) || [];
+       var courses = JSON.parse(data) || [];
        //var courses = JSON.parse(localStorage.getItem("courses")) || [];
        $('#dynamic-list').empty();
        courses.forEach(function(course){
            if (course[0] === window.email) {
-           var newDate = "";
-           if (course[4] !== "") {
-              var date = new Date(course[4]);
-              newDate = date.toLocaleString("en-US").split(",")[0]
+              var newDate = "";
+              if (course[4] !== "") {
+                 var date = new Date(course[4]);
+                 newDate = date.toLocaleString("en-US").split(",")[0]
            }
           
            $('#dynamic-list').append("<li>" + "<div class='assgn'>" + course[1]  + '<span class="deleteCourse"> <i class="far fa-trash-alt"></i> </span>'+ '<span class="editAssignment"> <i class="far fa-edit"></i> </span>' + "</div>" + "<div class='cor'>" + course[2] + "</div>" + "<div class='date'>" + newDate + "</div>" + "</li>");
