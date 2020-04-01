@@ -30,36 +30,49 @@ $(document).ready(function(){
            "duedate": duedate
         }
         courses.push(newCourses);
-        localStorage.setItem("courses", JSON.stringify(courses))
-        loadData();
+        localStorage.setItem("courses", JSON.stringify(courses));
         document.getElementById("assignment-form").reset();
         $('#myModal').modal('hide');
-               
+        google.script.run.withSuccessHandler(loadData).getColumnsFromSheet();
     });
     
+    google.script.run.withSuccessHandler(loadData).getColumnsFromSheet();
+    google.script.run.withSuccessHandler(getEmail).getEmailString();
+    
+    function getEmail(data) {
+       window.email = JSON.parse(data);
+    }
+    
     // Display courses 
-    function loadData(){
-       var courses = JSON.parse(localStorage.getItem("courses")) || [];
+    function loadData(data){
+    if (typeof data !== 'undefined') {
+       var courses = JSON.parse(data) || [];
        $('#dynamic-list').empty();
        courses.forEach(function(course){
-           $('#dynamic-list').append("<li>" + "<div class='assgn'>" + course.assignment  + '<span class="deleteCourse"> <i class="far fa-trash-alt"></i> </span>'+ '<span class="editAssignment"> <i class="far fa-edit"></i> </span>' + "</div>" + "<div class='cor'>" + course.course + "</div>" + "<div class='date'>" + course.duedate + "</div>" + "</li>");
-
+           if (course[0] === window.email) {
+              var newDate = "";
+              if (course[4] !== "") {
+                 var date = new Date(course[4]);
+                 newDate = date.toLocaleString("en-US").split(",")[0]
+           }
+          
+           $('#dynamic-list').append("<li>" + "<div class='assgn'>" + course[1]  + '<span class="deleteCourse"> <i class="far fa-trash-alt"></i> </span>'+ '<span class="editAssignment"> <i class="far fa-edit"></i> </span>' + "</div>" + "<div class='cor'>" + course[2] + "</div>" + "<div class='date'>" + newDate + "</div>" + "</li>");
+           }
        })
-    
+       
     }
-    loadData();
+    }
+    //loadData();
     
     function removeCourse(){
         $(".deleteCourse").click(function(){
-            var tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-        
+            var tasks = JSON.parse(localStorage.getItem("tasks")) || [];     
         });
-    
-    
     }
     
      // ToDoList 
      $("#btn").click(function(){
+        console.log("button clicked");
         var task = $("#newTask").val();
         console.log(task);
         
