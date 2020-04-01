@@ -31,7 +31,6 @@ $(document).ready(function(){
         }
         courses.push(newCourses);
         localStorage.setItem("courses", JSON.stringify(courses));
-       
         document.getElementById("assignment-form").reset();
         $('#myModal').modal('hide');
         google.script.run.withSuccessHandler(loadData).getColumnsFromSheet();
