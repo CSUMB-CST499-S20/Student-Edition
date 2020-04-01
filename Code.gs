@@ -56,6 +56,10 @@ function getEmail() {
   return Session.getActiveUser().getEmail();
 }
 
+function getEmailString() {
+  return JSON.stringify(Session.getActiveUser().getEmail());
+}
+
 function getProfilePic() {
   var profile = People.People.get('people/me', {
     personFields: 'photos'
@@ -72,4 +76,14 @@ function getValuesFromForm(form){
   var ws = ss.getSheetByName("Assignments");
   ws.appendRow([getEmail(), form["title"], form["course"], form["url"], form["duedate"], form["milestone1"], form["date1"],
                 form["milestone2"], form["date2"], form["milestone3"], form["date3"]]);
+}
+function getColumnsFromSheet() {
+  var id = "1rOvnjC0Rwk2sC0BMaFMDTXWprUOYZ2NXQAzVjFs5BIg";
+  Logger.log(id);
+  var ss = SpreadsheetApp.openById(id);
+  var ws = ss.getSheetByName("Assignments");
+  
+  var values = ws.getDataRange().getValues();
+  Logger.log(values);
+  return JSON.stringify(values);
 }

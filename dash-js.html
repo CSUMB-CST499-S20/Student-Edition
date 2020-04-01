@@ -4,15 +4,29 @@
 // - dashboard : https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=dashboard
 // - todo list: 
 
+$(document).ready(function(){ 
 
-$(document).ready(function(){    
+    google.script.run.withSuccessHandler(loadData).getColumnsFromSheet();
+    google.script.run.withSuccessHandler(getEmail).getEmailString();
+    
+    function getEmail(data) {
+       window.email = JSON.parse(data);
+    }
+    
     // Display courses 
-    function loadData(){
-       var courses = JSON.parse(localStorage.getItem("courses")) || [];
+    function loadData(data){
+       var courses = JSON.parse(data) || [];
+       // var courses = JSON.parse(localStorage.getItem("courses")) || [];
        $('.coursesList').empty();
        courses.forEach(function(course){
-           $('.coursesList').append("<li>" + "<div class='cors'>" + course.course + ": " + course.assignment + "</li>");
-
+           if (course[0] === window.email) {
+              var newDate = "";
+              if (course[4] !== "") {
+                 var date = new Date(course[4]);
+                 newDate = date.toLocaleString("en-US").split(",")[0]
+              }
+              $('.coursesList').append("<li>" + "<div class='cors'>" + course[2] + ": " + course[1] + "</li>");
+           } 
        })
     
     }
