@@ -10,20 +10,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
   <?!= include ("dash-css"); ?>
-   <style>
-     .responsiveCal {
- 
-         position: relative; padding-bottom: 55%; height: 0; overflow: hidden;
- 
-     }
- 
-     .responsiveCal iframe {
- 
-      position: absolute; top:0; left: 0; width: 100%; height: 100%;
- 
-     }
-  
-  </style>
 
 </head>
 <body>
@@ -43,9 +29,9 @@
         <li class="dashboard"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=dashboard">Dashboard</a></li>
         <li class="todoList"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=assignments">Assignments</a></li>
         <li class="courses"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=courses">Courses</a></li>
-        <li class="active" class="calendar"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=calendar">Calendar</a></li>
+        <li class="calendar"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=calendar">Calendar</a></li>
         <li class="email"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=email">Email</a></li>
-        <li class="ilearn"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=ilearn">Export iLearn</a></li>
+        <li class="active" class="ilearn"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=ilearn">Export iLearn</a></li>
       </ul>
     </div>
   </div>
@@ -59,14 +45,15 @@
         <li class="dashboard"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=dashboard">Dashboard</a></li>
         <li class="todoList"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=assignments">Assignments</a></li>
         <li class="courses"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=courses">Courses</a></li>
-        <li class="active" class="calendar"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=calendar">Calendar</a></li>
+        <li class="calendar"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=calendar">Calendar</a></li>
         <li class="email"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=email">Email</a></li>
-        <li class="ilearn"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=ilearn">Export iLearn</a></li>
+        <li class="active" class="ilearn"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=ilearn">Export iLearn</a></li>
       </ul><br>
     </div>
     <br>
-     <!-- CONTENT - CALENDAR SHOULD BE DISPLAYED HERE -->
-         <!-- USER  - username and photo -->
+    
+    <div class="col-sm-9">
+        <!-- USER  - username and photo -->
     <div class="topNav" class="well"> 
        <ul>
           <li> <img class="userImage" id="profileImage" src="https://www.openroadreview.com/wp-content/uploads/2016/01/User-Icon-PNG-03589.png"></li>
@@ -76,35 +63,31 @@
       </div>
       <!-- USER END  -->
       
-    <div class="responsiveCal">
-   
-
-   </div>
-
+      
+      
+      <div class="title">
+        <h4>Export iLearn Calendar</h4>
+      </div>
+      <div class="exportContent">
+          <img class = "img-responsive" src="https://i.ibb.co/Kqf4YQ6/Step.png" alt="Step" >
+          <div class="form-group">
+              <label for="usr">Paste URL here: </label>
+              <input type="text" class="form-control" id="usr">
+          </div>
+          <button type="button" class="btn btn-primary">Export Calendar</button>
+      
+      </div>
+      
+     
+    </div>
   </div>
 </div>
-
-<script>
-
-function getCalendar(email){
-// https://www.googleapis.com/auth/calendar.readonly	read-only access to Calendars
-  let userEmail = $("#username");
-  userEmail.innerHTML = email; 
-  console.log(email);
-  let calendarIfram = '<iframe src="https://www.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=' + email + '&amp;color=%232952A3&amp;ctz=America%2FLos_Angeles" style=" border-width:0 " width="100%" height="600" frameborder="0" scrolling="no"></iframe>';
-  $(".responsiveCal").html(calendarIfram);
-}
-
-
-google.script.run.withSuccessHandler(getCalendar).getEmail(); 
-
-
-</script>
-
-
 <?!= include ("username-js"); ?>
 </body>
 </html>
+
+
+
 
 
 
