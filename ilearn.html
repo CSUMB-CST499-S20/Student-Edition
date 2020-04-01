@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>GAAME</title>
+  <base target="_top">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="dash-css.html">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
+  <?!= include ("dash-css"); ?>
+
+</head>
+<body>
+
+<nav class="navbar navbar-inverse visible-xs">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#"><img class="logoSmall" src="https://i.ibb.co/xGrDqYd/a00e07a8-7536-4427-916f-3f679651775d-200x200.png" alt="Logo" ></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="dashboard"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=dashboard">Dashboard</a></li>
+        <li class="todoList"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=assignments">Assignments</a></li>
+        <li class="courses"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=courses">Courses</a></li>
+        <li class="calendar"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=calendar">Calendar</a></li>
+        <li class="email"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=email">Email</a></li>
+        <li class="active" class="ilearn"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=ilearn">Export iLearn</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav hidden-xs">
+      <img class="logo" src="https://i.ibb.co/xGrDqYd/a00e07a8-7536-4427-916f-3f679651775d-200x200.png" alt="Logo" >
+      <ul class="nav nav-pills nav-stacked">
+        <li class="dashboard"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=dashboard">Dashboard</a></li>
+        <li class="todoList"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=assignments">Assignments</a></li>
+        <li class="courses"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=courses">Courses</a></li>
+        <li class="calendar"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=calendar">Calendar</a></li>
+        <li class="email"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=email">Email</a></li>
+        <li class="active" class="ilearn"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=ilearn">Export iLearn</a></li>
+      </ul><br>
+    </div>
+    <br>
+    
+    <div class="col-sm-9">
+        <!-- USER  - username and photo -->
+    <div class="topNav" class="well"> 
+       <ul>
+          <li> <img class="userImage" id="profileImage" src="https://www.openroadreview.com/wp-content/uploads/2016/01/User-Icon-PNG-03589.png"></li>
+          <li style="font-size: 18px;"id="username"></li>
+
+        </ul>
+      </div>
+      <!-- USER END  -->
+      
+      
+      
+      <div class="title">
+        <h4>Export iLearn Calendar</h4>
+      </div>
+      <div class="exportContent">
+          <img class = "img-responsive" src="https://i.ibb.co/Kqf4YQ6/Step.png" alt="Step" >
+          <div class="form-group">
+              <label for="usr">Paste URL here: </label>
+              <input type="text" class="form-control" id="usr">
+          </div>
+          <button type="button" class="btn btn-primary">Export Calendar</button>
+      
+      </div>
+      
+     
+    </div>
+  </div>
+</div>
+<?!= include ("username-js"); ?>
+</body>
+</html>
+
+
+
+
+
+
