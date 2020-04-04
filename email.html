@@ -11,13 +11,15 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
   
   <?!= include ("dash-css"); ?>
-  
+
   <style>
     .email{
       width:50%;
       margin-top: 5%;
       margin-left: 28%;
-      padding: 8%;
+
+      padding: 3%;
+
       background-color: #337ab7;
       border-radius: 10px;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -26,43 +28,8 @@
     #EmailHere{
       margin-left: 26%;
       color: #337ab7;
-    }
-    
-    .email-container {
-      margin-left:25%; 
-      font-size: 14px; 
-    }
-    
-    .email-table {
-      border-collapse:collapse;
-      border-spacing:0;
-      width:100%;
-    }
-    
-    .email-table td,.email-table th {
-      padding:8px 8px;
-      display:table-cell;
-      text-align:left;
-      vertical-align:top; 
-    }
-    
-    .email-table th:first-child,.email-table td:first-child {
-      padding-left:16px;
-    }
-    
-    .email-border tr {
-      border-bottom:1px solid #ddd
-    }
-    
-    .email-center {
-      display:inline-block;
-      width:auto; 
-      text-align:right!important;
-    }
-    
-    .email-hoverable tbody tr:hover, .email-hoverable li:hover {
-      background-color:#ccc; 
-    }
+
+    } 
   </style>
 </head>
 
@@ -79,14 +46,14 @@
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li class="dashboard"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx-0kZEmk_ht5M1KKyBHys8UPKhI1UzREgW0odrx663QddqEdsA/exec?v=dashboard">Dashboard</a></li>
-          <li class="todoList"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx-0kZEmk_ht5M1KKyBHys8UPKhI1UzREgW0odrx663QddqEdsA/exec?v=assignments">Assignments</a></li>
-          <li class="courses"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx-0kZEmk_ht5M1KKyBHys8UPKhI1UzREgW0odrx663QddqEdsA/exec?v=courses">Courses</a></li>
-          <li class="calendar"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx-0kZEmk_ht5M1KKyBHys8UPKhI1UzREgW0odrx663QddqEdsA/exec?v=calendar">Calendar</a></li>
-          <li class="active" class="email"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx-0kZEmk_ht5M1KKyBHys8UPKhI1UzREgW0odrx663QddqEdsA/exec?v=email">Email</a></li>
-          <li class="ilearn"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx-0kZEmk_ht5M1KKyBHys8UPKhI1UzREgW0odrx663QddqEdsA/exec?v=ilearn">Export iLearn</a></li>
+          <li class="dashboard"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=dashboard">Dashboard</a></li>
+          <li class="todoList"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=assignments">Assignments</a></li>
+          <li class="courses"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=courses">Courses</a></li>
+          <li class="calendar"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=calendar">Calendar</a></li>
+          <li class="active" class="email"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=email">Email</a></li>
+          <li class="ilearn"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=ilearn">Export iLearn</a></li>
+        </ul>
 
-       </ul>
       </div>
     </div>
   </nav>
@@ -96,12 +63,14 @@
       <div class="col-sm-3 sidenav hidden-xs">
         <img class="logo" src="https://i.ibb.co/xGrDqYd/a00e07a8-7536-4427-916f-3f679651775d-200x200.png" alt="Logo" >
         <ul class="nav nav-pills nav-stacked">
-           <li class="dashboard"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx-0kZEmk_ht5M1KKyBHys8UPKhI1UzREgW0odrx663QddqEdsA/exec?v=dashboard">Dashboard</a></li>
-           <li class="todoList"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx-0kZEmk_ht5M1KKyBHys8UPKhI1UzREgW0odrx663QddqEdsA/exec?v=assignments">Assignments</a></li>
-           <li class="courses"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx-0kZEmk_ht5M1KKyBHys8UPKhI1UzREgW0odrx663QddqEdsA/exec?v=courses">Courses</a></li>
-           <li class="calendar"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx-0kZEmk_ht5M1KKyBHys8UPKhI1UzREgW0odrx663QddqEdsA/exec?v=calendar">Calendar</a></li>
-           <li class="active" class="email"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx-0kZEmk_ht5M1KKyBHys8UPKhI1UzREgW0odrx663QddqEdsA/exec?v=email">Email</a></li>
-           <li class="ilearn"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx-0kZEmk_ht5M1KKyBHys8UPKhI1UzREgW0odrx663QddqEdsA/exec?v=ilearn">Export iLearn</a></li>
+
+          <li class="dashboard"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=dashboard">Dashboard</a></li>
+          <li class="todoList"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=assignments">Assignments</a></li>
+          <li class="courses"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=courses">Courses</a></li>
+          <li class="calendar"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=calendar">Calendar</a></li>
+          <li class="active" class="email"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=email">Email</a></li>
+          <li class="ilearn"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=ilearn">Export iLearn</a></li>
+
         </ul><br>
       </div>
       <br>
@@ -116,47 +85,28 @@
       <!-- USER END  -->
       
       <!-- EMAIL CONTENT HERE-->
-      <!-- 
-      <h2 id="EmailHere"> Send Your Email Here</h2>
+
+      <h2 id="EmailHere"> Send Your Email Here   </h2>
       <div class="email">
-        <form>
-          <div class="form-group">
+         <div class="form-group">
             <label for="email"> To: </label>
             <input type="email" class="form-control" id="emailTo">
-          </div>
-          <div class="form-group">
-            <label for="subject">Subject:</label>
-            <input type="text" class="form-control" id="sub">
-          </div>
-          <div class="form-group">
+         </div>
+         <div class="form-group">
+             <label for="subject">Subject:</label>
+             <input type="text" class="form-control" id="sub">
+         </div>
+         <div class="form-group">
             <label for="message"> Message: </label> <br>
             <textarea class="form-control" rows="5" id="message"></textarea>
-          </div>
-          <button type="submit" class="btn btn-default">Send</button>
-        </form>
-      </div> --> 
+         </div>
+         <button type="submit" id="sendButton">Send</button>
+         <br><span id="result"></span>
+      </div> 
       <!-- EMAIL CONTENT END -->
-      
-      <div class="email-container">
-        <table class="email-table email-border email-hoverable" id="email-table">
-          <col width="25%">
-          <col width="70%">
-          <thead>
-            <tr>
-              <td>Refresh Icon</td>
-              <td class="email-center">Compose Message Icon</td>
-            </tr>
-          </thead>
-          <tr>
-            <th>Recipient</th>
-            <td>Subject-Message</td>
-          </tr>
-        </table> 
-      </div>
-      
-    </div> <!-- END ROW CONTENT --> 
-  </div> <!-- END CONTAINER-FLUID --> 
-  
+    </div>
+  </div>
+
 <?!= include ("email-js"); ?>
 <?!= include ("username-js"); ?>
 </body>

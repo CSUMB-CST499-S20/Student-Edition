@@ -159,4 +159,9 @@ function addTask(taskListId, title) {
 }
 
 
+function sendEmail(recipient, subject, message) {
+  MailApp.sendEmail(recipient, subject, message);
+
+  return 1;   
+}
 
