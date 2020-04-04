@@ -157,3 +157,9 @@ function addTask(taskListId, title) {
   var task = Tasks.newTask().setTitle(title);
   Tasks.Tasks.insert(task, taskListId);
 }
+
+function sendEmail(recipient, subject, message) {
+  MailApp.sendEmail(recipient, subject, message);
+
+  return 1;   
+}
