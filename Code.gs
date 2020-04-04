@@ -165,3 +165,8 @@ function sendEmail(recipient, subject, message) {
   return 1;   
 }
 
+function deleteTask(taskListId, taskId) {
+  Logger.log(taskListId);
+  Logger.log(taskId);
+  Tasks.Tasks.remove(taskListId, taskId);
+}
