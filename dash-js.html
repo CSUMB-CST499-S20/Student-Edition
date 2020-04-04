@@ -5,18 +5,20 @@
 // - todo list: 
 
 $(document).ready(function(){ 
-
     google.script.run.withSuccessHandler(loadData).getColumnsFromSheet();
     google.script.run.withSuccessHandler(getEmail).getEmailString();
+    
+    countTask = 0;
     
     function getEmail(data) {
        window.email = JSON.parse(data);
     }
     
     // Display courses 
-     function loadData(data){
+    function loadData(data){
     var count = 0;
        var courses = JSON.parse(data) || [];
+       
        $('.coursesList').empty();
        courses.forEach(function(course){
            if (course[0] === window.email) {
@@ -30,33 +32,56 @@ $(document).ready(function(){
            } 
        })
        
-      
        $(".chart--num.assg").html(count);
    
     
     }
-    loadData();
+    //loadData();
     
-    function loadTasks(){
-    var countTask;
-    countTask = 0;
-       var tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-       $('.taksList').empty();
-       tasks.forEach(function(task){
-           $('.taksList').append("<li class='taskDash'>" + task.taskName + "</li>");
-           countTask++;
-       })
-      
+  
+    
+  /**
+   * Load the available task lists.
+   */
+  function loadTaskLists() {
+    google.script.run.withSuccessHandler(showTaskLists)
+        .withFailureHandler(showError)
+        .getTaskLists();
+  }
+  
+  function showTaskLists(taskLists) {
+    taskLists.forEach(function(taskList) {
+      google.script.run.withSuccessHandler(showTasks)
+        .withFailureHandler(showError)
+        .getTasks(taskList.id);
+    });
    
-       $(".chart--num.task").html(countTask);
-       
-       
+  }
+    
+  /**
+   * Show the returned tasks on the page.
+   * @param {Array.<Object>} tasks The tasks to show.
+   */
+  function showTasks(tasks) {
+    var list = $('.taksList');
+    if (tasks.length > 0) {
+      tasks.forEach(function(task) {
+        list.append("<li class='taskDash'>" + task.title + "</li>");
+        countTask++;
+        $(".chart--num.task").html(countTask);
+      });
+    } else {
+      list.text('No tasks');
     }
-    
-    loadTasks();
-    
-    
- 
+  }
+  
+   /**
+   * Logs an error message and shows an alert to the user.
+   */
+  function showError(error) {
+    console.log(error);
+    window.alert('An error has occurred, please try again.');
+  }
     
     
    // function printEmail(email) {
@@ -72,8 +97,8 @@ $(document).ready(function(){
     }
     
     google.script.run.withSuccessHandler(printProfile).getProfilePic(); 
+    loadTaskLists();
+    
 });
 
 </script>
-
-
