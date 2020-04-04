@@ -1,6 +1,5 @@
-// @OnlyCurrentDoc
+
 function doGet(e) {  
-  
   if(e.parameters.v == "dashboard"){
     var tmp = HtmlService.createTemplateFromFile('dashboard.html');
     return tmp.evaluate();
@@ -10,7 +9,7 @@ function doGet(e) {
   }else if(e.parameters.v == "courses"){
     var tmp = HtmlService.createTemplateFromFile('courses.html');
     return tmp.evaluate();
-  }else  if((e.parameters.v == "calendar")){
+  }else  if(e.parameters.v == "calendar"){
     var tmp = HtmlService.createTemplateFromFile('calendar.html');
     return tmp.evaluate();
   }else if(e.parameters.v == "email") {
@@ -91,6 +90,7 @@ function getColumnsFromSheet() {
   return JSON.stringify(values);
 }
 
+
 /**
  * Returns the ID and name of every task list in the user's account.
  * @return {Array.<Object>} The task list data.
@@ -158,8 +158,10 @@ function addTask(taskListId, title) {
   Tasks.Tasks.insert(task, taskListId);
 }
 
+
 function sendEmail(recipient, subject, message) {
   MailApp.sendEmail(recipient, subject, message);
 
   return 1;   
 }
+
