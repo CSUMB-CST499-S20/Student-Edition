@@ -12,82 +12,74 @@
   
   <?!= include ("dash-css"); ?>
   <style>
-  .email{
-    width:50%;
-    margin-top: 5%;
-    margin-left: 28%;
-    padding: 8%;
-    background-color: #337ab7;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    color: white;
-  }
-  #EmailHere{
-     margin-left: 26%;
-     color: #337ab7;
-  }
-  
+    .email{
+      width:50%;
+      margin-top: 5%;
+      margin-left: 28%;
+      padding: 3%;
+      background-color: #337ab7;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      color: white;
+    }
+    #EmailHere{
+      margin-left: 26%;
+      color: #337ab7;
+    } 
   </style>
- 
-
 </head>
+
 <body>
+  <nav class="navbar navbar-inverse visible-xs">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+        <a class="navbar-brand" href="#"><img class="logoSmall" src="https://i.ibb.co/xGrDqYd/a00e07a8-7536-4427-916f-3f679651775d-200x200.png" alt="Logo" ></a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="dashboard"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=dashboard">Dashboard</a></li>
+          <li class="todoList"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=assignments">Assignments</a></li>
+          <li class="courses"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=courses">Courses</a></li>
+          <li class="calendar"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=calendar">Calendar</a></li>
+          <li class="active" class="email"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=email">Email</a></li>
+          <li class="ilearn"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=ilearn">Export iLearn</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-<nav class="navbar navbar-inverse visible-xs">
   <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="#"><img class="logoSmall" src="https://i.ibb.co/xGrDqYd/a00e07a8-7536-4427-916f-3f679651775d-200x200.png" alt="Logo" ></a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="dashboard"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbzldJem25m89jTuGefb0Hah-sLoxZvU0nkJqhKFAg/exec?v=dashboard">Dashboard</a></li>
-        <li class="todoList"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbzldJem25m89jTuGefb0Hah-sLoxZvU0nkJqhKFAg/exec?v=assignments">Assignments</a></li>
-        <li class="courses"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbzldJem25m89jTuGefb0Hah-sLoxZvU0nkJqhKFAg/exec?v=courses">Courses</a></li>
-        <li class="calendar"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbzldJem25m89jTuGefb0Hah-sLoxZvU0nkJqhKFAg/exec?v=calendar">Calendar</a></li>
-        <li class="active" class="email"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbzldJem25m89jTuGefb0Hah-sLoxZvU0nkJqhKFAg/exec?v=email">Email</a></li>
-        <li class="ilearn"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbzldJem25m89jTuGefb0Hah-sLoxZvU0nkJqhKFAg/exec?v=ilearn">Export iLearn</a></li>
-      
-      </ul>
-    </div>
-  </div>
-</nav>
-
-<div class="container-fluid">
-  <div class="row content">
-    <div class="col-sm-3 sidenav hidden-xs">
-      <img class="logo" src="https://i.ibb.co/xGrDqYd/a00e07a8-7536-4427-916f-3f679651775d-200x200.png" alt="Logo" >
-      <ul class="nav nav-pills nav-stacked">
-        <li class="dashboard"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbzldJem25m89jTuGefb0Hah-sLoxZvU0nkJqhKFAg/exec?v=dashboard">Dashboard</a></li>
-        <li class="todoList"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbzldJem25m89jTuGefb0Hah-sLoxZvU0nkJqhKFAg/exec?v=assignments">Assignments</a></li>
-        <li class="courses"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbzldJem25m89jTuGefb0Hah-sLoxZvU0nkJqhKFAg/exec?v=courses">Courses</a></li>
-        <li class="calendar"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbzldJem25m89jTuGefb0Hah-sLoxZvU0nkJqhKFAg/exec?v=calendar">Calendar</a></li>
-        <li class="active" class="email"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbzldJem25m89jTuGefb0Hah-sLoxZvU0nkJqhKFAg/exec?v=email">Email</a></li>
-        <li class="ilearn"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbzldJem25m89jTuGefb0Hah-sLoxZvU0nkJqhKFAg/exec?v=ilearn">Export iLearn</a></li>
-      
-      </ul><br>
-    </div>
-    <br>
+    <div class="row content">
+      <div class="col-sm-3 sidenav hidden-xs">
+        <img class="logo" src="https://i.ibb.co/xGrDqYd/a00e07a8-7536-4427-916f-3f679651775d-200x200.png" alt="Logo" >
+        <ul class="nav nav-pills nav-stacked">
+          <li class="dashboard"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=dashboard">Dashboard</a></li>
+          <li class="todoList"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=assignments">Assignments</a></li>
+          <li class="courses"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=courses">Courses</a></li>
+          <li class="calendar"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=calendar">Calendar</a></li>
+          <li class="active" class="email"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=email">Email</a></li>
+          <li class="ilearn"><a href="https://script.google.com/a/csumb.edu/macros/s/AKfycbx1dDgb-QNDG2f11KEnNpY3c8QFQG4VgBsz4-swlzMP/dev?v=ilearn">Export iLearn</a></li>
+        </ul><br>
+      </div>
+      <br>
     
-   <!-- EMAIL CONTENT HERE-->
-       <!-- USER  - username and photo -->
-    <div class="topNav" class="well"> 
-       <ul>
+      <!-- USER  - username and photo -->
+      <div class="topNav" class="well"> 
+        <ul>
           <li> <img class="userImage" id="profileImage" src="https://www.openroadreview.com/wp-content/uploads/2016/01/User-Icon-PNG-03589.png"></li>
           <li style="font-size: 18px;"id="username"></li>
-
         </ul>
       </div>
       <!-- USER END  -->
       
-    <h2 id="EmailHere"> Send Your Email Here   </h2>
-   <div class="email">
-      <form>
-     
+      <!-- EMAIL CONTENT HERE-->
+      <h2 id="EmailHere"> Send Your Email Here   </h2>
+      <div class="email">
          <div class="form-group">
             <label for="email"> To: </label>
             <input type="email" class="form-control" id="emailTo">
@@ -96,19 +88,16 @@
              <label for="subject">Subject:</label>
              <input type="text" class="form-control" id="sub">
          </div>
-         
          <div class="form-group">
             <label for="message"> Message: </label> <br>
-             <textarea class="form-control" rows="5" id="message"></textarea>
+            <textarea class="form-control" rows="5" id="message"></textarea>
          </div>
-         <button type="submit" class="btn btn-default">Send</button>
-      </form>
-   
-   </div>
-   <!-- EMAIL CONTENT END -->
-    
+         <button type="submit" id="sendButton">Send</button>
+         <br><span id="result"></span>
+      </div> 
+      <!-- EMAIL CONTENT END -->
+    </div>
   </div>
-</div>
 <?!= include ("email-js"); ?>
 <?!= include ("username-js"); ?>
 </body>
