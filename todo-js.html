@@ -181,7 +181,15 @@ $(document).ready(function(){
   function showError(error) {
     console.log(error);
     window.alert('An error has occurred, please try again.');
-  }   
+  }  
+   function onDelete() {
+      var icon = $(this);
+      var title = icon.siblings('span');
+      var taskListId = $('#tasklist').val();
+      var taskId = icon.data('taskId');
+      console.log(taskId);
+      google.script.run.withSuccessHandler(loadTasks).withFailureHandler(showError).deleteTask(taskListId, taskId);
+  }
     $('#tasklist').bind('change', loadTasks);
     $('#new-task').bind('submit', onNewTaskFormSubmit);
     loadTaskLists();
