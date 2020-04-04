@@ -14,7 +14,7 @@ $(document).ready(function(){
     }
     
     // Display courses 
-    function loadData(data){
+     function loadData(data){
     var count = 0;
        var courses = JSON.parse(data) || [];
        $('.coursesList').empty();
@@ -31,7 +31,7 @@ $(document).ready(function(){
        })
        
       
-       $(".chart--num.assg").append(count);
+       $(".chart--num.assg").html(count);
    
     
     }
@@ -46,13 +46,10 @@ $(document).ready(function(){
            $('.taksList').append("<li class='taskDash'>" + task.taskName + "</li>");
            countTask++;
        })
-       // $(".chart--num.task").append(countTask);
-       console.log(typeof countTask);
-       if(countTask > 0){
-          $(".chart--num.task").append(countTask);
-       }else if (countTask === 0){
-         $(".chart--num.task").append(0);
-       }
+      
+   
+       $(".chart--num.task").html(countTask);
+       
        
     }
     
