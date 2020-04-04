@@ -1,6 +1,36 @@
 <script>
 
+$(document).ready(function(){
 
+  $("#sendButton").on("click",function(){
+    var recipient = document.getElementById("emailTo").value;
+    var subject = document.getElementById("sub").value;
+    var message = document.getElementById("message").value;
+    
+    if (recipient == "" || subject == "" || message == "") {
+      var result = document.getElementById("result");
+      result.innerHTML = "Error missing field above. Please fill out all sections."; 
+    } else { 
+      google.script.run.withSuccessHandler(clearFields).sendEmail(recipient, subject, message);  
+    }
+  });
+  
+  function clearFields() {
+    var result = document.getElementById("result");
+    var recipient = document.getElementById("emailTo");
+    var subject = document.getElementById("sub");
+    var message = document.getElementById("message");
+    
+    result.innerHTML = "Success sending message";  
+    recipient.innerHTML = "";  
+    subject.innerHTML = "";  
+    message.innerHTML = "";
+    document.getElementById('emailTo').value = '';
+    document.getElementById('sub').value = '';
+    document.getElementById('message').value = '';
+  }
+  
+});
 
 
 </script>
