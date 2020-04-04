@@ -15,8 +15,8 @@ $(document).ready(function(){
     
     // Display courses 
     function loadData(data){
+    var count = 0;
        var courses = JSON.parse(data) || [];
-       // var courses = JSON.parse(localStorage.getItem("courses")) || [];
        $('.coursesList').empty();
        courses.forEach(function(course){
            if (course[0] === window.email) {
@@ -25,23 +25,42 @@ $(document).ready(function(){
                  var date = new Date(course[4]);
                  newDate = date.toLocaleString("en-US").split(",")[0]
               }
-              $('.coursesList').append("<li>" + "<div class='cors'>" + course[2] + ": " + course[1] + "</li>");
+              $('.coursesList').append("<li>" + "<div class='cors'>" + "<b>" + course[2] + "</b>" + "<br>" + course[1] + "</li>");
+              count++;
            } 
        })
+       
+      
+       $(".chart--num.assg").append(count);
+   
     
     }
     loadData();
     
     function loadTasks(){
+    var countTask;
+    countTask = 0;
        var tasks = JSON.parse(localStorage.getItem("tasks")) || [];
        $('.taksList').empty();
        tasks.forEach(function(task){
            $('.taksList').append("<li class='taskDash'>" + task.taskName + "</li>");
+           countTask++;
        })
-    
+       // $(".chart--num.task").append(countTask);
+       console.log(typeof countTask);
+       if(countTask > 0){
+          $(".chart--num.task").append(countTask);
+       }else if (countTask === 0){
+         $(".chart--num.task").append(0);
+       }
+       
     }
     
     loadTasks();
+    
+    
+ 
+    
     
    // function printEmail(email) {
    //    var username = document.getElementById('username'); 

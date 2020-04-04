@@ -2,7 +2,9 @@
    
    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
     .row.content {
-      height: 940px;
+    
+    bottom: 0;
+    top:0;
     }
     
    
@@ -52,7 +54,7 @@
     */ 
     
     html,body { 
-    
+      ;
        min-height:100%; 
     }
     
@@ -60,7 +62,7 @@
     .sidenav {
       background-color: #f1f1f1;
       margin-left: -15px;
-      min-height:100%;
+      min-height:950px;
       width: 25%;
     }
     
@@ -149,50 +151,226 @@
     height: auto;
     
     }
-    
+   
     /* Clear floats after the columns */
     .row:after {
     content: "";
     display: table;
     clear: both;
     }
-      
-         /* 4 coloum progress layout   */
-    .col.completedTask{
-       background-color: #337AB7;
-       color: #1c4264;
-    }
-    .col.completedAssg{
-       background-color: #00B4FF;
-       color: #005a80;
-    }
-    .col.enrolledCourses{
-       background-color: #E6F4F1;
-       color: #27594e;
-    }
-    .col.numVisited{
-       background-color: #EEE8A9;
-       color: #6a6315;
-    }
-    .iconDashProgress{
-       float:right;
-    }
-   
-    .num{
-       font-size: 36px;
-    }
-    .col p {
-       font-size: 16px;
-       font-style: italic;
-    }
     
+ 
+    
+ /* NEW DASHBOARD CSS STYLES */
+.col {
+  float: left;
+  width: 25%;
+  padding: 0 10px; 
+}
+.col.small {
+width: 18%;
+}
+.rows {
+margin: 0 -5px;
+}
+
+.rows:after {
+  content: "";
+  display: table;
+  clear: both;
+
+
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .col {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+.row.content{
+   background-color: white;
+
+}
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #FAF7FF	;
+  border-radius: 5px;
+  height: 455px;
+}
+.small-chart{
+  padding: 16px;
+  text-align: center;
+  background-color: #FAF7FF;
+}
+.card.small-chart{
+ background-color: white;
+ box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0);
+ margin-top: -8%;
+}
+.chart {
+   background-color: #FAF7FF;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+   padding: 3%;
+   border-radius: 5px;
+   margin-bottom: 15%;
+}
+.chart--title {
+    font-size: 10px;
+    text-align: left;
+    padding-left: 5%;
+    line-height: 1.5;
+}
+.chart--num {
+font-size: 42px;
+line-height: 75px;
+font-weight: lighter;
+}
+.chart.assg  {
+border-bottom-style: solid;
+border-bottom-width: 4px;
+border-bottom-color: #00B4FF;
+}
+.chart.task {
+border-bottom-style: solid;
+border-bottom-width: 4px;
+border-bottom-color: #337AB7;
+}
+.chart.view {
+border-bottom-style: solid;
+border-bottom-width: 4px;
+border-bottom-color: #EEE8A9;
+}
+.card.assg{
+padding-bottom: 2%;
+border-bottom-style: solid;
+border-bottom-width: 4px;
+border-bottom-color: #00B4FF;
+}
+.card.task{
+padding-bottom: 2%;
+border-bottom-style: solid;
+border-bottom-width: 4px;
+border-bottom-color: #337AB7;
+}
+.card.view{
+padding-bottom: 2%;
+border-bottom-style: solid;
+border-bottom-width: 4px;
+border-bottom-color: #EEE8A9;
+}
+
+.twoCol{
+  margin-top:3%;
+  float: left;
+  width: 44.5%;
+  margin-left: 2%;
+  
+}
+
+.cards{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  background-color: #FAF7FF	;
+  border-radius: 5px;   
+  min-height: 365px;
+  }
+.cols{
+  float: left;
+  padding: 10px;
+ 
+  
+}  
+.cols.circle {
+width:70%;
+}
+
+.cols.charts {
+margin-top:-9%;
+width:30%;
+}
+
+.avgChart{
+  padding: 2%;
+  margin-bottom: 20%;
+  border: 2px solid white;
+  text-align: center;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #00B4FF;
+  padding-bottom: 15%;
+}
+.avgchart--title{
+    font-weight: normal;
+    font-size: 12px;
+    text-align: left;
+    padding:5%;
+    line-height: 1.5;
+    margin:auto;
+}
+.avgchart--num{
+   font-weight: lighter;
+   font-size: 32px;
+    text-align: left;
+    padding: 5%;
+    line-height: 1.5;
+    margin:auto;
+}
+    
+/*  Progress bar - Circle */ 
+svg{
+position: relative;
+width: 150px;
+height: 150px;
+z-index: 1000;
+}
+svg circle{
+width: 100%;
+height: 100%;
+fill:none;
+/* green: 98EC87   yellow:#F9F871  red: #C74E4E  */
+stroke: #98EC87;
+stroke-width: 10;
+stroke-lincecap: round;
+transform: translate(5px,5px);
+
+}
+
+svg circkle:nth-childe(2){
+stroke-dasharray: 220;
+stroke-dashoffset: 220;
+}
+.cardProgress{
+margin-top: 15%;
+}
+  
     
     @media (max-width: 1300px) { /*breakpoint*/
-       .column {
+       .col.small {
+           width:auto;
+           height:auto;
+          
+       }
+       .twoCol{ 
          float: none;
          width: auto;
        }
+       .card.chart-small{
+         width:auto;
+         height:100%;
+       }
+       .col{
+       width:auto;
+           height:auto;
+       }
     }
+   
+  
      /* On small screens, set height to 'auto' for the grid */
     @media screen and (max-width: 767px) {
       .row.content {height: auto;} 
