@@ -181,14 +181,20 @@
         
         <div class="col-sm-4">
           <div class="title"> <b>Important taks: </b> </div>
+           <label for="tasklist">Select a task list: </label>
+          <select id="tasklist">
+            <option>Loading...</option>
+          </select>
             <div class="well">
               <div>
-                <form name="toDoList">
-                  <input type="text" id="newTask" name="ListItem" placeholder="Add new taks">
-                  <button type="button" class="btn btn-sm btn-primary" id="btn"> Add </button>
+                <form name="new-task" id="new-task">
+                  <label for="task-title">Add a new task:</label>
+                  <input type="text" name="task-title" id="task-title" placeholder="Add new task"/>
+                  <input type="submit" name="add" class="btn btn-sm btn-primary" id="add-button" value="Add" />
                 </form>
               </div>
-              <ul id="taskUL" class="a">
+              <ul id="tasks" class="a">
+                Loading...
               </ul>
             </div>
           </div>
