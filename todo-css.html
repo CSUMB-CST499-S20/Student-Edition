@@ -1,4 +1,156 @@
 <style>
+.modal-content.datepicker-container{
+   margin: auto;
+   width: 35%;
+  
+}
+.datepicker-date-display{
+  width: 30%;
+  display: inline-block;
+  background-color: #337ab7;
+  position: absolute;
+  top:0;
+  bottom: 0;
+}
+.year-text{
+  font-size: 18px;
+  color: white;
+  display: block;
+  padding-left: 5%;
+  padding-top: 5%;
+  
+}
+.date-text{
+  font-size: 26px;
+  color: white; 
+  padding-left: 5%;
+}
+.datepicker-calendar-container{
+width: 70%;
+border: 1px solid black;
+display: inline-block;
+margin-left: 30%;
+
+}
+button.month-prev svg{
+width: 30px;
+height: 30px;
+}
+button.month-next svg{
+width: 30px;
+height: 30px;
+}
+.month-prev{
+width: 30px;
+height: 30px;
+background-color: white;
+    border: none;
+}
+
+.month-next{
+width: 30px;
+height: 30px;
+background-color: white;
+border: none;
+}
+
+.datepicker-title-wn{
+border: 1px solid black;
+}
+.datepicker-table-wrapper{
+width: 100%;
+}
+.selects-container{
+display: inline-block;
+padding: 2%;
+}
+.datepicker-table-wrapper{
+    padding-left: 2%;
+}
+.caret{display: none;}
+.select-dropdown.dropdown-trigger{display: none;}
+
+.btn-flat.datepicker-cancel.waves-effect{
+  border: none;
+  color: red;
+  padding: 0 1rem;
+  float:right;
+  padding-bottom:2%;
+  font-size:15px;
+}
+.btn-flat.datepicker-done.waves-effect{
+ border: none;
+  color: black;
+  padding: 0 1rem;
+  padding-bottom:2%;
+  float:right;
+  font-size:15px;
+}
+.datepicker-select.orig-select-month {
+   border:none;
+   color: #337ab7;
+   background-color:white;
+   
+}
+.datepicker-select.orig-select-year{
+   border:none;
+   color: #337ab7;
+   background-color:white;
+
+}
+.select-wrapper.select-year{
+    text-align: center;
+    display:inline;
+}
+.select-wrapper.select-month{
+    text-align: center;
+    display: inline;
+}
+
+select {
+   text-align-last: center;
+   text-align: center;
+   -ms-text-align-last: center;
+   -moz-text-align-last: center;
+    -webkit-appearance: none;
+}
+.datepicker-day-button{
+    background-color: transparent;
+    border: none;
+    line-height: 38px;
+    display: block;
+    width: 100%;
+    border-radius: 50%;
+    padding: 0 5px;
+    cursor: pointer;
+    color: inherit;
+}
+.datepicker-day-button:focus{
+    background-color: #337ab7;
+    border: none;
+    line-height: 38px;
+    display: block;
+    width: 100%;
+    border-radius: 50%;
+    padding: 0 5px;
+    cursor: pointer;
+    color: inherit;
+}
+.disabled{
+color: red;
+}
+
+.datepicker-table{
+    width: 100%;
+}
+.datepicker-table thead{
+text-align:center;
+}
+.datepicker-controls{
+text-align:center;
+}
+
+
 
 /* --- IMPORTANT TASKS  CSS RULES --- */
 #task-title{
@@ -74,7 +226,7 @@ border-bottom: 2px solid white;
 
 #datetimepicker{z-index:1151 !important;}
 
-#milstones{
+#milstone1,#milstone2, #milstone3, #milstone4, #milstone5 {
   margin-right: 12%;
   width: 66%;
     height: 34px;
@@ -129,3 +281,4 @@ border-bottom: 2px solid white;
     transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s, -webkit-box-shadow 0.15s ease-in-out 0s;
 }
 </style>
+
