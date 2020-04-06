@@ -1,48 +1,24 @@
-
-function doGet(e) {  
-  if(e.parameters.v == "dashboard"){
-    var tmp = HtmlService.createTemplateFromFile('dashboard.html');
-    return tmp.evaluate();
-  }else if(e.parameters.v == "assignments"){
-    var tmp = HtmlService.createTemplateFromFile('todolist.html');
-    return tmp.evaluate();
-  }else if(e.parameters.v == "courses"){
-    var tmp = HtmlService.createTemplateFromFile('courses.html');
-    return tmp.evaluate();
-  }else  if(e.parameters.v == "calendar"){
-    var tmp = HtmlService.createTemplateFromFile('calendar.html');
-    return tmp.evaluate();
-  }else if(e.parameters.v == "email") {
-    var tmp = HtmlService.createTemplateFromFile('email.html');
-    return tmp.evaluate();
-  }else if(e.parameters.v == "ilearn"){
-    var tmp = HtmlService.createTemplateFromFile('ilearn.html');
-    return tmp.evaluate();
-  }else {
-    return HtmlService.createHtmlOutput("<h1> Error </h1>");
-  }
-  
-  
+function getScriptUrl() {
+  var url = ScriptApp.getService().getUrl();
+  return url;
 }
 
+function doGet(e) {
+  if (!e.parameter.page) {
+    // When no specific page requested, return "home page"
+    return HtmlService.createTemplateFromFile('dashboard').evaluate();
+  }
+  // else, use page parameter to pick an html file from the script
+  return HtmlService.createTemplateFromFile(e.parameter['page']).evaluate();
+}
 
 function userAddEntry(aname,course, duedate, milestones) {
-console.log ("Called addEntery with ");
- var userEmail = getEmail();
- Logger.log(userEmail);
- var calendar = CalendarApp.getCalendarsByName(userEmail)[0];
-
-  
-  console.log(calendar.getName());
-  
+  var userEmail = getEmail();
+  var calendar = CalendarApp.getCalendarsByName(userEmail)[0];
   var event = calendar.createEvent(aname, new Date(duedate),new Date(duedate));
-  Logger.log(event);
-
-  
+ 
   for (index = 0; index < milestones.length; index += 2) {
-    console.log(milestones[index]+" "+milestones[index+1]);
     event = calendar.createEvent(aname + ':' + milestones[index], new Date(milestones[index+1]),new Date(milestones[index+1]));
-
   }
   
   return 1357;
@@ -65,8 +41,6 @@ function getProfilePic() {
     personFields: 'photos'
   });
   
-  Logger.log(profile["photos"][0]["url"]); 
-  
   return profile["photos"][0]["url"]; 
 }
 
@@ -79,15 +53,21 @@ function getValuesFromForm(form){
 }
 function getColumnsFromSheet() {
   var id = "1rOvnjC0Rwk2sC0BMaFMDTXWprUOYZ2NXQAzVjFs5BIg";
-  Logger.log(id);
   var ss = SpreadsheetApp.openById(id);
   var ws = ss.getSheetByName("Assignments");
   
   var values = ws.getDataRange().getValues();
-  Logger.log(values);
   return JSON.stringify(values);
 }
 
+function deleteAssignByRow(rowId) {
+  var id = "1rOvnjC0Rwk2sC0BMaFMDTXWprUOYZ2NXQAzVjFs5BIg";
+  var ss = SpreadsheetApp.openById(id);
+  var ws = ss.getSheetByName("Assignments");
+  ws.deleteRow(rowId); 
+  
+  return 1; 
+}
 
 /**
  * Returns the ID and name of every task list in the user's account.
@@ -95,7 +75,6 @@ function getColumnsFromSheet() {
  */
 function getTaskLists() {
   var taskLists = Tasks.Tasklists.list().getItems();
-  Logger.log(taskLists);
   if (!taskLists) {
     return [];
   }
@@ -156,7 +135,6 @@ function addTask(taskListId, title) {
   Tasks.Tasks.insert(task, taskListId);
 }
 
-
 function sendEmail(recipient, subject, message) {
   MailApp.sendEmail(recipient, subject, message);
 
@@ -169,22 +147,18 @@ function deleteTask(taskListId, taskId) {
   Tasks.Tasks.remove(taskListId, taskId);
 }
 
-
 function getCalendarBusyDays(){
- var startDate= new Date();
- var endDate = new Date(new Date().setYear(startDate.getFullYear()+1));
+  var startDate= new Date();
+  var endDate = new Date(new Date().setYear(startDate.getFullYear()+1));
  
- var userEmail = getEmail();
-  Logger.log(userEmail);
- var calendar = CalendarApp.getCalendarsByName(userEmail)[0];
- var events = calendar.getEvents(startDate, endDate);
+  var userEmail = getEmail();
+  var calendar = CalendarApp.getCalendarsByName(userEmail)[0];
+  var events = calendar.getEvents(startDate, endDate);
 
   // we are checking if the timestamp is in the array, if not we add it to the array
   var days = events.map(function(e){return e.getStartTime().setHours(0,0,0,0); });
   
   var days1 = events.map(function(e){return e.getStartTime(); });
-  Logger.log(days1);
-
   var uniqueDays= [];
   
   days.forEach(function(d){
@@ -196,22 +170,20 @@ function getCalendarBusyDays(){
     }
      
   }); 
-  Logger.log(uniqueDays);
   
   return uniqueDays;
 }
 
 function startHours(){
- var startDate= new Date();
- var endDate = new Date(new Date().setYear(startDate.getFullYear()+1));
+  var startDate= new Date();
+  var endDate = new Date(new Date().setYear(startDate.getFullYear()+1));
   
- var userEmail = getEmail();
+  var userEmail = getEmail();
   Logger.log(userEmail);
- var calendar = CalendarApp.getCalendarsByName(userEmail)[0];
- var events = calendar.getEvents(startDate, endDate);
+  var calendar = CalendarApp.getCalendarsByName(userEmail)[0];
+  var events = calendar.getEvents(startDate, endDate);
 
   // we are checking if the timestamp is in the array, if not we add it to the array
-
   var dates = events.map(function(e){return e.getStartTime().toString();});
 
   return dates;
