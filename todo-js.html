@@ -235,7 +235,32 @@ $(document).ready(function(){
           return disabledDays.indexOf(day.valueOf()) > -1 || day.valueOf() < new Date().valueOf();
         }
       });
-
+      /*
+       var datePicker2 = document.getElementById('milestoneDate2');
+        M.Datepicker.init(datePicker2,{
+        disableDayFn: function(day){
+          return disabledDays.indexOf(day.valueOf()) > -1 || day.valueOf() < new Date().valueOf();
+        }
+      });
+       var datePicker3 = document.getElementById('milestoneDate3');
+       M.Datepicker.init(datePicker3,{
+        disableDayFn: function(day){
+          return disabledDays.indexOf(day.valueOf()) > -1 || day.valueOf() < new Date().valueOf();
+        }
+      });
+        var datePicker4 = document.getElementById('milestoneDate4');
+       M.Datepicker.init(datePicker4,{
+        disableDayFn: function(day){
+          return disabledDays.indexOf(day.valueOf()) > -1 || day.valueOf() < new Date().valueOf();
+        }
+      });
+        var datePicker5 = document.getElementById('milestoneDate5');
+       M.Datepicker.init(datePicker5,{
+        disableDayFn: function(day){
+          return disabledDays.indexOf(day.valueOf()) > -1 || day.valueOf() < new Date().valueOf();
+        }
+      });
+      */
     }
 
     document.getElementById("btn").addEventListener("click",doPlan);
@@ -267,7 +292,8 @@ $(document).ready(function(){
     
     function updateNotDone(error) {
       document.getElementById("title").value = error;
-      console.log(error);  
+      console.log(error);
+
     }
    
     function updateDone(num) {

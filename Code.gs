@@ -165,7 +165,9 @@ function getCalendarBusyDays(){
     if(uniqueDays.indexOf(d) === -1){
       uniqueDays.push(d);
     }
-    
+    //if(!uniqueDays){
+      // $('.datepicker-day-button').addClass("disabled");
+    //}
      
   }); 
   
