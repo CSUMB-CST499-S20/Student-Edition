@@ -13,14 +13,12 @@
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  
 
   <!-- ROSARIO DATEPICKER SOURCE -->
-    <base target="_top">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <base target="_top">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">-->
- 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   
   <script>
@@ -29,201 +27,180 @@
        var elems = document.querySelectorAll('.datepicker');
        var instances = M.Datepicker.init(elems);
    } );
-  
-  //$(document).ready(function(){
-  //  $('.datepicker').datepicker();
-  //});
-  
   </script>
 
   <?!= include ("dash-css"); ?>
   <?!= include ("todo-css"); ?>
-<script src="js/jquery.min.js"></script>
+  <script src="js/jquery.min.js"></script>
 </head>
 
 <body>
-<nav class="navbar navbar-inverse visible-xs">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="#"><img class="logoSmall" src="https://i.ibb.co/xGrDqYd/a00e07a8-7536-4427-916f-3f679651775d-200x200.png" alt="Logo" ></a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="dashboard"><?var url = getScriptUrl();?><a href='<?=url?>?page=dashboard'>Dashboard</a></li>
-        <li class="active" class="todoList"><?var url = getScriptUrl();?><a href='<?=url?>?page=todolist'>Assignments</a></li>
-        <li class="courses"><?var url = getScriptUrl();?><a href='<?=url?>?page=courses'>Courses</a></li>
-        <li class="calendar"><?var url = getScriptUrl();?><a href='<?=url?>?page=calendar'>Calendar</a></li>
-        <li class="email"><?var url = getScriptUrl();?><a href='<?=url?>?page=email'>Email</a></li>
-        <li class="ilearn"><?var url = getScriptUrl();?><a href='<?=url?>?page=ilearn'>Export iLearn</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-<div class="container-fluid">
-  <div class="row content">
-    <div class="col-sm-3 sidenav hidden-xs">
-      <img class="logo" src="https://i.ibb.co/xGrDqYd/a00e07a8-7536-4427-916f-3f679651775d-200x200.png" alt="Logo" >
-      <ul class="nav nav-pills nav-stacked">
-        <li class="dashboard"><?var url = getScriptUrl();?><a href='<?=url?>?page=dashboard'>Dashboard</a></li>
-        <li class="active" class="todoList"><?var url = getScriptUrl();?><a href='<?=url?>?page=todolist'>Assignments</a></li>
-        <li class="courses"><?var url = getScriptUrl();?><a href='<?=url?>?page=courses'>Courses</a></li>
-        <li class="calendar"><?var url = getScriptUrl();?><a href='<?=url?>?page=calendar'>Calendar</a></li>
-        <li class="email"><?var url = getScriptUrl();?><a href='<?=url?>?page=email'>Email</a></li>
-        <li class="ilearn"><?var url = getScriptUrl();?><a href='<?=url?>?page=ilearn'>Export iLearn</a></li>
-      </ul><br>
-    </div><br>
-    
-    <div class="col-sm-9">
-    <!-- USER  - username and photo -->
-    <div class="topNav" class="well"> 
-       <ul>
-          <li> <img class="userImage" id="profileImage" src="https://www.openroadreview.com/wp-content/uploads/2016/01/User-Icon-PNG-03589.png"></li>
-          <li style="font-size: 18px;"id="username"></li>
-
+  <nav class="navbar navbar-inverse visible-xs">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+        <a class="navbar-brand" href="#"><img class="logoSmall" src="https://i.ibb.co/xGrDqYd/a00e07a8-7536-4427-916f-3f679651775d-200x200.png" alt="Logo" ></a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="dashboard"><?var url = getScriptUrl();?><a href='<?=url?>?page=dashboard'>Dashboard</a></li>
+          <li class="active" class="todoList"><?var url = getScriptUrl();?><a href='<?=url?>?page=todolist'>Assignments</a></li>
+          <li class="courses"><?var url = getScriptUrl();?><a href='<?=url?>?page=courses'>Courses</a></li>
+          <li class="calendar"><?var url = getScriptUrl();?><a href='<?=url?>?page=calendar'>Calendar</a></li>
+          <li class="email"><?var url = getScriptUrl();?><a href='<?=url?>?page=email'>Email</a></li>
+          <li class="ilearn"><?var url = getScriptUrl();?><a href='<?=url?>?page=ilearn'>Export iLearn</a></li>
         </ul>
       </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid">
+    <div class="row content">
+      <div class="col-sm-3 sidenav hidden-xs">
+        <img class="logo" src="https://i.ibb.co/xGrDqYd/a00e07a8-7536-4427-916f-3f679651775d-200x200.png" alt="Logo" >
+        <ul class="nav nav-pills nav-stacked">
+          <li class="dashboard"><?var url = getScriptUrl();?><a href='<?=url?>?page=dashboard'>Dashboard</a></li>
+          <li class="active" class="todoList"><?var url = getScriptUrl();?><a href='<?=url?>?page=todolist'>Assignments</a></li>
+          <li class="courses"><?var url = getScriptUrl();?><a href='<?=url?>?page=courses'>Courses</a></li>
+          <li class="calendar"><?var url = getScriptUrl();?><a href='<?=url?>?page=calendar'>Calendar</a></li>
+          <li class="email"><?var url = getScriptUrl();?><a href='<?=url?>?page=email'>Email</a></li>
+          <li class="ilearn"><?var url = getScriptUrl();?><a href='<?=url?>?page=ilearn'>Export iLearn</a></li>
+        </ul><br>
+      </div><br>
+    
+      <div class="col-sm-9">
+      <!-- USER  - username and photo -->
+        <div class="topNav" class="well"> 
+          <ul>
+            <li> <img class="userImage" id="profileImage" src="https://www.openroadreview.com/wp-content/uploads/2016/01/User-Icon-PNG-03589.png"></li>
+            <li style="font-size: 18px;"id="username"></li>
+          </ul>
+        </div>
       <!-- USER END  -->
-      
       
       <div class="well">
         <h2 class="title">Assignments & Taks</h2>
         <p>Add you assignments here and check them off when completed to see your progress</p>
       </div>   
-   <!-- MODAL - create a new assingment -->
-   
+      
+      <!-- MODAL - create a new assingment -->
       <div class="row">
         <div class="col-sm-12">
-            <!-- Trigger the modal with a button -->
-            <button type="button" class="btn btn-primary openBtn pull-right">Create Assignment</button>
-            <!-- Modal -->
-            <div class="modal" id="myModal" role="dialog">
-              <div class="modal-dialog" >
-                <!-- Modal content-->
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="modal-action modal-close" style="float:right;">&times;</button>
-                    <h4 class="modal-title" style="color: #337ab7; font-size: 24px; font-weight: bold;">Create your assignment</h4>
-                  </div>
-                  <div class="modal-body" style="max-height: calc(100vh - 250px);overflow-y: auto;">
-                       <form id="assignment-form">
-                         <div class="form-group">
-                           <label for="exampleInputEmail1">Title of the assignment</label>
-                           <input type="text" class="form-control" id="title" name="title" placeholder="Enter title">
-                         </div>
-                         <div class="form-group">
-                            <label for="exampleInputPassword1">Course</label>
-                            <input type="text" class="form-control" id="courseName" name="course" placeholder="Enter course name">
-                         </div>
-                         <!--
-                         <div class="form-group">
-                            <label for="exampleInputPassword1">URL to the assignment</label>
-                            <input type="text" class="form-control" id="courseNameURL" name="url" placeholder="Enter URL to assignment">
-                         </div>
-                         -->
-                         
-                         <div class="form-group ">
-                             <label for="datepicker"> Select the due date </label>
-                            <input type="text" class="datepicker" id="duedate" name="duedate">
-                             <i class="fa fa-calendar" aria-hidden="true"></i>
-                             
-                         </div> 
-                        
-                      <button type="button" id="btn" class="btn btn-primary">Let us plan! </button><br><br>
-
-                          
-                         <div class="form-group ">
-                             <label for="datepicker"> Milestone 1 </label><br>
-                             <input type="text" class="col-sm-8" class="form-control" id="milstone1" name="milestone1">
-                             <input type="text" class="datepicker datetimepicker" id="milestoneDate1" name="date1">
-                             <i class="fa fa-calendar" aria-hidden="true"></i>
-                         </div>
-                         <div class="form-group ">
-                             <label for="datepicker"> Milestone 2 </label><br>
-                             <input type="text" class="col-sm-8" class="form-control" id="milstone2" name="milestone2">
-                             <input type="text" class="datepicker datetimepicker" id="milestoneDate2" name="date2">
-                             <i class="fa fa-calendar" aria-hidden="true"></i>
-                         </div>
-                         <div class="form-group ">
-                             <label for="datepicker"> Milestone 3 </label><br>
-                             <input type="text" class="col-sm-8" class="form-control" id="milstone3" name="milestone3" >
-                             <input type="text" class="datepicker datetimepicker" id="milestoneDate3" name="date3">
-                             <i class="fa fa-calendar" aria-hidden="true"></i>
-                         </div>
-                         <div class="form-group ">
-                             <label for="datepicker"> Milestone 4 </label><br>
-                             <input type="text" class="col-sm-8" class="form-control" id="milstone4" name="milestone4" >
-                             <input type="text" class="datepicker datetimepicker" id="milestoneDate4" name="date5">
-                             <i class="fa fa-calendar" aria-hidden="true"></i>
-                         </div>
-                         <div class="form-group ">
-                             <label for="datepicker"> Milestone 5 </label><br>
-                             <input type="text" class="col-sm-8" class="form-control" id="milstone5" name="milestone5" >
-                             <input type="text" class="datepicker datetimepicker" id="milestoneDate5" name="date5">
-                             <i class="fa fa-calendar" aria-hidden="true"></i>
-                         </div><br>
-                         <button type="button" class="btn btn-primary" id="save">Add Assignment</button>
-                       </form>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default modal-action modal-close" >Close</button>
-                  </div>
+          <!-- Trigger the modal with a button -->
+          <button type="button" class="btn btn-primary openBtn pull-right">Create Assignment</button>
+          <!-- Modal -->
+          <div class="modal" id="myModal" role="dialog">
+            <div class="modal-dialog" >
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="modal-action modal-close" style="float:right;">&times;</button>
+                  <h4 class="modal-title" style="color: #337ab7; font-size: 24px; font-weight: bold;">Create your assignment</h4>
+                </div>
+                <div class="modal-body" style="max-height: calc(100vh - 250px);overflow-y: auto;">
+                  <form id="assignment-form">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Title of the assignment</label>
+                      <input type="text" class="form-control" id="title" name="title" placeholder="Enter title">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Course</label>
+                      <input type="text" class="form-control" id="courseName" name="course" placeholder="Enter course name">
+                    </div>
+                    <!--
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">URL to the assignment</label>
+                      <input type="text" class="form-control" id="courseNameURL" name="url" placeholder="Enter URL to assignment">
+                    </div>
+                    -->
+                    <div class="form-group ">
+                      <label for="datepicker"> Select the due date </label>
+                      <input type="text" class="datepicker" id="duedate" name="duedate">
+                      <i class="fa fa-calendar" aria-hidden="true"></i>
+                    </div>     
+                    <button type="button" id="btn" class="btn btn-primary">Let us plan! </button><br><br>  
+                    <div class="form-group ">
+                      <label for="datepicker"> Milestone 1 </label><br>
+                      <input type="text" class="col-sm-8" class="form-control" id="milstone1" name="milestone1">
+                      <input type="text" class="datepicker datetimepicker" id="milestoneDate1" name="date1">
+                      <i class="fa fa-calendar" aria-hidden="true"></i>
+                    </div>
+                    <div class="form-group ">
+                      <label for="datepicker"> Milestone 2 </label><br>
+                      <input type="text" class="col-sm-8" class="form-control" id="milstone2" name="milestone2">
+                      <input type="text" class="datepicker datetimepicker" id="milestoneDate2" name="date2">
+                      <i class="fa fa-calendar" aria-hidden="true"></i>
+                    </div>
+                    <div class="form-group ">
+                      <label for="datepicker"> Milestone 3 </label><br>
+                      <input type="text" class="col-sm-8" class="form-control" id="milstone3" name="milestone3" >
+                      <input type="text" class="datepicker datetimepicker" id="milestoneDate3" name="date3">
+                      <i class="fa fa-calendar" aria-hidden="true"></i>
+                    </div>
+                    <div class="form-group ">
+                      <label for="datepicker"> Milestone 4 </label><br>
+                      <input type="text" class="col-sm-8" class="form-control" id="milstone4" name="milestone4" >
+                      <input type="text" class="datepicker datetimepicker" id="milestoneDate4" name="date5">
+                      <i class="fa fa-calendar" aria-hidden="true"></i>
+                    </div>
+                    <div class="form-group ">
+                      <label for="datepicker"> Milestone 5 </label><br>
+                      <input type="text" class="col-sm-8" class="form-control" id="milstone5" name="milestone5" >
+                      <input type="text" class="datepicker datetimepicker" id="milestoneDate5" name="date5">
+                      <i class="fa fa-calendar" aria-hidden="true"></i>
+                    </div><br>
+                    <button type="button" class="btn btn-primary" id="save">Add Assignment</button>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default modal-action modal-close" >Close</button>
                 </div>
               </div>
             </div>
-       </div>
-      </div>     
-      <!-- MODAL ENDS HERE -->
-            
-      <br>  
-    <div class="col-sm-12">   
-      <div class="row">    
-        <div class="col-sm-8">
-          <div class="title"> <b>Upcoming assignments: </b></div>
-            <div class="well">
-              <ul id="dynamic-list"> 
-              
-              </ul>
           </div>
         </div>
-        
-        <div class="col-sm-4">
-          <div class="title"> <b>Important taks: </b> </div>
-           <label for="tasklist">Select a task list: </label>
-          <select id="tasklist">
-            <option>Loading...</option>
-          </select>
-            <div class="well">
-              <div>
-                <form name="new-task" id="new-task">
-                  <label for="task-title">Add a new task:</label>
-                  <input type="text" name="task-title" id="task-title" placeholder="Add new task"/>
-                  <input type="submit" name="add" class="btn btn-sm btn-primary" id="add-button" value="Add" />
-                </form>
+      </div>     
+      <!-- MODAL ENDS HERE -->    
+      <br>  
+      <div class="col-sm-12">   
+        <div class="row">    
+          <div class="col-sm-8">
+            <div class="title"> <b>Upcoming assignments: </b></div>
+              <div class="well">
+                <ul id="dynamic-list"> 
+              
+                </ul>
               </div>
-              <ul id="tasks" class="a">
+            </div>
+            <div class="col-sm-4">
+              <div class="title"> <b>Important taks: </b> </div>
+                <label for="tasklist">Select a task list: </label>
+                <select id="tasklist">
+                  <option>Loading...</option>
+                </select>
+                <div class="well">
+                  <div>
+                    <form name="new-task" id="new-task">
+                      <label for="task-title">Add a new task:</label>
+                      <input type="text" name="task-title" id="task-title" placeholder="Add new task"/>
+                      <input type="submit" name="add" class="btn btn-sm btn-primary" id="add-button" value="Add" />
+                    </form>
+                  </div>
+                  <ul id="tasks" class="a">
                 
-              </ul>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </div>    
     </div>
-  </div>    
-</div>
-<?!= include ("todo-js"); ?>
-<?!= include ("username-js"); ?>
-
-</body>
+    <?!= include ("todo-js"); ?>
+    <?!= include ("username-js"); ?>
+  </body>
 </html>
-
-
-
-
-
-
