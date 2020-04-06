@@ -25,26 +25,24 @@ function doGet(e) {
   
 }
 
-function userAddEntry(aname, duedate, milestones, email, apemail) {
 
-  Logger.log ("Called addEntery with " + duedate + " " + aname + " " + milestones);
-  var calendar = CalendarApp.getCalendarsByName("Avoid Procrastination")[0];
+function userAddEntry(aname,course, duedate, milestones) {
+console.log ("Called addEntery with ");
+ var userEmail = getEmail();
+ Logger.log(userEmail);
+ var calendar = CalendarApp.getCalendarsByName(userEmail)[0];
+
   
-  Logger.log(calendar.getName());
+  console.log(calendar.getName());
   
-  var event = calendar.createAllDayEvent(aname, new Date(duedate));
-  Logger.log('Event ID '+ event.getId());
-  event.addGuest(email);
-  event.addGuest(apemail);
-  event.setGuestsCanModify(true);
+  var event = calendar.createEvent(aname, new Date(duedate),new Date(duedate));
+  Logger.log(event);
+
   
   for (index = 0; index < milestones.length; index += 2) {
-    Logger.log(milestones[index]+" "+milestones[index+1]);
-    event = calendar.createAllDayEvent(aname + ':' + milestones[index], new Date(milestones[index+1]));
-    Logger.log('Event ID '+ event.getId());
-    event.addGuest(email);
-    event.addGuest(apemail);
-    event.setGuestsCanModify(true);
+    console.log(milestones[index]+" "+milestones[index+1]);
+    event = calendar.createEvent(aname + ':' + milestones[index], new Date(milestones[index+1]),new Date(milestones[index+1]));
+
   }
   
   return 1357;
@@ -170,3 +168,52 @@ function deleteTask(taskListId, taskId) {
   Logger.log(taskId);
   Tasks.Tasks.remove(taskListId, taskId);
 }
+
+
+function getCalendarBusyDays(){
+ var startDate= new Date();
+ var endDate = new Date(new Date().setYear(startDate.getFullYear()+1));
+ 
+ var userEmail = getEmail();
+  Logger.log(userEmail);
+ var calendar = CalendarApp.getCalendarsByName(userEmail)[0];
+ var events = calendar.getEvents(startDate, endDate);
+
+  // we are checking if the timestamp is in the array, if not we add it to the array
+  var days = events.map(function(e){return e.getStartTime().setHours(0,0,0,0); });
+  
+  var days1 = events.map(function(e){return e.getStartTime(); });
+  Logger.log(days1);
+
+  var uniqueDays= [];
+  
+  days.forEach(function(d){
+    if(uniqueDays.indexOf(d) === -1){
+      uniqueDays.push(d);
+    }
+    if(!uniqueDays){
+       $('.datepicker-day-button').addClass("disabled");
+    }
+     
+  }); 
+  Logger.log(uniqueDays);
+  
+  return uniqueDays;
+}
+
+function startHours(){
+ var startDate= new Date();
+ var endDate = new Date(new Date().setYear(startDate.getFullYear()+1));
+  
+ var userEmail = getEmail();
+  Logger.log(userEmail);
+ var calendar = CalendarApp.getCalendarsByName(userEmail)[0];
+ var events = calendar.getEvents(startDate, endDate);
+
+  // we are checking if the timestamp is in the array, if not we add it to the array
+
+  var dates = events.map(function(e){return e.getStartTime().toString();});
+
+  return dates;
+}
+
