@@ -14,25 +14,25 @@
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="screen" />
-  
-  <!-- Datetimepicker srcs -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
 
+  <!-- ROSARIO DATEPICKER SOURCE -->
+    <base target="_top">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">-->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   
   <script>
-   // $( function() {
-   //    $(".datepicker").datetimepicker();
-   //} );
+    $( function() {
+       //$(".datepicker").datetimepicker();
+       var elems = document.querySelectorAll('.datepicker');
+       var instances = M.Datepicker.init(elems);
+   } );
   
-
+  //$(document).ready(function(){
+  //  $('.datepicker').datepicker();
+  //});
   
   </script>
 
@@ -101,20 +101,21 @@
         <p>Add you assignments here and check them off when completed to see your progress</p>
       </div>   
    <!-- MODAL - create a new assingment -->
+   
       <div class="row">
         <div class="col-sm-12">
             <!-- Trigger the modal with a button -->
             <button type="button" class="btn btn-primary openBtn pull-right">Create Assignment</button>
             <!-- Modal -->
-            <div class="modal fade" id="myModal" role="dialog">
-              <div class="modal-dialog">
+            <div class="modal" id="myModal" role="dialog">
+              <div class="modal-dialog" >
                 <!-- Modal content-->
                 <div class="modal-content">
                   <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Create your assignment</h4>
+                    <button type="button" class="modal-action modal-close" style="float:right;">&times;</button>
+                    <h4 class="modal-title" style="color: #337ab7; font-size: 24px; font-weight: bold;">Create your assignment</h4>
                   </div>
-                  <div class="modal-body">
+                  <div class="modal-body" style="max-height: calc(100vh - 250px);overflow-y: auto;">
                        <form id="assignment-form">
                          <div class="form-group">
                            <label for="exampleInputEmail1">Title of the assignment</label>
@@ -124,10 +125,12 @@
                             <label for="exampleInputPassword1">Course</label>
                             <input type="text" class="form-control" id="courseName" name="course" placeholder="Enter course name">
                          </div>
+                         <!--
                          <div class="form-group">
                             <label for="exampleInputPassword1">URL to the assignment</label>
-                            <input type="text" class="form-control" id="courseName" name="url" placeholder="Enter URL to assignment">
+                            <input type="text" class="form-control" id="courseNameURL" name="url" placeholder="Enter URL to assignment">
                          </div>
+                         -->
                          
                          <div class="form-group ">
                              <label for="datepicker"> Select the due date </label>
@@ -136,30 +139,44 @@
                              
                          </div> 
                         
+                      <button type="button" id="btn" class="btn btn-primary">Let us plan! </button><br><br>
+
                           
                          <div class="form-group ">
                              <label for="datepicker"> Milestone 1 </label><br>
-                             <input type="text" class="col-sm-8" class="form-control" id="milstones" name="milestone1" placeholder="Read Ch.1">
+                             <input type="text" class="col-sm-8" class="form-control" id="milstone1" name="milestone1">
                              <input type="text" class="datepicker datetimepicker" id="milestoneDate1" name="date1">
                              <i class="fa fa-calendar" aria-hidden="true"></i>
                          </div>
                          <div class="form-group ">
                              <label for="datepicker"> Milestone 2 </label><br>
-                             <input type="text" class="col-sm-8" class="form-control" id="milstones" name="milestone2"placeholder="Complete first three exercises">
+                             <input type="text" class="col-sm-8" class="form-control" id="milstone2" name="milestone2">
                              <input type="text" class="datepicker datetimepicker" id="milestoneDate2" name="date2">
                              <i class="fa fa-calendar" aria-hidden="true"></i>
                          </div>
                          <div class="form-group ">
                              <label for="datepicker"> Milestone 3 </label><br>
-                             <input type="text" class="col-sm-8" class="form-control" id="milstones" name="milestone3" placeholder="Read Ch.4">
+                             <input type="text" class="col-sm-8" class="form-control" id="milstone3" name="milestone3" >
                              <input type="text" class="datepicker datetimepicker" id="milestoneDate3" name="date3">
+                             <i class="fa fa-calendar" aria-hidden="true"></i>
+                         </div>
+                         <div class="form-group ">
+                             <label for="datepicker"> Milestone 4 </label><br>
+                             <input type="text" class="col-sm-8" class="form-control" id="milstone4" name="milestone4" >
+                             <input type="text" class="datepicker datetimepicker" id="milestoneDate4" name="date5">
+                             <i class="fa fa-calendar" aria-hidden="true"></i>
+                         </div>
+                         <div class="form-group ">
+                             <label for="datepicker"> Milestone 5 </label><br>
+                             <input type="text" class="col-sm-8" class="form-control" id="milstone5" name="milestone5" >
+                             <input type="text" class="datepicker datetimepicker" id="milestoneDate5" name="date5">
                              <i class="fa fa-calendar" aria-hidden="true"></i>
                          </div><br>
                          <button type="button" class="btn btn-primary" id="save">Add Assignment</button>
                        </form>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default modal-action modal-close" >Close</button>
                   </div>
                 </div>
               </div>
@@ -167,6 +184,7 @@
        </div>
       </div>     
       <!-- MODAL ENDS HERE -->
+            
       <br>  
     <div class="col-sm-12">   
       <div class="row">    
@@ -194,7 +212,7 @@
                 </form>
               </div>
               <ul id="tasks" class="a">
-                Loading...
+                
               </ul>
             </div>
           </div>
@@ -205,6 +223,7 @@
 </div>
 <?!= include ("todo-js"); ?>
 <?!= include ("username-js"); ?>
+
 </body>
 </html>
 
