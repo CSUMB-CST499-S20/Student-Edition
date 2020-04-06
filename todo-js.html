@@ -3,41 +3,36 @@
 <script>
 
 $(document).ready(function(){
-
-   
     $('.openBtn').on('click',function(){
-          $('#myModal').modal();
-          $('#myModal').modal('open');
-         // $('#myModal').modal({show:true}); 
+      $('#myModal').modal();
+      $('#myModal').modal('open');
+      // $('#myModal').modal({show:true}); 
     });
     
     // Save form 
     $("#save").click(function(){
-        var values = {};
-        $.each($('#assignment-form').serializeArray(), function(i, field) {
-          values[field.name] = field.value;
-        });
+      var values = {};
+      $.each($('#assignment-form').serializeArray(), function(i, field) {
+        values[field.name] = field.value;
+      });
         
-        var assignment = $("#title").val();
-        var course = $("#courseName").val();
-        var duedate = $("#duedate").val();
-        console.log(assignment, course, duedate);
+      var assignment = $("#title").val();
+      var course = $("#courseName").val();
+      var duedate = $("#duedate").val();
+      
+      google.script.run.getValuesFromForm(values);
         
-        google.script.run.getValuesFromForm(values);
-        
-        var courses = JSON.parse(localStorage.getItem("courses")) || [];
-        var newCourses = {
-           "assignment" : assignment, 
-           "course": course, 
-           "duedate": duedate
-        }
-        courses.push(newCourses);
-        localStorage.setItem("courses", JSON.stringify(courses));
-        document.getElementById("assignment-form").reset();
-        // $('#myModal').modal('hide');
-        $("#myModal").modal('close');
-        google.script.run.withSuccessHandler(loadData).getColumnsFromSheet();
-       // doAddEntries();
+      var courses = JSON.parse(localStorage.getItem("courses")) || [];
+      var newCourses = {
+        "assignment" : assignment, 
+        "course": course, 
+        "duedate": duedate
+      }
+      courses.push(newCourses);
+      localStorage.setItem("courses", JSON.stringify(courses));
+      document.getElementById("assignment-form").reset();
+      $("#myModal").modal('close');
+      google.script.run.withSuccessHandler(loadData).getColumnsFromSheet();
     });
     
     google.script.run.withSuccessHandler(loadData).getColumnsFromSheet();
@@ -49,309 +44,299 @@ $(document).ready(function(){
     
     // Display courses 
     function loadData(data){
-    if (typeof data !== 'undefined') {
-       var courses = JSON.parse(data) || [];
-       $('#dynamic-list').empty();
-       courses.forEach(function(course){
-           if (course[0] === window.email) {
-              var newDate = "";
-              if (course[4] !== "") {
-                 var date = new Date(course[4]);
-                 newDate = date.toLocaleString("en-US").split(",")[0]
-           }
-          
-           $('#dynamic-list').append("<li>" + "<div class='assgn'>" + course[1]  + '<span class="deleteCourse"> <i class="far fa-trash-alt"></i> </span>'+ '<span class="editAssignment"> <i class="far fa-edit"></i> </span>' + "</div>" + "<div class='cor'>" + course[2] + "</div>" + "<div class='date'>" + newDate + "</div>" + "</li>");
-           }
-       })
-       
+      if (typeof data !== 'undefined') {
+        var counter = 0; 
+        var courses = JSON.parse(data) || [];
+        var list = $('#dynamic-list').empty();
+        courses.forEach(function(course){
+          counter++; 
+          var item = $('<li>');
+          if (course[0] === window.email) {
+            var newDate = "";
+            if (course[4] !== "") {
+              var date = new Date(course[4]);
+              newDate = date.toLocaleString("en-US").split(",")[0]
+            }
+            var deleteIcon = $('<span class="deleteTask"><i class="far fa-trash-alt">')
+              .data("assignId", counter)
+              .bind('click', deleteAssig);
+            list.append("<div class='assgn'>" + course[1])
+            list.append(deleteIcon);
+            list.append("</div>" + "<div class='cor'>" + course[2] + "</div>" + "<div class='date'>" + newDate + "</div>" + "</li>");
+          }
+        })
+      }
     }
-    }
-    //loadData();
     
-    function removeCourse(){
-        $(".deleteCourse").click(function(){
-            var tasks = JSON.parse(localStorage.getItem("tasks")) || [];     
-        });
+    function deleteAssig() {
+      var deleteThis = $(this);
+      var assignId = deleteThis.data('assignId');
+      console.log("delete icon was pressed for " + assignId); 
+      google.script.run.withSuccessHandler(reloadData).deleteAssignByRow(assignId); 
     }
     
- /**
-   * Load the available task lists.
-   */
-  function loadTaskLists() {
-    google.script.run.withSuccessHandler(showTaskLists)
+    function reloadData() {
+      google.script.run.withSuccessHandler(loadData).getColumnsFromSheet();
+    }   });
+    }
+    
+    /**
+    * Load the available task lists.
+    */
+    function loadTaskLists() {
+      google.script.run.withSuccessHandler(showTaskLists)
         .withFailureHandler(showError)
         .getTaskLists();
-  }
+    }
   
-  /**
-   * Show the returned task lists in the dropdown box.
-   * @param {Array.<Object>} taskLists The task lists to show.
-   */
-  function showTaskLists(taskLists) {
-    var select = $('#tasklist');
-    select.empty();
-    taskLists.forEach(function(taskList) {
-      var option = $('<option>')
+    /**
+    * Show the returned task lists in the dropdown box.
+    * @param {Array.<Object>} taskLists The task lists to show.
+    */
+    function showTaskLists(taskLists) {
+      var select = $('#tasklist');
+      select.empty();
+      taskLists.forEach(function(taskList) {
+        var option = $('<option>')
           .attr('value', taskList.id)
           .text(taskList.name);
-      select.append(option);
-    });
-    loadTasks();
-  }
-  
-  /**
-   * Load the tasks in the currently selected task list.
-   */
-  function loadTasks() {
-    $('#tasks').text('Loading...');
-    var taskListId = $('#tasklist').val();
-    google.script.run.withSuccessHandler(showTasks)
-        .withFailureHandler(showError)
-        .getTasks(taskListId);
-  }
-  
-  /**
-   * Show the returned tasks on the page.
-   * @param {Array.<Object>} tasks The tasks to show.
-   */
-  function showTasks(tasks) {
-    var list = $('#tasks').empty();
-    if (tasks.length > 0) {
-      tasks.forEach(function(task) {
-        var item = $('<li>');
-        var checkbox = $('<input type="checkbox">')
-            .data('taskId', task.id)
-            .bind('change', onCheckBoxChange);
-        item.append(checkbox);
-        
-        var title = $('<span>')
-            .text(task.title);
-        item.append(title);
-        
-        if (task.completed) {
-          checkbox.prop('checked', true);
-          title.css('text-decoration', 'line-through')
-        }
-        
-        list.append(item);
-      });
-    } else {
-      list.text('No tasks');
-    }
-  }
-  
-  /**
-   * A callback function that runs when a task is checked or unchecked.
-   */
-  function onCheckBoxChange() {
-    var checkbox = $(this);
-    var title = checkbox.siblings('span');
-    var isChecked = checkbox.prop('checked');
-    var taskListId = $('#tasklist').val();
-    var taskId = checkbox.data('taskId');
-    if (isChecked) {
-      title.css('text-decoration', 'line-through');
-    } else {
-      title.css('text-decoration', 'none');
-    }
-    google.script.run.withSuccessHandler(function() {
-      title.effect("highlight", {
-        duration: 1500
-      });
-    }).withFailureHandler(showError)
-      .setCompleted(taskListId, taskId, isChecked);
-  }
-  
-  /**
-   * A callback function that runs when the new task form is submitted.
-   */
-  function onNewTaskFormSubmit() {
-    var taskListId = $('#tasklist').val();
-    var titleTextBox = $('#task-title');
-    var title = titleTextBox.val();
-    google.script.run.withSuccessHandler(function() {
-      titleTextBox.val('');
-      titleTextBox.effect("highlight", {
-        duration: 1500
+        select.append(option);
       });
       loadTasks();
-    }).withFailureHandler(showError)
-      .addTask(taskListId, title);
-    return false;
-  }
+    }
   
-  /**
-   * Logs an error message and shows an alert to the user.
-   */
-  function showError(error) {
-    console.log(error);
-    window.alert('An error has occurred, please try again.');
-  }  
-   function onDelete() {
+    /**
+    * Load the tasks in the currently selected task list.
+    */
+    function loadTasks() {
+      $('#tasks').text('Loading...');
+      var taskListId = $('#tasklist').val();
+      google.script.run.withSuccessHandler(showTasks)
+        .withFailureHandler(showError)
+        .getTasks(taskListId);
+    }
+  
+    /**
+    * Show the returned tasks on the page.
+    * @param {Array.<Object>} tasks The tasks to show.
+    */
+    function showTasks(tasks) {
+      var list = $('#tasks').empty();
+      if (tasks.length > 0) {
+        tasks.forEach(function(task) {
+          var item = $('<li>');
+          var checkbox = $('<input type="checkbox">')
+            .data('taskId', task.id)
+            .bind('change', onCheckBoxChange);
+          item.append(checkbox);
+        
+          var title = $('<span>')
+            .text(task.title);
+          item.append(title);
+        
+          if (task.completed) {
+            checkbox.prop('checked', true);
+            title.css('text-decoration', 'line-through')
+          }
+        
+          list.append(item);
+        });
+      } else {
+        list.text('No tasks');
+      }
+    }
+  
+    /**
+    * A callback function that runs when a task is checked or unchecked.
+    */
+    function onCheckBoxChange() {
+      var checkbox = $(this);
+      var title = checkbox.siblings('span');
+      var isChecked = checkbox.prop('checked');
+      var taskListId = $('#tasklist').val();
+      var taskId = checkbox.data('taskId');
+      if (isChecked) {
+        title.css('text-decoration', 'line-through');
+      } else {
+        title.css('text-decoration', 'none');
+      }
+      google.script.run.withSuccessHandler(function() {
+        title.effect("highlight", {
+          duration: 1500
+        });
+      }).withFailureHandler(showError)
+       .setCompleted(taskListId, taskId, isChecked);
+    }
+  
+    /**
+    * A callback function that runs when the new task form is submitted.
+    */
+    function onNewTaskFormSubmit() {
+      var taskListId = $('#tasklist').val();
+      var titleTextBox = $('#task-title');
+      var title = titleTextBox.val();
+      google.script.run.withSuccessHandler(function() {
+        titleTextBox.val('');
+        titleTextBox.effect("highlight", {
+          duration: 1500
+        });
+        loadTasks();
+      }).withFailureHandler(showError)
+        .addTask(taskListId, title);
+      return false;
+    }
+  
+    /**
+    * Logs an error message and shows an alert to the user.
+    */
+    function showError(error) {
+      console.log(error);
+      window.alert('An error has occurred, please try again.');
+    }  
+   
+    function onDelete() {
       var icon = $(this);
       var title = icon.siblings('span');
       var taskListId = $('#tasklist').val();
       var taskId = icon.data('taskId');
       console.log(taskId);
       google.script.run.withSuccessHandler(loadTasks).withFailureHandler(showError).deleteTask(taskListId, taskId);
-  }
+    }
+    
     $('#tasklist').bind('change', loadTasks);
     $('#new-task').bind('submit', onNewTaskFormSubmit);
     loadTaskLists();
-    
- 
- 
- 
-  
+
 // Rosario's part  
    //   document.addEventListener('DOMContentLoaded', function() {
-       var selectBoxes = document.querySelectorAll('select');
-       M.FormSelect.init(selectBoxes);
-       google.script.run.withSuccessHandler(populateDates).getCalendarBusyDays();
+    var selectBoxes = document.querySelectorAll('select');
+    M.FormSelect.init(selectBoxes);
+    google.script.run.withSuccessHandler(populateDates).getCalendarBusyDays();
        
    //  });  
           
     function populateDates(disabledDays){
-       var datePicker = document.getElementById('duedate');
-        M.Datepicker.init(datePicker,{
-          disableDayFn: function(day){
-              return disabledDays.indexOf(day.valueOf()) > -1 || day.valueOf() < new Date().valueOf();
-          
-             }
-     });
-}
+      var datePicker = document.getElementById('duedate');
+      M.Datepicker.init(datePicker,{
+        disableDayFn: function(day){
+          return disabledDays.indexOf(day.valueOf()) > -1 || day.valueOf() < new Date().valueOf();
+        }
+      });
+    }
 
-   document.getElementById("btn").addEventListener("click",doPlan);
-   document.getElementById("save").addEventListener("click", doAddEntries);
+    document.getElementById("btn").addEventListener("click",doPlan);
+    document.getElementById("save").addEventListener("click", doAddEntries);
 
-    
-    function doAddEntries() { 
+    function doAddEntries() {  
+      //var email = document.getElementById("email").value;
+      //var apemail = document.getElementById("apemail").value;
         
-        //var email = document.getElementById("email").value;
-        //var apemail = document.getElementById("apemail").value;
-        
-        var aname = document.getElementById("title").value;
-        var course = document.getElementById("courseName").value;
-        var duedate = document.getElementById("duedate").value;
-        var m1date = document.getElementById("milestoneDate1").value;
-        var m1d = document.getElementById("milstone1").value;
-        var m2date = document.getElementById("milestoneDate2").value;
-        var m2d = document.getElementById("milstone2").value;
-        var m3date = document.getElementById("milestoneDate3").value;
-        var m3d = document.getElementById("milstone3").value;
-        var m4date = document.getElementById("milestoneDate4").value;
-        var m4d = document.getElementById("milstone4").value;
-        var m5date = document.getElementById("milestoneDate5").value;
-        var m5d = document.getElementById("milstone5").value;
+      var aname = document.getElementById("title").value;
+      var course = document.getElementById("courseName").value;
+      var duedate = document.getElementById("duedate").value;
+      var m1date = document.getElementById("milestoneDate1").value;
+      var m1d = document.getElementById("milstone1").value;
+      var m2date = document.getElementById("milestoneDate2").value;
+      var m2d = document.getElementById("milstone2").value;
+      var m3date = document.getElementById("milestoneDate3").value;
+      var m3d = document.getElementById("milstone3").value;
+      var m4date = document.getElementById("milestoneDate4").value;
+      var m4d = document.getElementById("milstone4").value;
+      var m5date = document.getElementById("milestoneDate5").value;
+      var m5d = document.getElementById("milstone5").value;
       
-        document.getElementById("title").value = aname + ' ' + duedate + ' [' + m1d + ','+ m1date+ ','+ m2d+ ','+ m2date+ ','+ m3d+ ','+ m3date+ ','+ m4d+ ','+ m4date+ ','+ m5d+ ','+ m5date+ '] ';
+      document.getElementById("title").value = aname + ' ' + duedate + ' [' + m1d + ','+ m1date+ ','+ m2d+ ','+ m2date+ ','+ m3d+ ','+ m3date+ ','+ m4d+ ','+ m4date+ ','+ m5d+ ','+ m5date+ '] ';
 
-        console.log (duedate);
-        google.script.run.withSuccessHandler(updateDone).withFailureHandler(updateNotDone).userAddEntry(aname, duedate,[m1d, m1date, m2d, m2date, m3d, m3date, m4d, m4date, m5d, m5date]);
+      console.log (duedate);
+      google.script.run.withSuccessHandler(updateDone).withFailureHandler(updateNotDone).userAddEntry(aname, duedate,[m1d, m1date, m2d, m2date, m3d, m3date, m4d, m4date, m5d, m5date]);
     }
     
     function updateNotDone(error) {
-        document.getElementById("title").value = error;
-        console.log(error);
-        
+      document.getElementById("title").value = error;
+      console.log(error);  
     }
+   
     function updateDone(num) {
-        document.getElementById("title").value = 'Calendar entries have been added. Please edit them to block particular times as needed';
-        M.updateTextFields();
+      document.getElementById("title").value = 'Calendar entries have been added. Please edit them to block particular times as needed';
+      M.updateTextFields();
     }
 
-
-//this is what i need to fix for the milestones
+    //this is what i need to fix for the milestones
     function doPlan(startHours) {
-        var duedate = document.getElementById("duedate").value;
+      var duedate = document.getElementById("duedate").value;
+      console.log (duedate);
+      var due = new Date(duedate);
+      var today = new Date();
+      var millInDay = 24 * 60 * 60 * 1000;
+      var diffDays = (due - today)/5;
         
-  
-        console.log (duedate);
-        var due = new Date(duedate);
-        var today = new Date();
-        var millInDay = 24 * 60 * 60 * 1000;
-        var diffDays = (due - today)/5;
-        
-        google.script.run.withSuccessHandler(populateMilestones).startHours();
-        
- 
-        /*document.getElementById("m1date").value = new Date(due-(5*diffDays));
-        document.getElementById("m2date").value = new Date(due-(4*diffDays));
-        document.getElementById("m3date").value = new Date(due-(3*diffDays));
-        document.getElementById("m4date").value = new Date(due-(2*diffDays));
-        document.getElementById("m5date").value = new Date(due-(1*diffDays));
-       */ 
+      google.script.run.withSuccessHandler(populateMilestones).startHours();
        
-        document.getElementById("milstone1").value = 'Read & understand the assignment';
-        document.getElementById("milstone2").value = 'Complete minimum goal and verify';
-        document.getElementById("milstone3").value = 'Verify work with faculty/TA/Accountability Partner';
-        document.getElementById("milstone4").value = 'Complete assignment requirements';
-        document.getElementById("milstone5").value = 'Review work against grading requirement';
+    /*document.getElementById("m1date").value = new Date(due-(5*diffDays));
+      document.getElementById("m2date").value = new Date(due-(4*diffDays));
+      document.getElementById("m3date").value = new Date(due-(3*diffDays));
+      document.getElementById("m4date").value = new Date(due-(2*diffDays));
+      document.getElementById("m5date").value = new Date(due-(1*diffDays));
+    */ 
+      document.getElementById("milstone1").value = 'Read & understand the assignment';
+      document.getElementById("milstone2").value = 'Complete minimum goal and verify';
+      document.getElementById("milstone3").value = 'Verify work with faculty/TA/Accountability Partner';
+      document.getElementById("milstone4").value = 'Complete assignment requirements';
+      document.getElementById("milstone5").value = 'Review work against grading requirement';
 
-        M.updateTextFields();
+      M.updateTextFields();
     }
 
-function populateMilestones(startHours){
-        var duedate = document.getElementById("duedate").value;
-        var due = new Date(duedate);
-        var today = new Date();
-        var millInDay = 24 * 60 * 60 * 1000;
-        var diffDays = (due - today)/5;
+    function populateMilestones(startHours){
+      var duedate = document.getElementById("duedate").value;
+      var due = new Date(duedate);
+      var today = new Date();
+      var millInDay = 24 * 60 * 60 * 1000;
+      var diffDays = (due - today)/5;
+      var milestone_date = [];
+       
+      for ( var i = 5 ; i > 0;i--){
+        milestone_date.push(new Date(due-(i*diffDays)));
+      }
         
-        var milestone_date = [];
-        for ( var i = 5 ; i > 0;i--){
-            milestone_date.push(new Date(due-(i*diffDays)));
-        }
+      console.log(milestone_date);
+      //Mon Apr 06 2020 10:00:00 GMT-0700 (Pacific Daylight Time)
         
-         console.log(milestone_date);
+      // Array with date of the events 
+      var eventDates = startHours.map(function(e){return e.slice(0,15);});
+      //console.log(eventDates);
         
+      // Array with time of the event 
+      var eventHours = startHours.map(function(e){return e.slice(16,17);});
+      //console.log(eventHours);  
+      //Loop , check milestone date exist in above date_of_events array
         
-        //Mon Apr 06 2020 10:00:00 GMT-0700 (Pacific Daylight Time)
+      var elementId = ["milestoneDate1","milestoneDate2","milestoneDate3","milestoneDate4","milestoneDate5"];
         
-        // Array with date of the events 
-        var eventDates = startHours.map(function(e){return e.slice(0,15);});
-        //console.log(eventDates);
-        
-        // Array with time of the event 
-        var eventHours = startHours.map(function(e){return e.slice(16,17);});
-        //console.log(eventHours);
-        
-        //Loop , check milestone date exist in above date_of_events array
-        
-        var elementId = ["milestoneDate1","milestoneDate2","milestoneDate3","milestoneDate4","milestoneDate5"];
-        
-        for (var i = 0 ; i < 5;i++){
-          if (milestone_date[i].toString().slice(0,15) in  eventDates){
-              for (var hour = 8; hour < 22 ;hour += 2){
-                if (!(eventHours.indexOf(int_to_string_hours(hour)) == eventDates.indexOf(milestone_date[i].toString().slice(0,15)))){
-                    var temp = milestone_date[i];
-                    temp.setHours(hour,0,0,0);
-                    document.getElementById(elementId[i]).value = temp;
-      
-                }
-              }
+      for (var i = 0 ; i < 5;i++){
+        if (milestone_date[i].toString().slice(0,15) in  eventDates){
+          for (var hour = 8; hour < 22 ;hour += 2){
+            if (!(eventHours.indexOf(int_to_string_hours(hour)) == eventDates.indexOf(milestone_date[i].toString().slice(0,15)))){
+              var temp = milestone_date[i];
+              temp.setHours(hour,0,0,0);
+              document.getElementById(elementId[i]).value = temp;
             }
-          
-          else{
-            var temp1 = milestone_date[i];
-            temp1.setHours(10,0,0,0);
-            document.getElementById(elementId[i]).value = temp1; 
           }
+        } else{
+          var temp1 = milestone_date[i];
+          temp1.setHours(10,0,0,0);
+          document.getElementById(elementId[i]).value = temp1; 
         }
-        //console.log(milestone_date.setHours(20,0,0,0));
-            
-}
+      }
+      //console.log(milestone_date.setHours(20,0,0,0));      
+    }
 
-
-
-function int_to_string_hours(hour){
- var result = hour.toString();
- if (hour.lenght() == 1){
-   result = '0'+result;
-}
-}
-
-
+    function int_to_string_hours(hour){
+      var result = hour.toString();
+      if (hour.lenght() == 1){
+      result = '0'+result;
+    }
+  }
 // Rosarios part end
 });
 </script>
