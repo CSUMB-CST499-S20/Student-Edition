@@ -4,10 +4,10 @@
 
 $(document).ready(function(){
 
-   
     $('.openBtn').on('click',function(){
           $('#myModal').modal();
           $('#myModal').modal('open');
+          document.getElementById("assignment-form").reset();        
          // $('#myModal').modal({show:true}); 
     });
     
@@ -33,7 +33,10 @@ $(document).ready(function(){
         }
         courses.push(newCourses);
         localStorage.setItem("courses", JSON.stringify(courses));
-        document.getElementById("assignment-form").reset();
+        
+        //rearranged, so it does not cause empty string values being passed while doAddEntries(). 
+        //document.getElementById("assignment-form").reset();        
+        
         // $('#myModal').modal('hide');
         $("#myModal").modal('close');
         google.script.run.withSuccessHandler(loadData).getColumnsFromSheet();
@@ -49,25 +52,22 @@ $(document).ready(function(){
     
     // Display courses 
     function loadData(data){
-    if (typeof data !== 'undefined') {
-       var courses = JSON.parse(data) || [];
-       $('#dynamic-list').empty();
-       courses.forEach(function(course){
-           if (course[0] === window.email) {
-              var newDate = "";
-              if (course[4] !== "") {
-                 var date = new Date(course[4]);
-                 newDate = date.toLocaleString("en-US").split(",")[0]
-           }
-          
-           $('#dynamic-list').append("<li>" + "<div class='assgn'>" + course[1]  + '<span class="deleteCourse"> <i class="far fa-trash-alt"></i> </span>'+ '<span class="editAssignment"> <i class="far fa-edit"></i> </span>' + "</div>" + "<div class='cor'>" + course[2] + "</div>" + "<div class='date'>" + newDate + "</div>" + "</li>");
-           }
-       })
-       
-    }
+      if (typeof data !== 'undefined') {
+         var courses = JSON.parse(data) || [];
+         $('#dynamic-list').empty();
+         courses.forEach(function(course){
+             if (course[0] === window.email) {
+                var newDate = "";
+                if (course[4] !== "") {
+                   var date = new Date(course[4]);
+                   newDate = date.toLocaleString("en-US").split(",")[0]
+             }
+             $('#dynamic-list').append("<li>" + "<div class='assgn'>" + course[1]  + '<span class="deleteCourse"> <i class="far fa-trash-alt"></i> </span>'+ '<span class="editAssignment"> <i class="far fa-edit"></i> </span>' + "</div>" + "<div class='cor'>" + course[2] + "</div>" + "<div class='date'>" + newDate + "</div>" + "</li>");
+             }
+         })
+      }
     }
     //loadData();
-    
     function removeCourse(){
         $(".deleteCourse").click(function(){
             var tasks = JSON.parse(localStorage.getItem("tasks")) || [];     
@@ -90,7 +90,7 @@ $(document).ready(function(){
   function showTaskLists(taskLists) {
     var select = $('#tasklist');
     select.empty();
-    taskLists.forEach(function(taskList) {
+    taskLists.forEach(function(taskList){
       var option = $('<option>')
           .attr('value', taskList.id)
           .text(taskList.name);
@@ -98,7 +98,7 @@ $(document).ready(function(){
     });
     loadTasks();
   }
-  
+
   /**
    * Load the tasks in the currently selected task list.
    */
@@ -109,7 +109,7 @@ $(document).ready(function(){
         .withFailureHandler(showError)
         .getTasks(taskListId);
   }
-  
+
   /**
    * Show the returned tasks on the page.
    * @param {Array.<Object>} tasks The tasks to show.
@@ -117,7 +117,7 @@ $(document).ready(function(){
   function showTasks(tasks) {
     var list = $('#tasks').empty();
     if (tasks.length > 0) {
-      tasks.forEach(function(task) {
+      tasks.forEach(function(task){
         var item = $('<li>');
         var checkbox = $('<input type="checkbox">')
             .data('taskId', task.id)
@@ -137,7 +137,7 @@ $(document).ready(function(){
       });
     } else {
       list.text('No tasks');
-    }
+      }
   }
   
   /**
@@ -216,10 +216,9 @@ $(document).ready(function(){
         M.Datepicker.init(datePicker,{
           disableDayFn: function(day){
               return disabledDays.indexOf(day.valueOf()) > -1 || day.valueOf() < new Date().valueOf();
-          
-             }
-     });
-}
+         }
+       });
+    }
 
    document.getElementById("btn").addEventListener("click",doPlan);
    document.getElementById("save").addEventListener("click", doAddEntries);
@@ -243,19 +242,25 @@ $(document).ready(function(){
         var m4d = document.getElementById("milstone4").value;
         var m5date = document.getElementById("milestoneDate5").value;
         var m5d = document.getElementById("milstone5").value;
-      
+        var milestones = [m1d, m1date, m2d, m2date, m3d, m3date, m4d, m4date, m5d, m5date]
+        
         document.getElementById("title").value = aname + ' ' + duedate + ' [' + m1d + ','+ m1date+ ','+ m2d+ ','+ m2date+ ','+ m3d+ ','+ m3date+ ','+ m4d+ ','+ m4date+ ','+ m5d+ ','+ m5date+ '] ';
-
-        console.log (duedate);
-        google.script.run.withSuccessHandler(updateDone).withFailureHandler(updateNotDone).userAddEntry(aname, duedate,[m1d, m1date, m2d, m2date, m3d, m3date, m4d, m4date, m5d, m5date]);
+        
+        //console.log(milestones)
+        //console.log( aname + ' ' + duedate + ' [' + m1d + ','+ m1date+ ','+ m2d+ ','+ m2date+ ','+ m3d+ ','+ m3date+ ','+ m4d+ ','+ m4date+ ','+ m5d+ ','+ m5date+ '] ')
+        //console.log ("Started!12");
+        google.script.run.withSuccessHandler(updateDone).withFailureHandler(updateNotDone).userAddEntry(aname, course, duedate, milestones);
+        //console.log ("Ended!12");
     }
     
     function updateNotDone(error) {
+        console.log ("Update NOT Done");
         document.getElementById("title").value = error;
         console.log(error);
-        
     }
+    
     function updateDone(num) {
+        console.log ("Update Done");
         document.getElementById("title").value = 'Calendar entries have been added. Please edit them to block particular times as needed';
         M.updateTextFields();
     }
@@ -265,7 +270,6 @@ $(document).ready(function(){
     function doPlan(startHours) {
         var duedate = document.getElementById("duedate").value;
         
-  
         console.log (duedate);
         var due = new Date(duedate);
         var today = new Date();
@@ -273,21 +277,12 @@ $(document).ready(function(){
         var diffDays = (due - today)/5;
         
         google.script.run.withSuccessHandler(populateMilestones).startHours();
-        
- 
-        /*document.getElementById("m1date").value = new Date(due-(5*diffDays));
-        document.getElementById("m2date").value = new Date(due-(4*diffDays));
-        document.getElementById("m3date").value = new Date(due-(3*diffDays));
-        document.getElementById("m4date").value = new Date(due-(2*diffDays));
-        document.getElementById("m5date").value = new Date(due-(1*diffDays));
-       */ 
        
         document.getElementById("milstone1").value = 'Read & understand the assignment';
         document.getElementById("milstone2").value = 'Complete minimum goal and verify';
         document.getElementById("milstone3").value = 'Verify work with faculty/TA/Accountability Partner';
         document.getElementById("milstone4").value = 'Complete assignment requirements';
         document.getElementById("milstone5").value = 'Review work against grading requirement';
-
         M.updateTextFields();
     }
 
@@ -305,16 +300,11 @@ function populateMilestones(startHours){
         
          console.log(milestone_date);
         
-        
-        //Mon Apr 06 2020 10:00:00 GMT-0700 (Pacific Daylight Time)
-        
         // Array with date of the events 
         var eventDates = startHours.map(function(e){return e.slice(0,15);});
-        //console.log(eventDates);
         
         // Array with time of the event 
         var eventHours = startHours.map(function(e){return e.slice(16,17);});
-        //console.log(eventHours);
         
         //Loop , check milestone date exist in above date_of_events array
         
@@ -327,7 +317,6 @@ function populateMilestones(startHours){
                     var temp = milestone_date[i];
                     temp.setHours(hour,0,0,0);
                     document.getElementById(elementId[i]).value = temp;
-      
                 }
               }
             }
@@ -338,8 +327,6 @@ function populateMilestones(startHours){
             document.getElementById(elementId[i]).value = temp1; 
           }
         }
-        //console.log(milestone_date.setHours(20,0,0,0));
-            
 }
 
 
@@ -348,9 +335,8 @@ function int_to_string_hours(hour){
  var result = hour.toString();
  if (hour.lenght() == 1){
    result = '0'+result;
+ }
 }
-}
-
 
 // Rosarios part end
 });
