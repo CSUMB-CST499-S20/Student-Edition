@@ -4,22 +4,11 @@
 
 $(document).ready(function(){
 
-
-
-
   $('.openBtn').on('click',function(){
     var elems = document.querySelectorAll('.modal');
     var instances = M.Modal.init(elems);
-    // alert("clicked");
-    // var instance = M.Modal.getInstance(elem);
-   // instances.open();
-         // $('#myModal').modal();
-          //$('#modal1').modal('open');
           document.getElementById("assignment-form").reset();        
-         // $('#myModal').modal({show:true}); 
     });
-
-
     
     // Save form 
     $("#save").click(function(){
@@ -43,17 +32,9 @@ $(document).ready(function(){
         }
         courses.push(newCourses);
         localStorage.setItem("courses", JSON.stringify(courses));
-        
-        //rearranged, so it does not cause empty string values being passed while doAddEntries(). 
-        //document.getElementById("assignment-form").reset();        
-        
-        // $('#myModal').modal('hide');
-        // $("#modal1").modal('close');
-        
-       // instances.close();
+       
         loadData();
         google.script.run.withSuccessHandler(loadData).getColumnsFromSheet();
-       // doAddEntries();
     });
     
     google.script.run.withSuccessHandler(loadData).getColumnsFromSheet();
