@@ -4,12 +4,22 @@
 
 $(document).ready(function(){
 
-    $('.openBtn').on('click',function(){
-          $('#myModal').modal();
-          $('#myModal').modal('open');
+
+
+
+  $('.openBtn').on('click',function(){
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems);
+    // alert("clicked");
+    // var instance = M.Modal.getInstance(elem);
+   // instances.open();
+         // $('#myModal').modal();
+          //$('#modal1').modal('open');
           document.getElementById("assignment-form").reset();        
          // $('#myModal').modal({show:true}); 
     });
+
+
     
     // Save form 
     $("#save").click(function(){
@@ -38,7 +48,10 @@ $(document).ready(function(){
         //document.getElementById("assignment-form").reset();        
         
         // $('#myModal').modal('hide');
-        $("#myModal").modal('close');
+        // $("#modal1").modal('close');
+        
+       // instances.close();
+        loadData();
         google.script.run.withSuccessHandler(loadData).getColumnsFromSheet();
        // doAddEntries();
     });
@@ -226,8 +239,32 @@ $(document).ready(function(){
    //  });  
           
     function populateDates(disabledDays){
-       var datePicker = document.getElementById('duedate');
-        M.Datepicker.init(datePicker,{
+       var datePicker1 = document.getElementById('milestoneDate1');
+        M.Datepicker.init(datePicker1,{
+          disableDayFn: function(day){
+              return disabledDays.indexOf(day.valueOf()) > -1 || day.valueOf() < new Date().valueOf();
+         }
+       });
+       var datePicker2 = document.getElementById('milestoneDate2');
+        M.Datepicker.init(datePicker2,{
+          disableDayFn: function(day){
+              return disabledDays.indexOf(day.valueOf()) > -1 || day.valueOf() < new Date().valueOf();
+         }
+       });
+       var datePicker3 = document.getElementById('milestoneDate3');
+        M.Datepicker.init(datePicker3,{
+          disableDayFn: function(day){
+              return disabledDays.indexOf(day.valueOf()) > -1 || day.valueOf() < new Date().valueOf();
+         }
+       });
+       var datePicker4 = document.getElementById('milestoneDate4');
+        M.Datepicker.init(datePicker4,{
+          disableDayFn: function(day){
+              return disabledDays.indexOf(day.valueOf()) > -1 || day.valueOf() < new Date().valueOf();
+         }
+       });
+       var datePicker5 = document.getElementById('milestoneDate5');
+        M.Datepicker.init(datePicker5,{
           disableDayFn: function(day){
               return disabledDays.indexOf(day.valueOf()) > -1 || day.valueOf() < new Date().valueOf();
          }
@@ -258,7 +295,7 @@ $(document).ready(function(){
         var m5d = document.getElementById("milstone5").value;
         var milestones = [m1d, m1date, m2d, m2date, m3d, m3date, m4d, m4date, m5d, m5date]
         
-        document.getElementById("title").value = aname + ' ' + duedate + ' [' + m1d + ','+ m1date+ ','+ m2d+ ','+ m2date+ ','+ m3d+ ','+ m3date+ ','+ m4d+ ','+ m4date+ ','+ m5d+ ','+ m5date+ '] ';
+        document.getElementById("title").value = aname + ' is Due! ' + duedate + ' [' + m1d + ','+ m1date+ ','+ m2d+ ','+ m2date+ ','+ m3d+ ','+ m3date+ ','+ m4d+ ','+ m4date+ ','+ m5d+ ','+ m5date+ '] ';
         
         //console.log(milestones)
         //console.log( aname + ' ' + duedate + ' [' + m1d + ','+ m1date+ ','+ m2d+ ','+ m2date+ ','+ m3d+ ','+ m3date+ ','+ m4d+ ','+ m4date+ ','+ m5d+ ','+ m5date+ '] ')
@@ -275,8 +312,8 @@ $(document).ready(function(){
     
     function updateDone(num) {
         console.log ("Update Done");
-        document.getElementById("title").value = 'Calendar entries have been added. Please edit them to block particular times as needed';
-        M.updateTextFields();
+      // document.getElementById("title").value = 'Calendar entries have been added. Please edit them to block particular times as needed';
+       // M.updateTextFields();
     }
 
 
