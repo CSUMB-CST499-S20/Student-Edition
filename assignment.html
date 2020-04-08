@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>GAAME</title>
+  <base target="_top">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Date picker srcs -->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <!-- ROSARIO DATEPICKER SOURCE -->
+  <base target="_top">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  
+  
+  <!-- Materialize links -->
+  <meta name = "viewport" content = "width = device-width, initial-scale = 1">      
+  <link rel = "stylesheet" href = "https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel = "stylesheet"href = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+  <script type = "text/javascript"src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>           
+  <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+
+  <script>
+    $( function() {
+      // $(".datepicker").datepicker();
+       var elems = document.querySelectorAll('.datepicker');
+       var instances = M.Datepicker.init(elems);
+       
+       var elems = document.querySelectorAll('.timepicker');
+       var instances = M.Timepicker.init(elems);
+   } );
+   
+   
+  </script>
+
+<?!= include ("todo-css"); ?>
+  <script src="js/jquery.min.js"></script>
+</head>
+
+<body>
+<!-- 
+  <nav class="navbar navbar-inverse visible-xs">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+        <a class="navbar-brand" href="#"><img class="logoSmall" src="https://i.ibb.co/xGrDqYd/a00e07a8-7536-4427-916f-3f679651775d-200x200.png" alt="Logo" ></a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="dashboard"><?var url = getScriptUrl();?><a href='<?=url?>?page=dashboard'>Dashboard</a></li>
+          <li class="active" class="todoList"><?var url = getScriptUrl();?><a href='<?=url?>?page=assignment'>Assignments</a></li>
+          <li class="courses"><?var url = getScriptUrl();?><a href='<?=url?>?page=courses'>Courses</a></li>
+          <li class="calendar"><?var url = getScriptUrl();?><a href='<?=url?>?page=calendar'>Calendar</a></li>
+          <li class="email"><?var url = getScriptUrl();?><a href='<?=url?>?page=email'>Email</a></li>
+          <li class="ilearn"><?var url = getScriptUrl();?><a href='<?=url?>?page=ilearn'>Export iLearn</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+-->
+
+<div class="row">
+  <div class="col s2">
+  <!--SIDE NAVBAR -->
+      <div class="matSideBar">
+        <img class="logo" src="https://i.ibb.co/xGrDqYd/a00e07a8-7536-4427-916f-3f679651775d-200x200.png" alt="Logo" >
+        <ul class="sidenavBar">
+          <li class="dashboard"><?var url = getScriptUrl();?><a href='<?=url?>?page=dashboard'><img class="dashIconBar" src="https://img.icons8.com/officexs/16/000000/dashboard.png"/>Dashboard</a></li>
+          <li class="active" class="todoList"><?var url = getScriptUrl();?><a href='<?=url?>?page=assignment'><img class="dashIconBar" src="https://img.icons8.com/ultraviolet/40/000000/paper.png"/>Assignments</a></li>
+          <li class="courses"><?var url = getScriptUrl();?><a href='<?=url?>?page=courses'><img class="dashIconBar" src="https://img.icons8.com/ultraviolet/40/000000/courses.png"/>Courses</a></li>
+          <li class="calendar"><?var url = getScriptUrl();?><a href='<?=url?>?page=calendar'><img class="dashIconBar" src="https://img.icons8.com/cotton/64/000000/calendar.png"/>Calendar</a></li>
+          <li class="email"><?var url = getScriptUrl();?><a href='<?=url?>?page=email'><img class="dashIconBar" src="https://img.icons8.com/office/16/000000/email.png"/>Email</a></li>
+          <li class="ilearn"><?var url = getScriptUrl();?><a href='<?=url?>?page=ilearn'><img class="dashIconBar" src="https://img.icons8.com/ultraviolet/40/000000/export.png"/>Export iLearn</a></li>
+        </ul><br>
+      </div><br>
+     </div>
+    <!--SIDE NAVBAR END -->
+    
+    <!-- CONTENT HERE --> 
+  <div class="col s10">
+  
+     <!-- USER  - username and photo -->
+        <div class="topNavM"> 
+          <ul>
+            <li> <img class="userImage" id="profileImage" src="https://www.openroadreview.com/wp-content/uploads/2016/01/User-Icon-PNG-03589.png"></li>
+            <li style="font-size: 18px;"id="username"></li>
+          </ul>
+        </div>
+        <!-- USER END  -->
+  
+  <div class="well-box">
+        <h2 class="title">Assignments & Tasks</h2>
+        <p>Add your assignments here and check them off when completed to see your progress</p>
+  </div> 
+  <!--  BUTTON CREATE ASSIGNMENT -->
+  <div class="col s12"> 
+      <!-- <button class="btn waves-effect waves-light openBtn" type="button" >Create Assignment </button>-->
+      <button data-target="modal1" class="btn modal-trigger openBtn">Create Assignment </button>
+  
+  </div>
+  <!--  BUTTON CREATE ASSIGNMENT END -->
+  
+  <!-- Assignment -->
+   <div class="col s8"> 
+       <div class="titleAss"> <b>Upcoming assignments: </b></div>
+          <div class="well-box">
+             <ul id="dynamic-list"> </ul>
+          </div>
+   </div>
+   
+   <!-- Task --> 
+   <div class="col s4"> 
+         <div class="titleAss"> <b>Important tasks: </b> </div>
+                <label for="tasklist">Select a task list: </label>
+                <select id="tasklist">
+                  <option>Loading...</option>
+                </select>
+                <div class="well-box">
+                  <div>
+                    <form name="new-task" id="new-task">
+                      <label for="task-title">Add a new task:</label>
+                      <input type="text" name="task-title" id="task-title" placeholder="Add new task"/>
+                      <input type="submit" name="add" class="btn btn-sm btn-primary" id="add-button" value="Add" />
+                    </form>
+                  </div>
+                  <ul id="tasks" class="a">
+                
+                  </ul>
+                </div>
+   </div>
+   
+   <!-- MODAL --> 
+ 
+  <div id="modal1" class="modal">
+    <div class="modal-content-form">
+      <button type="button" class="modal-action modal-close" style="float:right;">&times;</button>
+      <h4 class="modal-title" style="color: #337ab7; font-size: 24px; font-weight: bold;">Create your assignment</h4>
+      
+      <!-- content of modal -->
+               <form id="assignment-form">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Title of the assignment</label>
+                      <input type="text" class="form-control" id="title" name="title" placeholder="Enter title">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Course</label>
+                      <input type="text" class="form-control" id="courseName" name="course" placeholder="Enter course name">
+                    </div>
+                    <!--
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">URL to the assignment</label>
+                      <input type="text" class="form-control" id="courseNameURL" name="url" placeholder="Enter URL to assignment">
+                    </div>
+                    -->
+                    <div class="form-group ">
+                      <label for="datepicker"> Select the due date and time </label><br>
+                      <input type="text" class="col s6 datepicker" id="duedate" name="duedate" value="Enter date">
+                      <input type="text" class="col s4 timepicker" value="Enter Time"><br>
+                      <i class="fa fa-calendar" aria-hidden="true"></i>
+                    </div> <br>    
+                    <button type="button" id="btn" class="btn btn-primary">Let us plan! </button><br><br>  
+                    <div class="form-group ">
+                      <label for="datepicker"> Milestone 1 </label><br>
+                      <input type="text" class="col s6" class="form-control" id="milstone1" name="milestone1">
+                      <input type="text" class="col s4 datepicker datetimepicker" id="milestoneDate1" name="date1">
+                      <i class="fa fa-calendar" aria-hidden="true"></i>
+                    </div><br><br>
+                    <div class="form-group ">
+                      <label for="datepicker"> Milestone 2 </label><br>
+                      <input type="text" class="col s6" class="form-control" id="milstone2" name="milestone2">
+                      <input type="text" class="col s4 datepicker datetimepicker" id="milestoneDate2" name="date2">
+                      <i class="fa fa-calendar" aria-hidden="true"></i>
+                    </div><br><br>
+                    <div class="form-group ">
+                      <label for="datepicker"> Milestone 3 </label><br>
+                      <input type="text" class="col s6" class="form-control" id="milstone3" name="milestone3" >
+                      <input type="text" class="col s4 datepicker datetimepicker" id="milestoneDate3" name="date3">
+                      <i class="fa fa-calendar" aria-hidden="true"></i>
+                    </div><br><br>
+                    <div class="form-group ">
+                      <label for="datepicker"> Milestone 4 </label><br>
+                      <input type="text" class="col s6" class="form-control" id="milstone4" name="milestone4" >
+                      <input type="text" class="col s4 datepicker datetimepicker" id="milestoneDate4" name="date5">
+                      <i class="fa fa-calendar" aria-hidden="true"></i>
+                    </div><br><br>
+                    <div class="form-group ">
+                      <label for="datepicker"> Milestone 5 </label><br>
+                      <input type="text" class="col s6" class="form-control" id="milstone5" name="milestone5" >
+                      <input type="text" class="col s4 datepicker datetimepicker" id="milestoneDate5" name="date5">
+                      <i class="fa fa-calendar" aria-hidden="true"></i>
+                    </div><br><br>
+                    <button type="button" class="btn btn-primary modal-action modal-close" id="save">Add Assignment</button>
+                  </form>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+  </div>
+   
+   
+  
+  </div>
+   <!-- CONTENT END --> 
+</div>
+
+    <?!= include ("todo-js"); ?>
+    <?!= include ("username-js"); ?>
+  </body>
+</html>
