@@ -15,7 +15,7 @@ function doGet(e) {
 function userAddEntry(aname,course, duedate, milestones) {
   var userEmail = getEmail();
   var calendar = CalendarApp.getCalendarsByName(userEmail)[0];
-  var event = calendar.createEvent(aname, new Date(duedate),new Date(duedate));
+  var event = calendar.createEvent(aname + ": is Due Today", new Date(duedate),new Date(duedate));
  
   for (index = 0; index < milestones.length; index += 2) {
     event = calendar.createEvent(aname + ':' + milestones[index], new Date(milestones[index+1]),new Date(milestones[index+1]));
