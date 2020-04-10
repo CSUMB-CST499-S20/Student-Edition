@@ -26,99 +26,71 @@
   </style>
 
 </head>
+
 <body>
+  <nav class="navbar navbar-inverse visible-xs">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+        <a class="navbar-brand" href="#"><img class="logoSmall" src="https://i.ibb.co/xGrDqYd/a00e07a8-7536-4427-916f-3f679651775d-200x200.png" alt="Logo" ></a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="dashboard"><?var url = getScriptUrl();?><a href='<?=url?>?page=dashboard'>Dashboard</a></li>
+          <li class="todoList"><?var url = getScriptUrl();?><a href='<?=url?>?page=todolist'>Assignments</a></li>
+          <li class="active" class="courses"><?var url = getScriptUrl();?><a href='<?=url?>?page=courses'>Courses</a></li>
+          <li class="calendar"><?var url = getScriptUrl();?><a href='<?=url?>?page=calendar'>Calendar</a></li>
+          <li class="email"><?var url = getScriptUrl();?><a href='<?=url?>?page=email'>Email</a></li>
+          <!--<li class="ilearn"><?var url = getScriptUrl();?><a href='<?=url?>?page=ilearn'>Export iLearn</a></li> -->
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-<nav class="navbar navbar-inverse visible-xs">
   <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="#"><img class="logoSmall" src="https://i.ibb.co/xGrDqYd/a00e07a8-7536-4427-916f-3f679651775d-200x200.png" alt="Logo" ></a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="dashboard"><?var url = getScriptUrl();?><a href='<?=url?>?page=dashboard'>Dashboard</a></li>
-        <li class="todoList"><?var url = getScriptUrl();?><a href='<?=url?>?page=todolist'>Assignments</a></li>
-        <li class="active" class="courses"><?var url = getScriptUrl();?><a href='<?=url?>?page=courses'>Courses</a></li>
-        <li class="calendar"><?var url = getScriptUrl();?><a href='<?=url?>?page=calendar'>Calendar</a></li>
-        <li class="email"><?var url = getScriptUrl();?><a href='<?=url?>?page=email'>Email</a></li>
-        <li class="ilearn"><?var url = getScriptUrl();?><a href='<?=url?>?page=ilearn'>Export iLearn</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-<div class="container-fluid">
-  <div class="row content">
-    <div class="col-sm-3 sidenav hidden-xs">
-      <img class="logo" src="https://i.ibb.co/xGrDqYd/a00e07a8-7536-4427-916f-3f679651775d-200x200.png" alt="Logo" >
-      <ul class="nav nav-pills nav-stacked">
-        <li class="dashboard"><?var url = getScriptUrl();?><a href='<?=url?>?page=dashboard'><img class="dashIconBar" src="https://img.icons8.com/officexs/16/000000/dashboard.png"/>Dashboard</a></li>
-        <li class="todoList"><?var url = getScriptUrl();?><a href='<?=url?>?page=assignment'><img class="dashIconBar" src="https://img.icons8.com/ultraviolet/40/000000/paper.png"/>Assignments</a></li>
-        <li class="active" class="courses"><?var url = getScriptUrl();?><a href='<?=url?>?page=courses'><img class="dashIconBar" src="https://img.icons8.com/ultraviolet/40/000000/courses.png"/>Courses</a></li>
-        <li class="calendar"><?var url = getScriptUrl();?><a href='<?=url?>?page=calendar'><img class="dashIconBar" src="https://img.icons8.com/cotton/64/000000/calendar.png"/>Calendar</a></li>
-        <li class="email"><?var url = getScriptUrl();?><a href='<?=url?>?page=email'><img class="dashIconBar" src="https://img.icons8.com/office/16/000000/email.png"/>Email</a></li>
-        <li class="ilearn"><?var url = getScriptUrl();?><a href='<?=url?>?page=ilearn'><img class="dashIconBar" src="https://img.icons8.com/ultraviolet/40/000000/export.png"/>Export iLearn</a></li>
-      </ul><br>
-    </div>
-    <br>
+    <div class="row content">
+      <div class="col-sm-3 sidenav hidden-xs">
+        <img class="logo" src="https://i.ibb.co/xGrDqYd/a00e07a8-7536-4427-916f-3f679651775d-200x200.png" alt="Logo" >
+        <ul class="nav nav-pills nav-stacked">
+          <li class="dashboard"><?var url = getScriptUrl();?><a href='<?=url?>?page=dashboard'><img class="dashIconBar" src="https://img.icons8.com/officexs/16/000000/dashboard.png"/>Dashboard</a></li>
+          <li class="todoList"><?var url = getScriptUrl();?><a href='<?=url?>?page=assignment'><img class="dashIconBar" src="https://img.icons8.com/ultraviolet/40/000000/paper.png"/>Assignments</a></li>
+          <li class="active" class="courses"><?var url = getScriptUrl();?><a href='<?=url?>?page=courses'><img class="dashIconBar" src="https://img.icons8.com/ultraviolet/40/000000/courses.png"/>Courses</a></li>
+          <li class="calendar"><?var url = getScriptUrl();?><a href='<?=url?>?page=calendar'><img class="dashIconBar" src="https://img.icons8.com/cotton/64/000000/calendar.png"/>Calendar</a></li>
+          <li class="email"><?var url = getScriptUrl();?><a href='<?=url?>?page=email'><img class="dashIconBar" src="https://img.icons8.com/office/16/000000/email.png"/>Email</a></li>
+          <!-- <li class="ilearn"><?var url = getScriptUrl();?><a href='<?=url?>?page=ilearn'><img class="dashIconBar" src="https://img.icons8.com/ultraviolet/40/000000/export.png"/>Export iLearn</a></li> --> 
+        </ul><br>
+      </div><br>
     
-    <div class="col-sm-9">
-        <!-- USER  - username and photo -->
-    <div class="topNav" class="well"> 
-       <ul>
+      <div class="col-sm-9">
+      <!-- USER  - username and photo -->
+      <div class="topNav" class="well"> 
+        <ul>
           <li> <img class="userImage" id="profileImage" src="https://www.openroadreview.com/wp-content/uploads/2016/01/User-Icon-PNG-03589.png"></li>
           <li style="font-size: 18px;"id="username"></li>
-
         </ul>
       </div>
       <!-- USER END  -->
       
       <div class="well">
-       <div class="googleIcon"> 
-            <ul class="googleList">
-                 <li id="gdr"> <img src="https://img.icons8.com/color/48/000000/google-drive.png"> </li>
-                 <li id="gdo"> <img src="https://img.icons8.com/color/48/000000/google-docs.png"> </li>
-             </ul>
+        <div class="googleIcon"> 
+          <ul class="googleList">
+            <li id="gdr"> <img src="https://img.icons8.com/color/48/000000/google-drive.png"> </li>
+            <li id="gdo"> <img src="https://img.icons8.com/color/48/000000/google-docs.png"> </li>
+          </ul>
         </div>
         
         <h4>Courses</h4>
         <p>View assignments based on your corses! </p>
-        
-       
       </div>
-      
       <div class="row">
-        <div class="col-sm-3">
-          <div class="well">
-            <h4>CST438</h4>
-            <p></p> 
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="well">
-            <h4>CST495</h4>
-            <p> </p> 
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="well">
-            <h4>CST231</h4>
-            <p> </p> 
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="well">
-            <h4>CST300</h4>
-            <p></p> 
-          </div>
+        <div class="well">
+          <h4>This feature will be implemented at a later point. :)</h4>
         </div>
       </div>
-      
-     
     </div>
   </div>
 </div>
@@ -126,23 +98,15 @@
 
 $(document).ready(function(){ 
     $("#gdr").on("click", function(){
-       // alert("clicked google drive");
-        window.open("https://drive.google.com/drive/u/0/my-drive", '_blank');
+      window.open("https://drive.google.com/drive/u/0/my-drive", '_blank');
     });
     $("#gdo").on("click", function(){
-       // alert("clicked google doc");
-        window.open("https://docs.google.com/document/u/0/?tgif=c", '_blank');
-       
+      window.open("https://docs.google.com/document/u/0/?tgif=c", '_blank');
     });
-
 });
 
 </script>
 
-
 <?!= include ("username-js"); ?>
 </body>
 </html>
-
-
-
