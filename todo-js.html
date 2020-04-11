@@ -126,7 +126,7 @@ $(document).ready(function(){
     var list = $('#tasks').empty();
     if (tasks.length > 0) {
       tasks.forEach(function(task){
-        var item = $('<li>');
+        var item = $('<label>');
         var checkbox = $('<input type="checkbox">')
             .data('taskId', task.id)
             .bind('change', onCheckBoxChange);
@@ -136,12 +136,19 @@ $(document).ready(function(){
             .text(task.title);
         item.append(title);
         
+       var deleteIcon = $('<span class="deleteTask"><i class="far fa-trash-alt">')
+            .text(task.deleteIcon)
+            .data('taskId', task.id)
+            .bind('click', onDelete);
+        item.append(deleteIcon);
+              
         if (task.completed) {
           checkbox.prop('checked', true);
           title.css('text-decoration', 'line-through')
         }
         
         list.append(item);
+        list.append('<br>');
       });
     } else {
       list.text('No tasks');
@@ -163,9 +170,9 @@ $(document).ready(function(){
       title.css('text-decoration', 'none');
     }
     google.script.run.withSuccessHandler(function() {
-      title.effect("highlight", {
-        duration: 1500
-      });
+      //title.effect("highlight", {
+        //duration: 1500
+      //});
     }).withFailureHandler(showError)
       .setCompleted(taskListId, taskId, isChecked);
   }
@@ -173,15 +180,12 @@ $(document).ready(function(){
   /**
    * A callback function that runs when the new task form is submitted.
    */
-  function onNewTaskFormSubmit() {
+    function onNewTaskFormSubmit() {
     var taskListId = $('#tasklist').val();
     var titleTextBox = $('#task-title');
     var title = titleTextBox.val();
     google.script.run.withSuccessHandler(function() {
       titleTextBox.val('');
-      titleTextBox.effect("highlight", {
-        duration: 1500
-      });
       loadTasks();
     }).withFailureHandler(showError)
       .addTask(taskListId, title);
