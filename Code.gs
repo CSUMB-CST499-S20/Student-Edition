@@ -45,14 +45,14 @@ function getProfilePic() {
 }
 
 function getValuesFromForm(form){
-  var id = "1rOvnjC0Rwk2sC0BMaFMDTXWprUOYZ2NXQAzVjFs5BIg";
+  var id = "1ZTBkSj5Mqpn8WMCZXeg3gHh8EehHXZ3m0NJURoOSqp0";
   var ss = SpreadsheetApp.openById(id);
   var ws = ss.getSheetByName("Assignments");
   ws.appendRow([getEmail(), form["title"], form["course"], form["url"], form["duedate"], form["milestone1"], form["date1"],
                 form["milestone2"], form["date2"], form["milestone3"], form["date3"]]);
 }
 function getColumnsFromSheet() {
-  var id = "1rOvnjC0Rwk2sC0BMaFMDTXWprUOYZ2NXQAzVjFs5BIg";
+  var id = "1ZTBkSj5Mqpn8WMCZXeg3gHh8EehHXZ3m0NJURoOSqp0";
   var ss = SpreadsheetApp.openById(id);
   var ws = ss.getSheetByName("Assignments");
   
@@ -61,7 +61,7 @@ function getColumnsFromSheet() {
 }
 
 function deleteAssignByRow(rowId) {
-  var id = "1rOvnjC0Rwk2sC0BMaFMDTXWprUOYZ2NXQAzVjFs5BIg";
+  var id = "1ZTBkSj5Mqpn8WMCZXeg3gHh8EehHXZ3m0NJURoOSqp0";
   var ss = SpreadsheetApp.openById(id);
   var ws = ss.getSheetByName("Assignments");
   ws.deleteRow(rowId); 
@@ -188,4 +188,200 @@ function startHours(){
 
   return dates;
 }
+
+
+
+
+
+// FACULTY TEAM COURSE CODE BELOW 
+
+
+//********************************************************************************************************
+//                                  FUNCTION TO SET UP THE WEBPAGE                                       *
+//********************************************************************************************************
+//function doGet(e) {  
+ //return HtmlService.createTemplateFromFile('courses').evaluate();
+//}
+
+//********************************************************************************************************
+//                              FUNCTION TO INCLUDE CSS AND SCRIPT FILE                                  *
+//********************************************************************************************************
+function include(filename) {
+  return HtmlService.createHtmlOutputFromFile(filename).getContent();
+};
+
+//********************************************************************************************************
+//                          FUNCTION TO GET ALL THE COURSES A STUDENT IS TAKING                          *
+//********************************************************************************************************
+function getCourses(){
+
+  //GETTING STUDENTS EMAIL
+  var studentEmail = Session.getActiveUser().getEmail();
+  
+  //ARRAY OF COURSES STUDENT IS TAKING
+  var courseArray = [];
+  
+  //GETTING DATA BASE AND ITS INFORMATION
+  var master = SpreadsheetApp.openById("1ZTBkSj5Mqpn8WMCZXeg3gHh8EehHXZ3m0NJURoOSqp0");
+  var sheet = master.getSheetByName("Assingments");
+  var numRows = sheet.getLastRow();
+  var data = sheet.getRange(1,7, numRows).getValues();
+  var len = data.length
+  
+  //CHECKING IF THE COURSESECTION IS FOUND IN DATABASE
+  for(var i = len-1 ; i >0 ; i--){
+    sheet = master.getSheetByName(data[i][0]);
+    //CALLING 'checkStudent' FUNCTION
+    if(checkStudent(sheet,studentEmail) == true){
+      var len = courseArray.length
+      var found = false
+      //CHECKING IF COURSE IS NOT ALREADY IN ARRAY
+      for(var x = 0; x < len; x++){
+        if(courseArray[x] == data[i][0]){
+          found = true;
+        }
+      }
+      if(found == false){
+        courseArray.push([data[i][0]]);
+      }
+    }
+  }
+  return courseArray;
+}
+
+//********************************************************************************************************
+//                      FUNCTION THAT WILL CHECK IF THE STUDENT IS FOUND IN THAT COURSE                  *
+//********************************************************************************************************
+function checkStudent(sheet,studentEmail){
+  
+  var numRows = sheet.getLastRow();
+  var numColumns = sheet.getLastColumn();
+  var emaildata = sheet.getRange(1,1,numRows,numColumns).getValues();
+  var emailLen = emaildata.length;
+  
+  
+  //CHECK WHAT ROW THE STUDENT IS ON
+  var studentRow = -1;
+  for(var i = emailLen-1; i > 0 ; i--){  
+    if(emaildata[i][2] == studentEmail){
+      return true;
+    }
+  }
+  return false;
+}
+
+//********************************************************************************************************
+//                      FUNCTION TO GET THE ASSIGNMENTS THAT CORRELATE WITH THE COURSE                   *
+//********************************************************************************************************
+function getAssignments(courseSection){  
+  var master = SpreadsheetApp.openById("1ZTBkSj5Mqpn8WMCZXeg3gHh8EehHXZ3m0NJURoOSqp0");
+  var sheet = master.getSheetByName("Assingments");
+  var numRows = sheet.getLastRow();
+  var numColumns = sheet.getLastColumn();
+  var data = sheet.getRange(1,1, numRows,numColumns).getValues();
+  var len = data.length
+  
+  var date = Utilities.formatDate(new Date(), "GMT+1", "MM/dd/yyyy");
+  var assignmentInfo = "";
+  var AssignmentList = [];
+    
+  //*********** DATE CHECKER TO SEE IF ASSIGNMENT ALREADY PASSED ***********
+  for(var i = len - 1 ; i > 0 ; i--){
+    if(courseSection == data[i][6]){
+      var dueDate = Utilities.formatDate(data[i][5], "GMT+1", "MM/dd/yyyy");
+      assignmentInfo = data[i][2] + " - "+data[i][6]+ " - "+dueDate
+      AssignmentList.push([assignmentInfo]);
+    }
+  }
+  
+  return AssignmentList
+}
+
+//********************************************************************************************************
+//                      FUNCTION TO GET THE INSTRUCTOR LINK AND RETURN IT FOR DISPLAY                    *
+//********************************************************************************************************
+function getInstructorLink(AssignmentName,courseSection,dueDate){
+  
+  var master = SpreadsheetApp.openById("1ZTBkSj5Mqpn8WMCZXeg3gHh8EehHXZ3m0NJURoOSqp0");
+  var sheet = master.getSheetByName("Assingments");
+  var numRows = sheet.getLastRow();
+  var numColumns = sheet.getLastColumn();
+  var data = sheet.getRange(1,1, numRows,numColumns).getValues();
+  var len = data.length
+    
+  var instructorLink = "";
+  
+  
+  for(var i = len - 1 ; i > 0 ; i--){
+    var sheetDate = Utilities.formatDate(data[i][5], "GMT+1", "MM/dd/yyyy");
+    if(AssignmentName == data[i][2] && courseSection == data[i][6] && dueDate == sheetDate){
+      instructorLink = data[i][3];
+      return instructorLink;
+    }
+  }
+  return instructorLink;
+}
+
+//********************************************************************************************************
+//                              FUNCTION TO SET STUDENT AS VIEWED                                        *
+//********************************************************************************************************
+function storeStudentViewed(instructorLink,assignmentName,CourseSectionName, dueDate){
+  var studentEmail = Session.getActiveUser().getEmail();
+  
+  var master = SpreadsheetApp.openById("1ZTBkSj5Mqpn8WMCZXeg3gHh8EehHXZ3m0NJURoOSqp0");
+  var sheet = master.getSheetByName(CourseSectionName); 
+  
+  var numColumns = sheet.getLastColumn();
+  var data = sheet.getRange(1,1,1,numColumns).getValues();
+  var len = data[0].length;
+  
+  //CHECK WHAT COLUMN ASSIGNMENT IS ON
+  var assingmentColumn = 0;
+  for(var i = len-1; i >= 0 ; i--){  
+    Logger.log(data[0][i]);
+    if(assignmentName == data[0][i]){
+      assingmentColumn = i+1;
+      Logger.log("ASSIGNMENT COLUMN: "+assingmentColumn);
+      break;
+    }
+  }
+  
+  var numRows = sheet.getLastRow();
+  var emaildata = sheet.getRange(1,1,numRows,numColumns).getValues();
+  var emailLen = emaildata.length;
+  Logger.log("EMAIL LEN: "+ emailLen);
+  
+  //CHECK WHAT ROW THE STUDENT IS ON
+  var studentRow = 0;
+  for(var i = emailLen-1; i > 0 ; i--){  
+    if(emaildata[i][2] == studentEmail){
+      studentRow = i + 1;
+      Logger.log("STUDENT ROW: "+studentRow)
+    }
+  }
+  
+  //UPDATING DATES WHEN STUDENT VIEW DOCUMENT
+  
+  var setViewed = sheet.getRange(studentRow,assingmentColumn).getValue();
+  var date = Utilities.formatDate(new Date(), "GMT+1", "MM/dd/yyyy");
+  if(setViewed == ""){
+    setViewed = "VIEWED - "+ date;
+    Logger.log(setViewed);
+    sheet.getRange(studentRow,assingmentColumn).setValue(setViewed);
+  }
+  else{
+    var lastDate = setViewed.slice(-10);
+    Logger.log(lastDate);
+    
+    if(lastDate != date){
+      var addDate = setViewed + ", "+date;
+      sheet.getRange(studentRow,assingmentColumn).setValue(addDate);
+    }
+  }
+  
+}
+
+
+
+
 

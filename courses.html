@@ -9,6 +9,14 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
+  
+  
+  <!-- LINKS FROM FACULTY TEAM --> 
+  <link rel="stylesheet" href="student-css.html">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <?!= include('courses-css'); ?>
   <?!= include ("dash-css"); ?>
   <style> 
      .googleList li img {
@@ -87,9 +95,36 @@
         <p>View assignments based on your corses! </p>
       </div>
       <div class="row">
+      
         <div class="well">
-          <h4>This feature will be implemented at a later point. :)</h4>
+         
+        
+       
+            <div id="1" class="dropDown"></div>
+  
+           <br><br>
+           <!-- SECTION WHERE ALL CLASSES AND ASSIGNMENTS WILL BE DISPLAYED -->
+           <div class="infoSection">
+              <p id = "title">Select Assingment (e.g. Assignment Name - Class - Due Date):</p>
+              <div class = "sections" id = "sectionAssign"></div>
+           </div>  
+           
+           <!-- LINE BREAK -->
+           <br><br>
+           
+           <!-- SUBMIT BUTTON -->
+           <div class="box" id="buttonBox">
+               <button id='btn' class='btn-secondary'> Get Link </button>
+           </div>
+           
+           <!-- LINK TO TEACHERS ASSIGNMENT -->
+           <br><br>
+           <div class="linkDiv">
+              <p id="instructorLink" class="professorLink"></p>
+           </div>
+        
         </div>
+        
       </div>
     </div>
   </div>
@@ -106,7 +141,7 @@ $(document).ready(function(){
 });
 
 </script>
-
+  <?!= include('course-script'); ?>
 <?!= include ("username-js"); ?>
 </body>
 </html>

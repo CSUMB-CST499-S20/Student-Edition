@@ -1,0 +1,120 @@
+<script>
+
+  var clickedAssignment ="";
+  //ONCLICK BUTTON TO GET INSTRUCTORS LINK
+  document.getElementById("btn").addEventListener("click", getInstructorLink);
+
+  //********************************************************************************
+  //                    FUNCTION THAT WILL PUT CLASSES IN DROPBOX.                 *
+  //********************************************************************************
+  var classes = [];
+  var newList = document.createElement("select");
+  var dv = document.getElementById("new_roster");
+       
+  newList.setAttribute("id", "all_class");
+  newList.setAttribute("class", "courses");
+    
+  function displayCourses(courseArray){  
+    var l_div = document.getElementById("1");
+    $(newList).empty();
+    $(l_div).empty();
+    l_div.appendChild(newList);
+  
+    for (var i = -1; i < courseArray.length; i++) {
+      var option = document.createElement("OPTION");
+      if(i == -1) {
+        option.text = "Select a course";
+      }
+      else{
+        option.text = courseArray[i];
+      }
+      newList.appendChild(option);
+    }
+  }
+  google.script.run.withSuccessHandler(displayCourses).getCourses();
+  
+  
+  
+  //********************************************************************************
+  //   FUNCTION THAT WILL DISPLAY THE ASSIGNMENTS FOR THE CLASS THE STUDENT CHOSE  *
+  //********************************************************************************
+  newList.addEventListener('change', function() {
+    var displayTheLink = document.getElementById('instructorLink')
+    if(displayTheLink.value != ""){
+      displayTheLink.innerHTML = "";
+    }
+    getCourseInfo();
+  })
+  function displayAssignment(assignmentList){
+    var sectionAssignments = document.getElementById('sectionAssign')
+    sectionAssignments.innerHTML = " ";
+    for (var i = 0; i < assignmentList.length; i++) {
+      sectionAssignments.innerHTML += "<div><input type='checkbox' value='"+assignmentList[i]+"' name = 'myCheckbox' id = 'checkingBox' onclick='selectOnlyThis(this)' >" + assignmentList[i] + "</div>"
+    }
+  }
+  function getCourseInfo(){
+    if($("#all_class option:selected").val() != "Add New Class"){
+      google.script.run.withSuccessHandler(displayAssignment).getAssignments($("#all_class option:selected").val());
+    }
+    else{
+      var sectionAssignments = document.getElementById('sectionAssign')
+      sectionAssignments.innerHTML = " ";
+    }
+  }
+  
+  //********************************************************************************
+  //                    FUNCTION TO SEE WHICH CHECKBOX IS CLICKED                  *
+  //********************************************************************************
+  function selectOnlyThis(id){
+     var myCheckbox = document.getElementsByName("myCheckbox");
+     Array.prototype.forEach.call(myCheckbox,function(el){
+        el.checked = false;
+     });
+     clickedAssignment = id.value
+     id.checked = true;
+  }
+  
+  //********************************************************************************
+  //           FUNCTION TO PASTE INSTRUCTORS LINK ONTO THE WEBPAGE                 *
+  //********************************************************************************
+  function getInstructorLink(){
+     if(clickedAssignment == ""){
+        alert("You have not clicked on an assignment box. Please select one");
+     }
+     else{
+        //SPLITTING RESPONSE BY VALUES (ASSIGNMENT NAME, COURSE & SECTION, & DUEDATE)
+        var infoArray = clickedAssignment.split(" - ");        
+        var AssignmentName = infoArray[0];
+        var courseSection = infoArray[1];
+        var dueDate = infoArray[2];
+        
+        //***************************************************************
+        //           FUNCTION TO DISPLAY INSTRUCTORS LINK               *
+        //***************************************************************
+        function displayLink(instructorLink){
+           var displayTheLink = document.getElementById('instructorLink')
+           displayTheLink.innerHTML ="Assignment Link: <a href='"+instructorLink+"' onclick='storeAsViewed(\""+instructorLink+"\","+"\""+AssignmentName+"\","+"\""+courseSection+"\","+"\""+dueDate+"\")'  target='_blank' >"+instructorLink+"</a>"
+        }
+        google.script.run.withSuccessHandler(displayLink).getInstructorLink(AssignmentName,courseSection,dueDate);
+     }
+  }
+  
+  
+  //********************************************************************************
+  //           FUNCTION THAT WILL REGISTER WHEN STUDENTS VIEW THE ASSIGNMENT       *
+  //********************************************************************************
+  function storeAsViewed(instructorLink,AssignmentName, courseSection, dueDate){
+     //***************************************************************
+     //             FUNCTION TO SET VIEWED IN DATABASE               *
+     //***************************************************************
+     function storedStudent(instructorLink){
+     }
+     google.script.run.withSuccessHandler(storedStudent).storeStudentViewed(instructorLink,AssignmentName, courseSection, dueDate);
+  }  
+  
+
+</script>
+
+
+
+
