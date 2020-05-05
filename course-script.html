@@ -1,6 +1,5 @@
 <script>
-
-  var clickedAssignment ="";
+ var clickedAssignment ="";
   //ONCLICK BUTTON TO GET INSTRUCTORS LINK
   document.getElementById("btn").addEventListener("click", getInstructorLink);
 
@@ -110,8 +109,7 @@
      function storedStudent(instructorLink){
      }
      google.script.run.withSuccessHandler(storedStudent).storeStudentViewed(instructorLink,AssignmentName, courseSection, dueDate);
-  }  
-  
+  }
 
 </script>
 
