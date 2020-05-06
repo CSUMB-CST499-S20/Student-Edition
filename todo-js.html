@@ -35,6 +35,7 @@ $(document).ready(function(){
        
         loadData();
         google.script.run.withSuccessHandler(loadData).getColumnsFromSheet();
+        google.script.run.withSuccessHandler(reloadData).getColumnsFromSheet();
     });
     
     google.script.run.withSuccessHandler(loadData).getColumnsFromSheet();
