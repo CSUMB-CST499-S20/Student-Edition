@@ -209,11 +209,20 @@ $(document).ready(function(){
   }
     $('#tasklist').bind('change', loadTasks);
     $('#new-task').bind('submit', onNewTaskFormSubmit);
-    loadTaskLists();
     
- 
- 
- 
+     $('#create-button').on('click',function(){
+        var taskList = $('#tasklist-title').val();
+        console.log("button clicked");
+        var titleTextBox = $('#tasklist-title');
+      
+        google.script.run.withSuccessHandler(function() {
+        titleTextBox.val('');
+        loadTaskLists();
+        }).withFailureHandler(showError)
+        .newTaskList(taskList);   
+    });
+  
+    loadTaskLists();
   
 // Rosario's part  
    //   document.addEventListener('DOMContentLoaded', function() {
