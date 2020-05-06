@@ -35,6 +35,16 @@
      width: 35px;
      height:35px;
      }
+    .sendButton{
+       background-color: white;
+       width: 100px;
+       border: 1px solid white;
+       color: black;
+       border-radius: 12px;
+     }
+     .sendButton:hover{
+       box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+     }
   </style>
 </head>
 
@@ -102,7 +112,7 @@
             <label for="message"> Message: </label> <br>
             <textarea class="form-control" rows="5" id="message"></textarea>
          </div>
-         <button type="submit" id="sendButton">Send</button>
+         <button type="submit" class="sendButton" id="sendButton">Send</button>
          <br><span id="result"></span>
       </div> 
       <!-- EMAIL CONTENT END -->
