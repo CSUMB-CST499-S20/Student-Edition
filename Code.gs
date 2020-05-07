@@ -6,10 +6,10 @@ function getScriptUrl() {
 function doGet(e) {
   if (!e.parameter.page) {
     // When no specific page requested, return "home page"
-    return HtmlService.createTemplateFromFile('dashboard').evaluate();
+    return HtmlService.createTemplateFromFile('dashboard').evaluate().setTitle('GAAME');
   }
   // else, use page parameter to pick an html file from the script
-  return HtmlService.createTemplateFromFile(e.parameter['page']).evaluate();
+  return HtmlService.createTemplateFromFile(e.parameter['page']).evaluate().setTitle('GAAME');
 }
 
 function userAddEntry(aname,course, duedate, milestones) {

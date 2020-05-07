@@ -10,67 +10,70 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
   
-  
   <!-- LINKS FROM FACULTY TEAM --> 
   <link rel="stylesheet" href="student-css.html">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <?!= include('courses-css'); ?>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <?!= include('courses-css'); ?>
   <?!= include ("dash-css"); ?>
   <style> 
-     .googleList li img {
-         width: 25px;
-         height: 25px;
-     }
-     .googleList {
-        float: right;   
-     }
-     .dashIconBar{
-     padding: 3%;
-     width: 35px;
-     height:35px;
-     }
-     .titleCourse{
-     color: #337ab7;
-     font-size: 36px;
-     }
-     .well.wellTop{
-         height: 165px;
-         line-height: 3.5;
-    
-     }
-     .well.wellTop p {
-         display: block;
-         margin-block-start: 1em;
-         margin-block-end: 1em;
-         margin-inline-start: 0px;
-         margin-inline-end: 0px; 
-         font-size: 16px;
-     }
-     #all_class{
-     background-color: #337ab7;
-     height: 45px;
-     color: white;
-     font-size: bold;
+    .googleList li img {
+      width: 25px;
+      height: 25px;
     }
+     
+    .googleList {
+      float: right;   
+    }
+     
+    .dashIconBar{
+      padding: 3%;
+      width: 35px;
+      height:35px;
+    }
+    
+    .titleCourse{
+      color: #337ab7;
+      font-size: 36px;
+    }
+     
+    .well.wellTop{
+      height: 165px;
+      line-height: 3.5;
+    }
+     
+    .well.wellTop p {
+      display: block;
+      margin-block-start: 1em;
+      margin-block-end: 1em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px; 
+      font-size: 16px;
+    }
+    
+    #all_class{
+      background-color: #337ab7;
+      height: 45px;
+      color: white;
+      font-size: bold;
+    }
+    
     #btn {
-    border-radius: 5px;
-display:none;
+      border-radius: 5px;
+      display:none;
     }
-    
     
     #title{
-       font-size: 24px;
+      font-size: 24px;
     }
-    
     
     @media only screen and (max-width:650px){
-    .well.wellTop {
-    height: 100%;}
+      .well.wellTop {
+        height: 100%;
+      }
     }
   </style>
-
 </head>
 
 <body>
@@ -112,86 +115,69 @@ display:none;
       </div><br>
     
       <div class="col-sm-9">
-      <!-- USER  - username and photo -->
-      <div class="topNav" class="well"> 
-        <ul>
-          <li> <img class="userImage" id="profileImage" src="https://www.openroadreview.com/wp-content/uploads/2016/01/User-Icon-PNG-03589.png"></li>
-          <li style="font-size: 18px;"id="username"></li>
-        </ul>
-      </div>
-      <!-- USER END  -->
-      
-      <div class="well wellTop">
-        <div class="googleIcon"> 
-          <ul class="googleList">
-            <li id="gdr"> <img src="https://img.icons8.com/color/48/000000/google-drive.png"> </li>
-            <li id="gdo"> <img src="https://img.icons8.com/color/48/000000/google-docs.png"> </li>
+        <div class="topNav" class="well"> 
+          <ul>
+            <li> <img class="userImage" id="profileImage" src="https://www.openroadreview.com/wp-content/uploads/2016/01/User-Icon-PNG-03589.png"></li>
+            <li style="font-size: 18px;"id="username"></li>
           </ul>
         </div>
-        
-        <h4 class="titleCourse">Courses</h4>
-        <p>Select a course from the drop down menu to get the link for the corresponding assignment to view on iLearn </p>
-      </div>
-      <div class="row">
       
-        <div class="well">
-         
-           <p id="title"> Your Assingments (e.g. Assignment Name - Class - Due Date):</p>
-       
-            <div id="1" class="dropDown"></div>
-  
-           <br><br>
-           <!-- SECTION WHERE ALL CLASSES AND ASSIGNMENTS WILL BE DISPLAYED -->
-           <div class="infoSection">
-              <div class = "sections" id = "sectionAssign"></div>
-              
-           </div>  
-           
-           <!-- LINE BREAK -->
-           <br><br>
-           
-           <!-- SUBMIT BUTTON -->
-           <div class="box" id="buttonBox">
-               <button id='btn' class='btn-secondary'> Get Link </button>
-           </div>
-           
-           <!-- LINK TO TEACHERS ASSIGNMENT -->
-           <br><br>
-           <div class="linkDiv">
-              <p id="instructorLink" class="professorLink"></p>
-           </div>
+        <div class="well wellTop">
+          <div class="googleIcon"> 
+            <ul class="googleList">
+              <li id="gdr"> <img src="https://img.icons8.com/color/48/000000/google-drive.png"> </li>
+              <li id="gdo"> <img src="https://img.icons8.com/color/48/000000/google-docs.png"> </li>
+            </ul>
+          </div>
         
+          <h4 class="titleCourse">Courses</h4>
+          <p>Select a course from the drop down menu to get the link for the corresponding assignment to view on iLearn </p>
         </div>
-        
+        <div class="row">
+          <div class="well">
+            <p id="title"> Your Assignments (e.g. Assignment Name - Class - Due Date):</p>
+            <div id="1" class="dropDown"></div>
+            <br><br>
+            <!-- SECTION WHERE ALL CLASSES AND ASSIGNMENTS WILL BE DISPLAYED -->
+            <div class="infoSection">
+              <div class = "sections" id = "sectionAssign"></div> 
+            </div>  
+           
+            <!-- LINE BREAK -->
+            <br><br>
+           
+            <!-- SUBMIT BUTTON -->
+            <div class="box" id="buttonBox">
+              <button id='btn' class='btn-secondary'> Get Link </button>
+            </div>
+           
+            <!-- LINK TO TEACHERS ASSIGNMENT -->
+            <br><br>
+            <div class="linkDiv">
+              <p id="instructorLink" class="professorLink"></p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<script> 
+  
+  <script> 
+    $(document).ready(function(){ 
+      $("#gdr").on("click", function(){
+        window.open("https://drive.google.com/drive/u/0/my-drive", '_blank');
+      });
+      
+      $("#gdo").on("click", function(){
+        window.open("https://docs.google.com/document/u/0/?tgif=c", '_blank');
+      });
 
-$(document).ready(function(){ 
-    $("#gdr").on("click", function(){
-      window.open("https://drive.google.com/drive/u/0/my-drive", '_blank');
+      setTimeout(function() {
+        $("#btn").show();
+      }, 8000);
     });
-    $("#gdo").on("click", function(){
-      window.open("https://docs.google.com/document/u/0/?tgif=c", '_blank');
-    });
-   
- 
-     
-   
-    setTimeout(function() {
-    $("#btn").show();
-   
-    }, 8000);
-   
-   
-    
-    
-});
-
-</script>
+  </script>
   <?!= include('course-script'); ?>
-<?!= include ("username-js"); ?>
+  <?!= include ("username-js"); ?>
 </body>
 </html>
