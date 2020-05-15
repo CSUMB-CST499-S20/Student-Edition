@@ -62,7 +62,7 @@ GAAME Student Edition helps students manage their professional and personal sche
 
 #### Tasks
   
-| Property | Type | Description |
-| ---------|:----:| -----------:|
-| Email    | email      |   ... |
-| Description     | string      |   ... |
+| Property | Type | 
+| ---------|:----:| 
+| Email    | email      |   
+| Description     | string      | 
