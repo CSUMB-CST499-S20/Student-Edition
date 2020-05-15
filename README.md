@@ -2,8 +2,8 @@
 
 ## Table of Contents
 1. [Overview](#Overview)
-2. [Project Objective](#Project-Objective)
-3. [Paper Mockups](#Paper-MockUps)
+2. [Product Specific](#Product)
+3. [Wireframes](#Wireframes)
 4. [Schema](#Schema)
 
 ## Overview
