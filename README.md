@@ -45,8 +45,36 @@ GAAME Student Edition helps students manage their professional and personal sche
 ### Models (Google Sheets) 
 
 #### Assignments 
-| __Email__| __Title__ | __Course__ | __URL__| __DueDate__| __Milestone1__|__Date1__| 
-Milestone2
-Date2
 
+* __Email__
+   * our made logo in white with colored background
+*  __Title__
+   * logo
+   * username label / text field
+   * password label / text field
+   * sign in button
+   * sign up button
+* __Course__
+  * show what PuppyLuv is about
+  * give ability to go to quiz with a button
+  * ability to to straight to the profile page
+* __URL__
+  * ability to take quiz and go back/next on questions
+  * shows an image/illustrations to go with each question/selection
+  * shows results on next page connecting only to quiz view controller (where breeds can be liked/disliked)
+* __DueDate__
+  * shows results
+  * changes to list view (and back)
+*  __Milestone1__
+  * shows saved likes/dislikes
+  * displays profile picture/name
+*  __Date1__
+  * shows saved likes/dislikes
+  * displays profile picture/name
+*  __Milestone2__
+  * shows saved likes/dislikes
+  * displays profile picture/name
+*  __Date2__
+  * shows saved likes/dislikes
+  * displays profile picture/name
 
