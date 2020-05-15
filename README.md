@@ -46,7 +46,7 @@ GAAME Student Edition helps students manage their professional and personal sche
 
 #### Assignments 
 | __Email__| __Title__   | __Course__ | __URL__| __DueDate__| __Milestone1__|__Date1__| __Milestone2__| __Date2__ |
-|-------------|------------|----------------|-------------|------------|----------------|
+|-------------|------------|----------------|-------------|------------|----------------|------------|----------------|
 |ObjectId    | String | Unique id for the users| ObjectId   | String | Unique id for the users|
 |username     | String | Name the user chooses for their account| 
 |password     |  String|Password for user to access account|
