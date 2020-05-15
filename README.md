@@ -44,4 +44,15 @@ GAAME Student Edition helps students manage their professional and personal sche
 ## Schema 
 ### Models (Google Sheets) 
 
+#### Assignments 
+| __Email__| __Title__   | __couse__ | __Email__| __Title__   | __couse__ |
+|-------------|------------|----------------|-------------|------------|----------------|
+|ObjectId    | String | Unique id for the users| ObjectId   | String | Unique id for the users|
+|username     | String | Name the user chooses for their account| 
+|password     |  String|Password for user to access account|
+|email        | String|  Email to access Account|
+|display_name | String|  Displayed name on profile|
+|image        | File |  User profile image|
+|description  | String |  Description of the user|
+
 
