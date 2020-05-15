@@ -2,8 +2,8 @@
 
 ## Table of Contents
 1. [Overview](#Overview)
-2. [Product Specific](#Product)
-3. [Wireframes](#Wireframes)
+2. [Web App Demo](#Web-App-Demo)
+3. [Product Spec](#Product-Spec)
 4. [Schema](#Schema)
 
 ## Overview
@@ -16,17 +16,10 @@ GAAME Student Edition helps students manage their professional and personal sche
 - Yazmin Carrillo
 - Ana Santos 
 
+## Web App Demo
+#### <a href="https://www.youtube.com/watch?v=4Xoq40Dio5o&feature=youtu.be"> Demo </a>
+
 ## Product Spec
-
-### 1. User Stories
-
-
-### 2. Screen Archetypes
-
-
-### 3. Navigation
-**Flow Navigation**
-
 * Login 
   - Must be logged into a CSUMB account 
 
@@ -47,11 +40,6 @@ GAAME Student Edition helps students manage their professional and personal sche
 
 * Email 
   - Send emails to profesor and students straight from this platform. 
-
-
-## Wireframes
-Video Recoriding of the Web App 
-
 
 ## Schema 
 ### Models (Google Sheets) 
