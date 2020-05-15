@@ -47,21 +47,16 @@ GAAME Student Edition helps students manage their professional and personal sche
 #### Assignments 
 
 * __Email__
-   * our made logo in white with colored background
+   * ID
 *  __Title__
-   * logo
-   * username label / text field
-   * password label / text field
-   * sign in button
-   * sign up button
+   * String
+  
 * __Course__
-  * show what PuppyLuv is about
-  * give ability to go to quiz with a button
-  * ability to to straight to the profile page
+  * String
+  
 * __URL__
-  * ability to take quiz and go back/next on questions
-  * shows an image/illustrations to go with each question/selection
-  * shows results on next page connecting only to quiz view controller (where breeds can be liked/disliked)
+  * String
+ 
 * __DueDate__
   * shows results
   * changes to list view (and back)
