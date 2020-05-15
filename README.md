@@ -45,19 +45,19 @@ GAAME Student Edition helps students manage their professional and personal sche
 ### Models (Google Sheets) 
 
 #### Assignments 
-| Property | Type | Description |
-| ---------|:----:| -----------:|
-| Email    | email      |   ... |
-| Title     | string      |   ... |
-| Courses      | stinf      |   ... |
-| URL      | url      |   ... |
-| Due Date      | date      |   ... |
-| Milestone 1     | string      |  ... |
-| Milestone Duedate 1     | date      |   ... |
-| Milestone 2     | string      |   ... |
-| Milestone Duedate 2     | date      |   ... |
-| Milestone 3     | string      |   ... |
-| Milestone Duedate 3     | date      |   ... |
+| Property | Type | 
+| ---------|:----:| 
+| Email    | email      |   
+| Title     | string      | 
+| Courses      | stinf      |  
+| URL      | url      |  
+| Due Date      | date      |   
+| Milestone 1     | string      |  
+| Milestone Duedate 1     | date      |   
+| Milestone 2     | string      |  
+| Milestone Duedate 2     | date      |  
+| Milestone 3     | string      |  
+| Milestone Duedate 3     | date      |  
 
 
 #### Tasks
