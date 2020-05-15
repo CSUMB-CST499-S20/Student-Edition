@@ -17,7 +17,7 @@ GAAME Student Edition helps students manage their professional and personal sche
 - Ana Santos 
 
 ## Web App Demo
-#### <a href="https://www.youtube.com/watch?v=4Xoq40Dio5o&feature=youtu.be"> Demo </a>
+#### <a href="https://www.youtube.com/watch?v=4Xoq40Dio5o&feature=youtu.be"> Walkthrough of the Web Application  </a>
 
 ## Product Spec
 * Login 
