@@ -49,7 +49,7 @@ GAAME Student Edition helps students manage their professional and personal sche
 | ---------|:----:| 
 | Email    | email      |   
 | Title     | string      | 
-| Courses      | stinf      |  
+| Courses      | sting      |  
 | URL      | url      |  
 | Due Date      | date      |   
 | Milestone 1     | string      |  
