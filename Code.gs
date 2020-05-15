@@ -381,7 +381,10 @@ function storeStudentViewed(instructorLink,assignmentName,CourseSectionName, due
   
 }
 
-
+function newTaskList(taskList) {
+  var taskList = Tasks.newTaskList().setTitle(taskList);
+  Tasks.Tasklists.insert(taskList);
+}
 
 
 
