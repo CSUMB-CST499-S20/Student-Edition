@@ -52,24 +52,24 @@ GAAME Student Edition helps students manage their professional and personal sche
    * String
   
 * __Course__
-  * String
+   * String
   
 * __URL__
-  * String
+   * String
  
 * __DueDate__
-  * Date
+   * Date
   
 *  __Milestone1__
   * String
   
 *  __Date1__
-  * Date
+   * Date
   
 *  __Milestone2__
-  * String
+   * String
   
 *  __Date2__
-  * Date
+   * Date
   
 
