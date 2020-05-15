@@ -60,6 +60,9 @@ GAAME Student Edition helps students manage their professional and personal sche
 | Milestone Duedate 3     | date      |   ... |
 
 
-
+#### Tasks
   
-
+| Property | Type | Description |
+| ---------|:----:| -----------:|
+| Email    | email      |   ... |
+| Description     | string      |   ... |
