@@ -58,18 +58,16 @@ GAAME Student Edition helps students manage their professional and personal sche
   * String
  
 * __DueDate__
-  * shows results
-  * changes to list view (and back)
+  * Date
+  
 *  __Milestone1__
-  * shows saved likes/dislikes
-  * displays profile picture/name
+  * String
+  
 *  __Date1__
-  * shows saved likes/dislikes
-  * displays profile picture/name
+  * Date
 *  __Milestone2__
-  * shows saved likes/dislikes
-  * displays profile picture/name
+  * String
 *  __Date2__
-  * shows saved likes/dislikes
-  * displays profile picture/name
+  * Date
+  
 
