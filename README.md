@@ -59,30 +59,7 @@ GAAME Student Edition helps students manage their professional and personal sche
 | Milestone 3     | string      |   ... |
 | Milestone Duedate 3     | date      |   ... |
 
-* __Email__
-   * ID
-*  __Title__
-   * String
-  
-* __Course__
-   * String
-  
-* __URL__
-   * String
- 
-* __DueDate__
-    * Date
-  
-*  __Milestone1__
-    * String
-  
-*  __Date1__
-    * Date
-  
-*  __Milestone2__
-    * String
-  
-*  __Date2__
-    * Date
+
+
   
 
