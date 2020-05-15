@@ -64,10 +64,13 @@ GAAME Student Edition helps students manage their professional and personal sche
   * String
   
 *  __Date1__
+
   * Date
 *  __Milestone2__
+
   * String
 *  __Date2__
+
   * Date
   
 
