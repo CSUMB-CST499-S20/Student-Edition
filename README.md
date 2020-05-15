@@ -1,5 +1,4 @@
-# GAAME: Student-Edition
-### Google App for Attention Management Excellence 
+# GAAME: Student-Edition 
 
 ## Table of Content
 1. [Overview](#Overview)
